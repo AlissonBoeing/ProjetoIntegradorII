@@ -6,7 +6,7 @@ from time import sleep
 class Movimento:
     def __init__(self, a, b, velocidade):
         self.velocidade = velocidade
-        self.l = LargeMotor(a)
+       
         self.r = LargeMotor(b)
         self.cl = ColorSensor()
         self.colors = ('unknown', 'black', 'blue', 'green', 'yellow', 'red', 'white', 'brown')
