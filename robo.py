@@ -18,7 +18,4 @@ class Robo:
             self.mover.setParar()
         elif comando == "retornar":
             self.mover.setRetornar()
-           
 
-
-   

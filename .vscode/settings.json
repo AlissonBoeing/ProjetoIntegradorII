@@ -1,0 +1,9 @@
+{
+    "python.linting.enabled": false,
+    "python.testing.pyTestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pyTestEnabled": true
+}

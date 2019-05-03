@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 from Robo import *
-from SensorLum import *
+#from SensorLum import *
 
+cor = input("Cor: ")
+vel = input("Velocidade: ")
+direcao = input("dir: ")
 
-direcao = input("dir")
-robot = Robo(100, 'Azul')
-
+robot = Robo(vel, cor)
 
 while (direcao != "exit"):
 
@@ -13,13 +14,19 @@ while (direcao != "exit"):
 		robot.moverFrente()
 
 	elif direcao == 'a':
-		print("nao implementado ainda")
+		robot.moverEsquerda()
 
 	elif direcao == 's':
-		print("nao implementado ainda")
+		robot.moverRetornar()
 
 	elif direcao == 'd':
-		print("nao implementado ainda")
+		robot.moverDireita()
 
+	elif direcao == 'v':
+		vel = input("Velocidade: ")
+		robot.setVel(vel)
 
-	direcao = input("direcao")
+	elif direcao == 'c':
+		cor = input("Cor: ")
+
+	direcao = input("dir: ")
