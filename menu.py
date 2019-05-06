@@ -1,18 +1,13 @@
-#!/usr/bin/env python3
 from Robo import *
-#from SensorLum import *
 
-cor     = input("Cor: ")
-comando = input("dir: ")
-vel     = input("Velocidade: ")
+cor     = input('Cor: ')
+sentido = input('Sentido: ')
+vel     = int(input('Velocidade: '))
+posX    = int(input('PosX: '))
+posY    = int(input('PosY: '))
+comando = input("Comando: ")
 
-robot = Robo(vel, cor)
-
-print('Comandos: ')
-print('w-a-s-d -> frente-esquerda-retorna-direita')
-print('v - altera velocidade')
-print('c - altera cor')
-print('auto - altera para modo automático')
+robot = Robo(vel, cor, sentido, posX, posY)
 
 while (comando != "exit"):
 
@@ -29,15 +24,15 @@ while (comando != "exit"):
 		robot.moverDireita()
 
 	elif comando == 'v':
-		vel = input("Velocidade: ")
+		vel = int(input("Velocidade: "))
 		robot.setVel(vel)
 
 	elif comando == 'c':
 		cor = input("Cor: ")
 
 	elif comando == 'auto':
-		posX = input('PosX tesouro: ')
-		posY = input('PosY tesouro: ')
+		posX = int(input('PosX tesouro: '))
+		posY = int(input('PosY tesouro: '))
 		robot.moverAutomatico(posX, posY)
 
-	direcao = input("dir: ")
+	comando = input("comando: ")

@@ -2,7 +2,7 @@ from ev3dev.ev3 import *
 from time import sleep
 
 class Robo:
-    def __init__(self, vel, cor):
+    def __init__(self, vel, cor, sentido, posX, posY):
         self.velocidade = vel
         self.l          = LargeMotor('outA')# esquerda
         self.r          = LargeMotor('outD')# direita
@@ -10,9 +10,9 @@ class Robo:
         self.colors     = ('unknown', 'black', 'blue', 'green', 'yellow', 'red', 'white', 'brown')
         self.id         = 'a0:f3:c1:0b:3c:48'
         self.cor        = cor
-        self.sentido    = 'N'
-        self.posX       = 0
-        self.posY       = 0
+        self.sentido    = sentido
+        self.posX       = posX
+        self.posY       = posY
 
     def getId(self):
         return self.id
@@ -41,18 +41,18 @@ class Robo:
     def moverAutomatico(self, tesX, tesY):
         if tesX > self.posX:
             self.goLeste(tesX)
-        else:
+        elif tesX < self.posX:
             self.goOeste(tesX)
 
         if tesY > self.posY:
             self.goNorte(tesY)
-        else:
+        elif tesY < self.posY:
             self.goSul(tesY)
 
-        print('Chegou na caça!')
-        print('Pos atual robo:')
-        print('PosX: ' + self.posX )
-        print('PosY: ' + self.posY )
+
+        #print('PosAtualX: ' + self.posX )
+        #print('PosAtualY: ' + self.posY )
+        #print('Sentido Atual:' + self.sentido)
 
     def goLeste(self, x):
         if self.sentido == 'N':
@@ -134,7 +134,6 @@ class Robo:
                 self.l.run_forever(speed_sp=self.velocidade)
             else:
                 self.setParar()
-                ## Colocar o resto do codico no else
 
         if self.colors[self.cl.value()] == "unknown":
             while self.colors[self.cl.value()] != "black":
@@ -168,15 +167,16 @@ class Robo:
 
         self.setParar()
 
-        #atualizando sentido
-        if self.sentido == 'O':
-            self.posX -= 1
-        elif self.sentido == 'S':
-            self.posY -= 1
-        elif self.sentido == 'L':
-            self.posX += 1
-        elif self.sentido == 'N':
-            self.posY += 1
+        if self.colors[self.cl.value()] == "green":
+            #atualizando sentido
+            if self.sentido == 'O':
+                self.posX -= 1
+            elif self.sentido == 'S':
+                self.posY -= 1
+            elif self.sentido == 'L':
+                self.posX += 1
+            elif self.sentido == 'N':
+                self.posY += 1
 
     def moverEsquerda(self):
         self.cl.mode = 'COL-COLOR'
@@ -185,26 +185,26 @@ class Robo:
             self.r.run_forever(speed_sp=self.velocidade)
 
         else:
-            #sleep(0.1)
             self.setParar()
 
         self.setParar()
 
-        self.moverFrente()
-
+        #if self.colors[self.cl.value()] == "green":
         #atualizando sentido
         if self.sentido == 'N':
             self.sentido = 'O'
-            self.posX -= 1
+            #self.posX -= 1
         elif self.sentido == 'O':
             self.sentido = 'S'
-            self.posY -= 1
+            #self.posY -= 1
         elif self.sentido == 'S':
             self.sentido = 'L'
-            self.posX += 1
+            #self.posX += 1
         elif self.sentido == 'L':
             self.sentido = 'N'
-            self.posY += 1
+            #self.posY += 1
+
+        self.moverFrente()
 
     def moverDireita(self):
         self.cl.mode = 'COL-COLOR'
@@ -223,54 +223,51 @@ class Robo:
         else:
             self.l.run_forever(speed_sp=self.velocidade)
 
-        #self.setParar()
-
-        self.moverFrente()
-
+        #if self.colors[self.cl.value()] == "green":
         #atualizando sentido
         if self.sentido == 'N':
             self.sentido = 'L'
-            self.posX += 1
+            #self.posX += 1
         elif self.sentido == 'L':
             self.sentido = 'S'
-            self.posY -= 1
+            #self.posY -= 1
         elif self.sentido == 'S':
             self.sentido = 'O'
-            self.posX -= 1
+            #self.posX -= 1
         elif self.sentido == 'O':
             self.sentido = 'N'
-            self.posY += 1
+            #self.posY += 1
+
+        self.moverFrente()
+
+
 
     def moverRetornar(self):
         self.cl.mode = 'COL-COLOR'
         while self.colors[self.cl.value()] == "green":
             self.l.run_forever(speed_sp=-self.velocidade)
-           #self.r.run_forever(speed_sp=-self.velocidade/2)
-
-        #sleep(0.1)
-        #self.setParar()
 
         while self.colors[self.cl.value()] == "black":
-            #			self.r.run_forever(speed_sp=self.velocidade)
             self.l.run_forever(speed_sp=-self.velocidade)
 
         while self.colors[self.cl.value()] != "black":
-            #self.setParar()
             self.l.run_forever(speed_sp=-self.velocidade)
 
         self.setParar()
-        self.moverFrente()
 
-        #atualizando sentido
+        #if self.colors[self.cl.value()] == "green":
+            #atualizando sentido
         if self.sentido == 'N':
             self.sentido = 'S'
-            self.posY -= 1
+            #self.posY -= 1
         elif self.sentido == 'S':
             self.sentido = 'N'
-            self.posY += 1
+            #self.posY += 1
         elif self.sentido == 'O':
             self.sentido = 'L'
-            self.posX += 1
+            #self.posX += 1
         elif self.sentido == 'L':
             self.sentido = 'O'
-            self.posX -= 1
+            #self.posX -= 1
+
+        self.moverFrente()
