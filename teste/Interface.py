@@ -2,6 +2,7 @@ from Communication import *
 from Treasure import *
 import threading
 import time
+from os import system, name
 
 def atualizarmapa(lista):
     A = list(lista)
@@ -24,16 +25,20 @@ def atualizarmapa(lista):
 
 
 def interface(mode, sendSR):
+    system('clear')
     while(1):
         atualizarmapa(c)
         if (mode == "manual"):
             print("Robô Manual - Escolha uma das opções abaixo:")
-            command = input("W - Mover para frente;\n"
+            #command = input
+            print ("W - Mover para frente;\n"
                                  "A - Mover para esquerda;\n"
                                  "S - Mover para trás;\n"
                                  "D - Mover para esquerda;\n"
                                  "V - Validar caça;\n")
-            sendSR.send(command)
+            #if(command):
+        sendSR.send("W")
+        time.sleep(1)
             
 #teste = Communication('127.0.0.1', 7000, "teste");
 
@@ -75,6 +80,8 @@ send_t = threading.Thread(target=sendSR.sendMessage())
 #atualizarmapa_t = threading.Thread(target=atualizarmapa())
 
 interface_t.start()
+
+send_t.start();
 
 #while(1):
    # print("Iniciou")
