@@ -44,13 +44,15 @@ class Communication(threading.Thread):
             self.socket.setsockopt_string(zmq.SUBSCRIBE, self.Stopic)
 
     def sendMessage(self):
-        if(self.sendlist):
-            messagedata = self.sendlist.pop()
-            print (self.Stopic, messagedata)
-            self.s.send(messagedata.encode('utf-8'))
-            time.sleep(1)
-        else:
-            print("Nenhum comando para enviar")
+        while(1):
+            print("asdasdasdasdasd")
+            if(self.sendlist):
+                messagedata = self.sendlist.pop()
+                print (self.Stopic, messagedata)
+                self.s.send(messagedata.encode('utf-8'))
+                time.sleep(1)
+            else:
+                print("Nenhum comando para enviar")
 
     def receiveMessage(self):
         i = 300
