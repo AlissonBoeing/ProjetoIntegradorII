@@ -64,7 +64,7 @@ class Communication(threading.Thread):
                 time.sleep(1)
             #print("Nenhum comando para enviar")
 
-    def receiveMessage(self): #verificar modo que recebemos dados
+    def receiveMessage(self):
         self.string = self.socket.recv()
         messagedata = str(self.string)
         messagedata = messagedata[3:-1]
