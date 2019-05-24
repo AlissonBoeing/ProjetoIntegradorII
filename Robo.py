@@ -26,6 +26,8 @@ class Robo(threading.Thread):
         self.goal = 0
 
     def run(self):
+        while(1):
+            self.moverAutomatico()
         pass
 
     def setLista(self,lista):
@@ -51,9 +53,9 @@ class Robo(threading.Thread):
     # #deve-se finalizar esta def
     def obterCaca(self):
         self.estounacaca = True
-	       coord = self.posX, self.posY
-        if coord in self.lcaca:
-            pass
+	       #coord = self.posX, self.posY
+       # if coord in self.lcaca:
+           # pass
             #Aqui o robo deve enviar uma msg para SS informando que encontrou uma caça
             #aqui o robo deve usar uma função desta classe para enviar a msg
             #esta funcao de enviar msg ainda n foi criada
