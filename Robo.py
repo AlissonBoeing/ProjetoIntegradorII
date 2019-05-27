@@ -99,7 +99,6 @@ class Robo(threading.Thread):
 
         lcaca = self.treasure.getList()
         # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
-        lcaca.reverse()
 
         while (lcaca):
             self.goal = lcaca.pop()
