@@ -113,7 +113,7 @@ class Robo(threading.Thread):
                 self.goNorte(tesY)
             elif tesY < self.posY:
                 self.goSul(tesY)
-
+            print("Cheguei na caca irmao")
         print("acabou cacas")
         self.parado = True
 
