@@ -31,7 +31,7 @@ receive_fromSS.start()
 
 send_toSS.start()
 
-print("Ligando Robô")
+print("Ligando Robo")
 
 while(confRobo != 2):
     if (isRobo == 0):
@@ -41,7 +41,7 @@ while(confRobo != 2):
         if (receive_fromSS.getConfigList()):
             print("AQQUI")
             if (receive_fromSS.popConfigList() == "OK"):
-                print("Robô Cadastrado no SS")
+                print("Robo Cadastrado no SS")
                 isRobo = 1
             else:
                 print("Enviando MAC")
@@ -64,7 +64,7 @@ while(confRobo != 2):
                 print("Cacas " + strcacas)
             else:
                 posin = msg
-                print("Posição inicial " + posin)
+                print("Posicao inicial " + posin)
 
 print("ROBO CONFIGURADO")
 
