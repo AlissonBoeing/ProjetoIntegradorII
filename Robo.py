@@ -35,6 +35,7 @@ class Robo(threading.Thread):
 
     def isParado(self):
         return self.parado
+
     def setLista(self,lista):
         #comparar com a que ja está no robo, e se a caça que ele esta ido atras ainda existe
         self.treasure = Treasure(lista)
@@ -94,13 +95,13 @@ class Robo(threading.Thread):
 
     def moverAutomatico(self):
 
-       lcaca = self.treasure.getList()
+        lcaca = self.treasure.getList()
         # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
 
         while len(lcaca):
             self.goal = lcaca.pop()
-            tesX = int(self.goal[0]) # 1
-            tesY = int(self.goal[2]) # 1
+            tesX = int(self.goal[0])
+            tesY = int(self.goal[2])
 
             if tesX > self.posX:
                 self.goLeste(tesX)
@@ -183,6 +184,7 @@ class Robo(threading.Thread):
 
 
     def moverFrente(self):
+        self.isParado = False
         print("Indo para frente")
         self.cl.mode = 'COL-COLOR'
         if self.colors[self.cl.value()] == "green" or self.colors[self.cl.value()] == "yellow" or self.colors[
@@ -236,8 +238,11 @@ class Robo(threading.Thread):
                 self.posX += 1
             elif self.sentido == 'N':
                 self.posY += 1
+        self.isParado() = True
+
 
     def moverEsquerda(self):
+        self.isParado() = False
         print("Indo para esquerda")
         self.cl.mode = 'COL-COLOR'
         while self.colors[self.cl.value()] != "black":
@@ -260,8 +265,10 @@ class Robo(threading.Thread):
             self.sentido = 'N'
 
         self.moverFrente()
+        self.isParado = True
 
     def moverDireita(self):
+        self.isParado = False
         print("Indo para direita")
         self.cl.mode = 'COL-COLOR'
         while self.colors[self.cl.value()] == "green":
@@ -290,11 +297,13 @@ class Robo(threading.Thread):
             self.sentido = 'N'
 
         self.moverFrente()
+        self.isParado = True
 
 
 
     def moverRetornar(self):
-         print("Retornando")
+        self.isParado = False
+        print("Retornando")
         self.cl.mode = 'COL-COLOR'
         while self.colors[self.cl.value()] == "green":
             self.l.run_forever(speed_sp=-self.velocidade)
@@ -316,4 +325,5 @@ class Robo(threading.Thread):
             self.sentido = 'L'
         elif self.sentido == 'L':
             self.sentido = 'O'
+        self.isParado = True
 
