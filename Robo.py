@@ -75,7 +75,7 @@ class Robo(threading.Thread):
         return self.id
 
     def getColor(self):
-        return self.color
+        return self.cor
 
     def setVel(self, vel):
         if vel < 1000 and vel > 0:
@@ -238,11 +238,11 @@ class Robo(threading.Thread):
                 self.posX += 1
             elif self.sentido == 'N':
                 self.posY += 1
-        self.isParado() = True
+        self.isParado = True
 
 
     def moverEsquerda(self):
-        self.isParado() = False
+        self.isParado = False
         print("Indo para esquerda")
         self.cl.mode = 'COL-COLOR'
         while self.colors[self.cl.value()] != "black":
