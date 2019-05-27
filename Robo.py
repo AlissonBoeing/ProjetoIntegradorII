@@ -247,6 +247,7 @@ class Robo(threading.Thread):
             elif self.sentido == 'N':
                 self.posY += 1
         self.parado = True
+        print("Posicao atual " + self.getPos())
 
 
     def moverEsquerda(self):
