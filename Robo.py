@@ -284,19 +284,19 @@ class Robo(threading.Thread):
         else:
             self.r.stop(stop_action="hold")
 
-        print(self.cl.value())
+        #print(self.cl.value())
 
         while self.colors[self.cl.value()] == "black":
             self.l.run_forever(speed_sp=self.velocidade)
             self.r.run_forever(speed_sp=0)
 
-        print(self.cl.value())
+       # print(self.cl.value())
 
         while self.colors[self.cl.value()] != "black":
             self.r.stop(stop_action="hold")
             self.l.run_forever(speed_sp=self.velocidade)
             #self.r.run_forever(speed_sp=40)
-            print(self.cl.value())
+            #print(self.cl.value())
 
         #while
         #else:
@@ -342,4 +342,5 @@ class Robo(threading.Thread):
         elif self.sentido == 'L':
             self.sentido = 'O'
         self.parado = True
+        self.moverFrente()
 
