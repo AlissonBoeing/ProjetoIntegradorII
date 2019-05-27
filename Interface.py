@@ -62,7 +62,7 @@ posin = "posin,0:0"
 c = list()
 #------------------------##
 
-send_toSR = Communication('127.0.0.1', "50009",'toSR')
+send_toSR = Communication("127.0.0.1", "50009",'toSR')
 
 receive_fromSR = Communication("127.0.0.1", "50008", "fromSR")
 
@@ -121,8 +121,9 @@ while (1):
                 send_toSR.send(posin)
                 interface_t.start()
     else:
+        #send_toSR.send("ack,OK")
         send_toSR.send(local)
-        time.sleep(3)
+        time.sleep(5)
 
         #break
         #pass

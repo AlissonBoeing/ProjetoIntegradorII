@@ -53,7 +53,7 @@ class Communication(threading.Thread):
             if(self.sendlist):
                 #print(len(self.sendlist))
                 messagedata = self.sendlist.pop()
-                #print (self.Stopic, messagedata)
+                print (self.Stopic, messagedata)
                 self.s.send(str("1" + messagedata).encode('utf-8'))
                 time.sleep(1)
         else:

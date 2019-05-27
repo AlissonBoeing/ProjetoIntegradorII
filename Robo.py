@@ -1,5 +1,5 @@
-#from ev3dev.ev3 import *
-from time import sleep
+from ev3dev.ev3 import *
+import time
 from Treasure import *
 import threading
 
@@ -84,8 +84,8 @@ class Robo(threading.Thread):
             print('Somente valores de 0 a 999')
 
     def setPausar(self):
-        self.r.stop(stop_action="hold")
-        self.l.stop(stop_action="hold")
+       self.r.stop(stop_action="hold")
+       self.l.stop(stop_action="hold")
 
     def setSentido(self, sentido):
         if sentido in 'NSLO':
@@ -112,6 +112,9 @@ class Robo(threading.Thread):
                 self.goNorte(tesY)
             elif tesY < self.posY:
                 self.goSul(tesY)
+
+        print("acabou cacas")
+        self.parado = True
 
     def goLeste(self, x):
         if self.sentido == 'N':
@@ -184,7 +187,10 @@ class Robo(threading.Thread):
 
 
     def moverFrente(self):
-        self.isParado = False
+        self.parado = False
+        print("movendo frente")
+        #time.sleep(10)
+        #self.parado = True
         print("Indo para frente")
         self.cl.mode = 'COL-COLOR'
         if self.colors[self.cl.value()] == "green" or self.colors[self.cl.value()] == "yellow" or self.colors[
@@ -212,19 +218,19 @@ class Robo(threading.Thread):
             if self.colors[self.cl.value()] == "yellow":
                 self.l.run_forever(speed_sp=self.velocidade)
                 self.r.run_forever(speed_sp=self.velocidade)
-                sleep(0.1)
+                time.sleep(0.1)
                 break
 
             if self.colors[self.cl.value()] == "blue":
                 self.l.run_forever(speed_sp=self.velocidade)
                 self.r.run_forever(speed_sp=self.velocidade)
-                sleep(0.1)
+                time.sleep(0.1)
                 break
 
         else:
             self.l.run_forever(speed_sp=self.velocidade)
             self.r.run_forever(speed_sp=self.velocidade)
-            sleep(0.1)
+            time.sleep(0.1)
 
         self.setPausar()
 
@@ -238,11 +244,11 @@ class Robo(threading.Thread):
                 self.posX += 1
             elif self.sentido == 'N':
                 self.posY += 1
-        self.isParado = True
+        self.parado = True
 
 
     def moverEsquerda(self):
-        self.isParado = False
+        self.parado = False
         print("Indo para esquerda")
         self.cl.mode = 'COL-COLOR'
         while self.colors[self.cl.value()] != "black":
@@ -265,10 +271,10 @@ class Robo(threading.Thread):
             self.sentido = 'N'
 
         self.moverFrente()
-        self.isParado = True
+        self.parado = True
 
     def moverDireita(self):
-        self.isParado = False
+        self.parado = False
         print("Indo para direita")
         self.cl.mode = 'COL-COLOR'
         while self.colors[self.cl.value()] == "green":
@@ -297,12 +303,12 @@ class Robo(threading.Thread):
             self.sentido = 'N'
 
         self.moverFrente()
-        self.isParado = True
+        self.parado = True
 
 
 
     def moverRetornar(self):
-        self.isParado = False
+        self.parado = False
         print("Retornando")
         self.cl.mode = 'COL-COLOR'
         while self.colors[self.cl.value()] == "green":
@@ -325,5 +331,5 @@ class Robo(threading.Thread):
             self.sentido = 'L'
         elif self.sentido == 'L':
             self.sentido = 'O'
-        self.isParado = True
+        self.parado = True
 
