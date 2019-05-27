@@ -30,6 +30,11 @@ class Robo(threading.Thread):
             self.moverAutomatico()
         pass
 
+    def getPos(self):
+        return (str(self.posX) + ":" + str(self.posY))
+
+    def isParado(self):
+        return self.parado
     def setLista(self,lista):
         #comparar com a que ja está no robo, e se a caça que ele esta ido atras ainda existe
         self.treasure = Treasure(lista)
@@ -53,7 +58,7 @@ class Robo(threading.Thread):
     # #deve-se finalizar esta def
     def obterCaca(self):
         self.estounacaca = True
-	       #coord = self.posX, self.posY
+        #coord = self.posX, self.posY
        # if coord in self.lcaca:
            # pass
             #Aqui o robo deve enviar uma msg para SS informando que encontrou uma caça
@@ -61,9 +66,9 @@ class Robo(threading.Thread):
             #esta funcao de enviar msg ainda n foi criada
 
     def atualizarMapa(self):
+
         pass#     #enviar coord do robo
         #verificar se a caça que esta sendo procurada ainda n foi caçada
-        pass
 
     def getId(self):
         return self.id

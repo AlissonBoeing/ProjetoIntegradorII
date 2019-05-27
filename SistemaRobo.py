@@ -95,6 +95,11 @@ while(1):
                 lista = receive_fromSS.popAttlist()
                 robot.setLista(lista)
             #se for diferente robot.setLcacas(getlistadecacas)
+
+        if(robot.isParado()):
+            send_toSS.send(robot.getPos())
+            time.sleep(1)
+
         pass#robot.start()
 
 
