@@ -282,7 +282,7 @@ class Robo(threading.Thread):
             self.l.run_forever(speed_sp=self.velocidade)
             self.r.run_forever(speed_sp=30)
         else:
-            pass #self.r.stop(stop_action="hold")
+            pass # self.r.stop(stop_action="hold")
 
         while self.colors[self.cl.value()] == "black":
             self.l.run_forever(speed_sp=self.velocidade)
@@ -291,7 +291,7 @@ class Robo(threading.Thread):
             self.l.run_forever(speed_sp=self.velocidade)
 
         else:
-            self.l.run_forever(speed_sp=self.velocidade)
+            self.r.run_forever(speed_sp=self.velocidade)
 
         #atualizando sentido
         if self.sentido == 'N':
