@@ -24,6 +24,7 @@ class Robo(threading.Thread):
         self.parado = True
         self.estounacaca = False
         self.goal = 0
+        self.setPausar()
 
     def run(self):
         while(1):
