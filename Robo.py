@@ -100,20 +100,25 @@ class Robo(threading.Thread):
         lcaca = self.treasure.getList()
         # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
 
-        while len(lcaca):
+        while (lcaca):
             self.goal = lcaca.pop()
+            print(str(self.goal))
             tesX = int(self.goal[0])
             tesY = int(self.goal[2])
 
             if tesX > self.posX:
                 self.goLeste(tesX)
+                print("indo leste")
             elif tesX < self.posX:
                 self.goOeste(tesX)
+                print("indo oeste")
 
             if tesY > self.posY:
                 self.goNorte(tesY)
+                print("indo norte")
             elif tesY < self.posY:
                 self.goSul(tesY)
+                print("indo sul")
             print("Cheguei na caca irmao")
         print("acabou cacas")
         self.parado = True
