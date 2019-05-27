@@ -27,9 +27,10 @@ class Robo(threading.Thread):
         self.setPausar()
 
     def run(self):
-        while(1):
-            self.moverAutomatico()
         pass
+        #while(1):
+            #self.moverAutomatico()
+       # pass
 
     def getPos(self):
         return (str(self.posX) + ":" + str(self.posY))

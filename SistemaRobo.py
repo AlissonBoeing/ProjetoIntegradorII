@@ -88,7 +88,7 @@ while(1):
             robot.command(comando)
     else: # automatico
         if (j == 0):
-            robot.start()
+            robot.moverAutomatico()
             j = j + 1
         else:
             if(receive_fromSS.getAttlist()):
