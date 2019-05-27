@@ -253,7 +253,7 @@ class Robo(threading.Thread):
         print("Indo para esquerda")
         self.cl.mode = 'COL-COLOR'
         while self.colors[self.cl.value()] != "black":
-            self.l.run_forever(speed_sp=-self.velocidade/2)
+            self.l.run_forever(speed_sp=0)
             self.r.run_forever(speed_sp=self.velocidade)
 
         else:
@@ -280,7 +280,7 @@ class Robo(threading.Thread):
         self.cl.mode = 'COL-COLOR'
         while self.colors[self.cl.value()] == "green":
             self.l.run_forever(speed_sp=self.velocidade)
-            self.r.run_forever(speed_sp=self.velocidade/2)
+            self.r.run_forever(speed_sp=0)
         else:
             self.r.stop(stop_action="hold")
 
