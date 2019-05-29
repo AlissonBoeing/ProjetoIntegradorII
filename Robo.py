@@ -24,7 +24,11 @@ class Robo(threading.Thread):
         self.parado = True
         self.estounacaca = False
         self.goal = 0
+
         self.setPausar()
+
+    def isNacaca(self):
+        return self.estounacaca
 
     def run(self):
         pass

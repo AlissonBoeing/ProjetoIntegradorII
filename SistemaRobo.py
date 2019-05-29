@@ -100,6 +100,18 @@ while(1):
             send_toSS.send(robot.getPos())
             time.sleep(1)
 
+        if(robot.isNacaca()):
+            send_toSS.send("v" + robot.getPos())
+            while(not receive_fromSS.getConfigList()):
+                time.sleep(1)
+            else:
+                resp = receive_fromSS.popConfigList()
+                if(resp == "OK"):
+                    pass #tirar da lista de caças
+                else:
+                    pass #Nao existe caça na posicao que esta
+
+
         pass#robot.start()
 
 
