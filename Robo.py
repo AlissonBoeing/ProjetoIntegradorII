@@ -24,13 +24,14 @@ class Robo(threading.Thread):
         self.parado = True
         self.estounacaca = False
         self.goal = 0
+
         self.setPausar()
 
+    def isNacaca(self):
+        return self.estounacaca
+
     def run(self):
-        pass
-        #while(1):
-            #self.moverAutomatico()
-       # pass
+        self.moverAutomatico()
 
     def getPos(self):
         return (str(self.posX) + ":" + str(self.posY))
@@ -62,8 +63,8 @@ class Robo(threading.Thread):
     def obterCaca(self):
         self.estounacaca = True
         #coord = self.posX, self.posY
-       # if coord in self.lcaca:
-           # pass
+        #if coord in self.lcaca:
+            #pass
             #Aqui o robo deve enviar uma msg para SS informando que encontrou uma caça
             #aqui o robo deve usar uma função desta classe para enviar a msg
             #esta funcao de enviar msg ainda n foi criada
@@ -86,8 +87,8 @@ class Robo(threading.Thread):
             print('Somente valores de 0 a 999')
 
     def setPausar(self):
-       self.r.stop(stop_action="hold")
-       self.l.stop(stop_action="hold")
+        self.r.stop(stop_action="hold")
+        self.l.stop(stop_action="hold")
 
     def setSentido(self, sentido):
         if sentido in 'NSLO':
@@ -100,8 +101,9 @@ class Robo(threading.Thread):
         lcaca = self.treasure.getList()
         # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
         print(self.treasure.getString())
-        while (lcaca):
+        while lcaca:
             self.goal = lcaca.pop()
+            lcaca.append(self.goal)
             print(str(self.goal))
             tesX = int(self.goal[0])
             tesY = int(self.goal[2])
@@ -120,8 +122,10 @@ class Robo(threading.Thread):
                 self.goSul(tesY)
                 print("indo sul")
             print("Cheguei na caca irmao")
+            self.pop()
+            self.parado = True
         print("acabou cacas")
-        self.parado = True
+
 
     def goLeste(self, x):
         if self.sentido == 'N':
@@ -322,7 +326,11 @@ class Robo(threading.Thread):
         self.moverFrente()
         self.parado = True
 
+    def getGoal(self):
+        return str(self.goal)
 
+    def getTreasure(self):
+        return self.treasure
 
     def moverRetornar(self):
         self.parado = False
@@ -350,4 +358,3 @@ class Robo(threading.Thread):
             self.sentido = 'O'
         self.parado = True
         self.moverFrente()
-

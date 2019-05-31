@@ -19,9 +19,9 @@ posin = 0
 
 mac = "mac,02:16:53:45:b3:9a"
 
-receive_fromSS = Communication("192.168.43.130", "50009", "fromSS")
+receive_fromSS = Communication("192.168.43.223", "50009", "fromSS")
 
-send_toSS = Communication("192.168.43.130", "50008", "toSS")
+send_toSS = Communication("192.168.43.223", "50008", "toSS")
 
 #send_toSS = Communication("127.0.0.1", "50010", "toSS")
 
@@ -88,7 +88,7 @@ while(1):
             robot.command(comando)
     else: # automatico
         if (j == 0):
-            robot.moverAutomatico()
+            robot.start()
             j = j + 1
         else:
             if(receive_fromSS.getAttlist()):
@@ -99,6 +99,23 @@ while(1):
         if(robot.isParado()):
             send_toSS.send(robot.getPos())
             time.sleep(1)
+
+        if(not str(robot.getGoal()) in robot.getTreasure().getString() and robot.isParado()):
+                robot.setPausar()
+                robot.stop()
+                robot.start()
+
+        if(robot.isNacaca()):
+            send_toSS.send("v" + robot.getPos())
+            while(not receive_fromSS.getConfigList()):
+                time.sleep(1)
+            else:
+                resp = receive_fromSS.popConfigList()
+                if(resp == "OK"):
+                    pass #tirar da lista de caças
+                else:
+                    pass #Nao existe caça na posicao que esta
+
 
         pass#robot.start()
 
