@@ -7,6 +7,7 @@ class Robo(threading.Thread):
 
     def __init__(self, vel, cor, modo,  sentido, posin, l):
         threading.Thread.__init__(self)
+        self.setDaemon(False)
         self.velocidade = vel
         self.l          = LargeMotor('outA')# esquerda
         self.r          = LargeMotor('outD')# direita
