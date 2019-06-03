@@ -38,7 +38,7 @@ class Robo(threading.Thread):
         return self.estounacaca
 
     def run(self):
-        j = 0;
+        j = 0
         while(1):
             if(j == 0):
                 self.matar = False
@@ -47,6 +47,7 @@ class Robo(threading.Thread):
             else:
                 if(self.matar):
                     break
+                break
                 #self.treasure.ordenaListaCaca(self.getPos())
                 #time.sleep(4)
 
@@ -123,7 +124,8 @@ class Robo(threading.Thread):
             print(str(self.goal))
             tesX = int(self.goal[0])
             tesY = int(self.goal[2])
-
+            self.estounacaca = False
+            self.parado = False
             #se o sentido é leste ou oeste, de preferencia para arrumar a posicao no eixo X primeiro
             if self.sentido in ['L', 'O']:
                 #primeiro vai pra leste ou oeste
