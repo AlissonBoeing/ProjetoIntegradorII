@@ -1,4 +1,4 @@
-#from ev3dev.ev3 import *
+from ev3dev.ev3 import *
 import time
 from Treasure import *
 import threading
@@ -8,9 +8,9 @@ class Robo(threading.Thread):
     def __init__(self, vel, cor, modo,  sentido, posin, l):
         threading.Thread.__init__(self)
         self.velocidade = vel
-#        self.l          = LargeMotor('outA')# esquerda
-#        self.r          = LargeMotor('outD')# direita
-#        self.cl         = ColorSensor()
+        self.l          = LargeMotor('outA')# esquerda
+        self.r          = LargeMotor('outD')# direita
+        self.cl         = ColorSensor()
         self.colors     = ('unknown', 'black', 'blue', 'green', 'yellow', 'red', 'white', 'brown')
         self.id         = 'a0:f3:c1:0b:3c:48'
         self.cor        = cor
@@ -36,7 +36,6 @@ class Robo(threading.Thread):
         return self.estounacaca
 
     def run(self):
-        self.moverAutomatico()
         while(1):
             if(self.isParado()):
                 self.treasure.ordenaListaCaca()
@@ -133,8 +132,9 @@ class Robo(threading.Thread):
                 elif tesY < self.posY:
                     self.goSul(tesY)
                     print("indo sul")
-                print("Cheguei na caca irmao")
-                self.pop()
+                print("Cheguei na caca")
+                #lcaca.pop()
+                self.estounacaca = True
                 self.parado = True
 
             #se o sentido é norte ou sul, de preferencia para arrumar a posicao no eixo Y primeiro
@@ -155,8 +155,9 @@ class Robo(threading.Thread):
                     self.goOeste(tesX)
                     print("indo oeste")
 
-                print("Cheguei na caca irmao")
-                self.pop()
+                print("Cheguei na caca")
+                #lcaca.pop()
+                self.estounacaca = True
                 self.parado = True
 
 

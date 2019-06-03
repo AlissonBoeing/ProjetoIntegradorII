@@ -119,8 +119,16 @@ while (1):
                 send_toSR.send(cor)
                 send_toSR.send(local)
                 send_toSR.send(posin)
-                interface_t.start()
+                if(modo == "modo,manual"):
+                    interface_t.start()
     else:
+        if(receive_fromSR.getCommandList()):
+            msg = receive_fromSR.popCommandList()
+            if (msg in "vV"):
+                resp = input("Existe caca na posicao " + msg[1])
+                send_toSR.send("ack,OK")
+
+
         #send_toSR.send("ack,OK")
         #send_toSR.send(local)
         time.sleep(5)
