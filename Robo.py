@@ -24,8 +24,13 @@ class Robo(threading.Thread):
         self.parado = True
         self.estounacaca = False
         self.goal = 0
-
         self.setPausar()
+
+    def getGoal(self):
+        return str(self.goal)
+
+    def getTreasure(self):
+        return self.treasure
 
     def isNacaca(self):
         return self.estounacaca
@@ -59,20 +64,13 @@ class Robo(threading.Thread):
         elif comando in 'Vv':
             self.obterCaca()
 
-    # #deve-se finalizar esta def
+    #Isso aqui eh aqui mesmo?
     def obterCaca(self):
         self.estounacaca = True
-        #coord = self.posX, self.posY
-        #if coord in self.lcaca:
-            #pass
-            #Aqui o robo deve enviar uma msg para SS informando que encontrou uma caça
-            #aqui o robo deve usar uma função desta classe para enviar a msg
-            #esta funcao de enviar msg ainda n foi criada
 
+    #isso aqui eh aqui mesmo?
     def atualizarMapa(self):
-
-        pass#     #enviar coord do robo
-        #verificar se a caça que esta sendo procurada ainda n foi caçada
+        pass
 
     def getId(self):
         return self.id
@@ -98,32 +96,64 @@ class Robo(threading.Thread):
 
     def moverAutomatico(self):
 
+        #Define a melhor sequencia de cacas
+        self.treasure.ordenaListaCaca(self.getPos())
+
         lcaca = self.treasure.getList()
         # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
         print(self.treasure.getString())
         while lcaca:
-            self.goal = lcaca.pop()
-            lcaca.append(self.goal)
+            self.goal = lcaca[-1:]
+            # self.goal = lcaca.pop()
+            # lcaca.append(self.goal)
             print(str(self.goal))
             tesX = int(self.goal[0])
             tesY = int(self.goal[2])
 
-            if tesX > self.posX:
-                self.goLeste(tesX)
-                print("indo leste")
-            elif tesX < self.posX:
-                self.goOeste(tesX)
-                print("indo oeste")
+            #se o sentido é leste ou oeste, de preferencia para arrumar a posicao no eixo X primeiro
+            if self.sentido in ['L', 'O']:
+                #primeiro vai pra leste ou oeste
+                if tesX > self.posX:
+                    self.goLeste(tesX)
+                    print("indo leste")
+                elif tesX < self.posX:
+                    self.goOeste(tesX)
+                    print("indo oeste")
 
-            if tesY > self.posY:
-                self.goNorte(tesY)
-                print("indo norte")
-            elif tesY < self.posY:
-                self.goSul(tesY)
-                print("indo sul")
-            print("Cheguei na caca irmao")
-            self.pop()
-            self.parado = True
+                #depois vai pra norte ou sul
+                if tesY > self.posY:
+                    self.goNorte(tesY)
+                    print("indo norte")
+                elif tesY < self.posY:
+                    self.goSul(tesY)
+                    print("indo sul")
+                print("Cheguei na caca irmao")
+                self.pop()
+                self.parado = True
+
+            #se o sentido é norte ou sul, de preferencia para arrumar a posicao no eixo Y primeiro
+            else if self.sentido in ['N', 'S']
+                #primeiro vai pra norte ou sul
+                if tesY > self.posY:
+                    self.goNorte(tesY)
+                    print("indo norte")
+                elif tesY < self.posY:
+                    self.goSul(tesY)
+                    print("indo sul")
+
+                #depois vai pra leste ou oeste
+                if tesX > self.posX:
+                    self.goLeste(tesX)
+                    print("indo leste")
+                elif tesX < self.posX:
+                    self.goOeste(tesX)
+                    print("indo oeste")
+
+                print("Cheguei na caca irmao")
+                self.pop()
+                self.parado = True
+
+
         print("acabou cacas")
 
 
@@ -325,12 +355,6 @@ class Robo(threading.Thread):
 
         self.moverFrente()
         self.parado = True
-
-    def getGoal(self):
-        return str(self.goal)
-
-    def getTreasure(self):
-        return self.treasure
 
     def moverRetornar(self):
         self.parado = False
