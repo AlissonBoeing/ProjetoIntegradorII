@@ -116,6 +116,7 @@ while(1):
             send_toSS.send("c,v") # + robot.getPos())
             while(not receive_fromSS.getConfigList()):
                 time.sleep(0.5)
+                send_toSS.send("c,v")
                 print("nao recebeu ok")
             else:
                 resp = receive_fromSS.popConfigList()
