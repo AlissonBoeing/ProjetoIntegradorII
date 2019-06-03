@@ -112,10 +112,11 @@ while(1):
                 robot.moverAutomatico()
 
         if(robot.isNacaca()):
+            robot.join()
             send_toSS.send("c,v") # + robot.getPos())
             while(not receive_fromSS.getConfigList()):
                 time.sleep(0.5)
-                robot.join()
+                #robot.join()
             else:
                 resp = receive_fromSS.popConfigList()
                 if(resp == "OK"):
