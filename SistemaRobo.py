@@ -72,17 +72,8 @@ print("ROBO CONFIGURADO")
 robot = Robo(100, cor, modo, "N", posin, strcacas)
 
 j = 0
-#robot.start()
-#lista temporaria
 while(1):
-    #if parado
-    #send_toSS(posicao)
-
-    #if estou em uma caca
-    #send_toSS(posicao) set_Estounacaa = false
-
     if(modo == "manual"):
-        #robot.start()
         while(1):
             while(receive_fromSS.getCommandList()):
                 comando = receive_fromSS.popCommandList()
@@ -93,7 +84,6 @@ while(1):
     else: # automatico
         if (j == 0):
             robot.start()
-            #robot.moverAutomatico()
             j = j + 1
         else:
             if(receive_fromSS.getAttlist()):
@@ -110,13 +100,15 @@ while(1):
           #      robot.join()#pausa a thread
            #     robot.start()     #reinicia a thread com a lista atualizada
                 #robot.moverAutomatico()
-
+        print ("to aqui")
         if(robot.isNacaca()):
+            print("ESTOU NA CACA")
             #robot.join()
             send_toSS.send("c,v") # + robot.getPos())
             while(not receive_fromSS.getConfigList()):
                 time.sleep(0.5)
-                #robot.join()
+                send_toSS.send("c,v")
+                print("nao recebeu ok")
             else:
                 resp = receive_fromSS.popConfigList()
                 if(resp == "OK"):
@@ -125,8 +117,7 @@ while(1):
                    robot.start()
                    #pass #tirar da lista de caças
 
-        else:
-            pass#print("nao existe caca nessa posicao")
+        #print("nao existe caca nessa posicao")
                  #   pass #Nao existe caça na posicao que esta
 
 
