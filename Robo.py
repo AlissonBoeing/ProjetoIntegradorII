@@ -108,9 +108,9 @@ class Robo(threading.Thread):
         # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
         print(self.treasure.getString())
         while lcaca:
-            self.goal = lcaca[-1:]
+            self.goal = lcaca.pop()
             # self.goal = lcaca.pop()
-            # lcaca.append(self.goal)
+            lcaca.append(self.goal)
             print(str(self.goal))
             tesX = int(self.goal[0])
             tesY = int(self.goal[2])
@@ -133,7 +133,7 @@ class Robo(threading.Thread):
                     self.goSul(tesY)
                     print("indo sul")
                 print("Cheguei na caca")
-                #lcaca.pop()
+                lcaca.pop()
                 self.estounacaca = True
                 self.parado = True
 
@@ -156,7 +156,7 @@ class Robo(threading.Thread):
                     print("indo oeste")
 
                 print("Cheguei na caca")
-                #lcaca.pop()
+                lcaca.pop()
                 self.estounacaca = True
                 self.parado = True
 
