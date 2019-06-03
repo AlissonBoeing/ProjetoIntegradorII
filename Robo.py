@@ -39,15 +39,8 @@ class Robo(threading.Thread):
 
     def run(self):
         j = 0
-        while(1):
-            if(j == 0):
-                self.matar = False
-                self.moverAutomatico()
-                j = j + 1;
-            else:
-                if(self.matar):
-                    break
-                break
+        self.moverAutomatico()
+
                 #self.treasure.ordenaListaCaca(self.getPos())
                 #time.sleep(4)
 
@@ -109,9 +102,8 @@ class Robo(threading.Thread):
             print('Somente permitidos N ou S ou L ou O para sentido')
 
     def moverAutomatico(self):
-
         #Define a melhor sequencia de cacas
-        #self.treasure.ordenaListaCaca(self.getPos())
+        self.treasure.ordenaListaCaca(self.getPos())
 
         lcaca = self.treasure.getList()
         #print(lcaca)
@@ -119,7 +111,6 @@ class Robo(threading.Thread):
         print(self.treasure.getString())
         while lcaca:
             self.goal = lcaca.pop()
-            # self.goal = lcaca.pop()
             lcaca.append(self.goal)
             print(str(self.goal))
             tesX = int(self.goal[0])
@@ -149,7 +140,7 @@ class Robo(threading.Thread):
                 self.parado = True
                 time.sleep(4)
                 self.matar = True
-                #self.join()
+                self.join()
 
             #se o sentido é norte ou sul, de preferencia para arrumar a posicao no eixo Y primeiro
             elif self.sentido in ['N', 'S']:
@@ -175,7 +166,7 @@ class Robo(threading.Thread):
                 self.parado = True
                 time.sleep(4)
                 self.matar = True
-                #self.join()
+                self.join()
 
 
 

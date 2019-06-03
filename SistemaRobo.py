@@ -102,7 +102,7 @@ while(1):
                 #robot.moverAutomatico()
         print ("to aqui")
         while(robot.isNacaca()):
-            robot.setPausar()
+            #robot.setPausar()
             print("ESTOU NA CACA")
             #robot.join()
             send_toSS.send("c,v") # + robot.getPos())
