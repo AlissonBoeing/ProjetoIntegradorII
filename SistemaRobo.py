@@ -19,9 +19,9 @@ posin = 0
 
 mac = "mac,02:16:53:45:b3:9a"
 
-receive_fromSS = Communication("192.168.43.223", "50009", "fromSS")
+receive_fromSS = Communication("127.0.0.1", "50009", "fromSS")
 
-send_toSS = Communication("192.168.43.223", "50008", "toSS")
+send_toSS = Communication("127.0.0.1", "50008", "toSS")
 
 #send_toSS = Communication("127.0.0.1", "50010", "toSS")
 
@@ -83,9 +83,13 @@ while(1):
 
     if(modo == "manual"):
         #robot.start()
-        while(receive_fromSS.getCommandList()):
-            comando = receive_fromSS.popCommandList()
-            robot.command(comando)
+        while(1):
+            while(receive_fromSS.getCommandList()):
+                comando = receive_fromSS.popCommandList()
+                robot.command(comando)
+                if(comando in "vV"):
+                    send_toSS.send("V")
+
     else: # automatico
         if (j == 0):
             robot.start()
@@ -112,7 +116,7 @@ while(1):
             else:
                 resp = receive_fromSS.popConfigList()
                 if(resp == "OK"):
-                    #robot.getTreasure().removeCaca(robot.getPos())
+                    print("Recebido OK")
                     pass #tirar da lista de caças
 
                 else:
