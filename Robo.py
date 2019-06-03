@@ -38,8 +38,9 @@ class Robo(threading.Thread):
     def run(self):
         while(1):
             if(self.isParado()):
-                self.treasure.ordenaListaCaca(self.getPos())
-                time.sleep(4)
+                pass
+                #self.treasure.ordenaListaCaca(self.getPos())
+                #time.sleep(4)
 
 
     def getPos(self):
@@ -101,7 +102,7 @@ class Robo(threading.Thread):
     def moverAutomatico(self):
 
         #Define a melhor sequencia de cacas
-        self.treasure.ordenaListaCaca(self.getPos())
+        #self.treasure.ordenaListaCaca(self.getPos())
 
         lcaca = self.treasure.getList()
         #print(lcaca.)
