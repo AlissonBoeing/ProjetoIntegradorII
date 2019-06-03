@@ -38,7 +38,7 @@ class Robo(threading.Thread):
     def run(self):
         while(1):
             if(self.isParado()):
-                self.treasure.ordenaListaCaca()
+                self.treasure.ordenaListaCaca(self.getPos())
                 time.sleep(1)
 
 
