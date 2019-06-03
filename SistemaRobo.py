@@ -105,25 +105,25 @@ while(1):
             send_toSS.send("att," + robot.getPos())
             time.sleep(1)
 
-        #if(not str(robot.getGoal()) in robot.getTreasure().getString() and robot.isParado()):
-         #       robot.setPausar() #pausa o robo
-          #      robot.join()#pausa a thread
-           #     robot.start()     #reinicia a thread com a lista atualizada
-            #    robot.moverAutomatico()
+        if(not str(robot.getGoal()) in robot.getTreasure().getString() and robot.isParado()):
+                robot.setPausar() #pausa o robo
+                robot.join()#pausa a thread
+                robot.start()     #reinicia a thread com a lista atualizada
+                robot.moverAutomatico()
 
-        #if(robot.isNacaca()):
-            #send_toSS.send("v," + robot.getPos())
-           # while(not receive_fromSS.getConfigList()):
-               # time.sleep(0.5)
-           ## else:
-               # resp = receive_fromSS.popConfigList()
-               # if(resp == "OK"):
-                   # print("Recebido OK")
-                   # robot.getTreasure().removeCaca(robot.getGoal())
-                   # pass #tirar da lista de caças
+        if(robot.isNacaca()):
+            send_toSS.send("v," + robot.getPos())
+            while(not receive_fromSS.getConfigList()):
+                time.sleep(0.5)
+            else:
+                resp = receive_fromSS.popConfigList()
+                if(resp == "OK"):
+                   print("Recebido OK")
+                   robot.getTreasure().removeCaca(robot.getGoal())
+                   #pass #tirar da lista de caças
 
-              #  else:
-                 #   print("nao existe caca nessa posicao")
+        else:
+            print("nao existe caca nessa posicao")
                  #   pass #Nao existe caça na posicao que esta
 
 
