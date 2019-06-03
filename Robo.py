@@ -39,8 +39,7 @@ class Robo(threading.Thread):
         while(1):
             if(self.isParado()):
                 self.treasure.ordenaListaCaca(self.getPos())
-                time.sleep(1)
-
+                time.sleep(4)
 
 
     def getPos(self):
@@ -105,6 +104,7 @@ class Robo(threading.Thread):
         self.treasure.ordenaListaCaca(self.getPos())
 
         lcaca = self.treasure.getList()
+        #print(lcaca.)
         # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
         print(self.treasure.getString())
         while lcaca:
