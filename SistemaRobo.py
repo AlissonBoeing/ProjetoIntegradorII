@@ -60,7 +60,7 @@ while(confRobo != 2):
                 print ("modo " + modo)
                 confRobo = confRobo + 1
             elif(msg[0] == "@"):
-                strcacas = msg[1:len(msg)]
+                strcacas = msg[1:len(msg)] # msg[1:] tbm funciona
                 print("Cacas " + strcacas)
             else:
                 posin = msg
@@ -101,9 +101,9 @@ while(1):
             time.sleep(1)
 
         if(not str(robot.getGoal()) in robot.getTreasure().getString() and robot.isParado()):
-                robot.setPausar()
-                robot.stop()
-                robot.start()
+                robot.setPausar() #pausa o robo
+                robot.stop()      #pausa a thread
+                robot.start()     #reinicia a thread com a lista atualizada
 
         if(robot.isNacaca()):
             send_toSS.send("v" + robot.getPos())
@@ -112,7 +112,9 @@ while(1):
             else:
                 resp = receive_fromSS.popConfigList()
                 if(resp == "OK"):
+                    #robot.getTreasure().removeCaca(robot.getPos())
                     pass #tirar da lista de caças
+
                 else:
                     pass #Nao existe caça na posicao que esta
 
