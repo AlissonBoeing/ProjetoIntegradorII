@@ -106,7 +106,7 @@ while(1):
 
         if(not str(robot.getGoal()) in robot.getTreasure().getString() and robot.isParado()):
                 robot.setPausar() #pausa o robo
-                robot.stop()      #pausa a thread
+                robot.join()#pausa a thread
                 robot.start()     #reinicia a thread com a lista atualizada
                 robot.moverAutomatico()
 
