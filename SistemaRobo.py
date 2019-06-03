@@ -101,9 +101,9 @@ while(1):
                 robot.setLista("cacas," + lista)
             #se for diferente robot.setLcacas(getlistadecacas)
 
-        if(robot.isParado()):
-            send_toSS.send("att," + robot.getPos())
-            time.sleep(1)
+        #if(robot.isParado()):
+            #send_toSS.send("att," + robot.getPos())
+            #time.sleep(1)
 
         if(not str(robot.getGoal()) in robot.getTreasure().getString() and robot.isParado()):
                 robot.setPausar() #pausa o robo
@@ -126,7 +126,7 @@ while(1):
                    #pass #tirar da lista de caças
 
         else:
-            print("nao existe caca nessa posicao")
+            pass#print("nao existe caca nessa posicao")
                  #   pass #Nao existe caça na posicao que esta
 
 
