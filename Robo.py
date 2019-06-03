@@ -147,7 +147,7 @@ class Robo(threading.Thread):
                 lcaca.pop()
                 self.estounacaca = True
                 self.parado = True
-                #time.sleep(2)
+                time.sleep(4)
                 self.matar = True
                 #self.join()
 
@@ -173,7 +173,7 @@ class Robo(threading.Thread):
                 lcaca.pop()
                 self.estounacaca = True
                 self.parado = True
-                #time.sleep(2)
+                time.sleep(4)
                 self.matar = True
                 #self.join()
 
