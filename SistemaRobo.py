@@ -127,7 +127,7 @@ while(1):
                  #   pass #Nao existe caça na posicao que esta
 
 
-        pass#robot.start()
+       # pass#robot.start()
 
 
 
