@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SistemaRobo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="112" column="23" selection-start-line="112" selection-start-column="23" selection-end-line="112" selection-end-column="23" />
+            <state relative-caret-position="270">
+              <caret line="116" column="39" selection-start-line="116" selection-start-column="39" selection-end-line="116" selection-end-column="39" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -43,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Interface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="127" selection-start-line="127" selection-end-line="127" />
+            <state relative-caret-position="376">
+              <caret line="131" column="16" selection-start-line="131" selection-start-column="16" selection-end-line="131" selection-end-column="16" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -55,8 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Robo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="126" column="36" lean-forward="true" selection-start-line="126" selection-start-column="36" selection-end-line="126" selection-end-column="36" />
+            <state relative-caret-position="661">
+              <caret line="175" column="28" selection-start-line="175" selection-start-column="28" selection-end-line="175" selection-end-column="28" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -67,7 +67,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Treasure.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="-150">
               <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
             </state>
           </provider>
@@ -83,8 +83,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Communication.py" />
-        <option value="$PROJECT_DIR$/Interface.py" />
         <option value="$PROJECT_DIR$/Robo.py" />
+        <option value="$PROJECT_DIR$/Interface.py" />
         <option value="$PROJECT_DIR$/SistemaRobo.py" />
       </list>
     </option>
@@ -380,7 +380,28 @@
       <option name="project" value="LOCAL" />
       <updated>1559597591062</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="teste no robo">
+      <created>1559597708405</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1559597708405</updated>
+    </task>
+    <task id="LOCAL-00029" summary="teste no robo">
+      <created>1559597830236</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1559597830236</updated>
+    </task>
+    <task id="LOCAL-00030" summary="teste no robo">
+      <created>1559598080962</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1559598080962</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -421,18 +442,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Treasure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
+        <state relative-caret-position="-150">
           <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Interface.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="127" selection-start-line="127" selection-end-line="127" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -448,18 +459,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Robo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="126" column="36" lean-forward="true" selection-start-line="126" selection-start-column="36" selection-end-line="126" selection-end-column="36" />
+        <state relative-caret-position="661">
+          <caret line="175" column="28" selection-start-line="175" selection-start-column="28" selection-end-line="175" selection-end-column="28" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Interface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="131" column="16" selection-start-line="131" selection-start-column="16" selection-end-line="131" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SistemaRobo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="112" column="23" selection-start-line="112" selection-start-column="23" selection-end-line="112" selection-end-column="23" />
+        <state relative-caret-position="270">
+          <caret line="116" column="39" selection-start-line="116" selection-start-column="39" selection-end-line="116" selection-end-column="39" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>

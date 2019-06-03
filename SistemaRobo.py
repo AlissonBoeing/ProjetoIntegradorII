@@ -101,20 +101,22 @@ while(1):
            #     robot.start()     #reinicia a thread com a lista atualizada
                 #robot.moverAutomatico()
         print ("to aqui")
-        if(robot.isNacaca()):
+        while(robot.isNacaca()):
+            robot.setPausar()
             print("ESTOU NA CACA")
             #robot.join()
             send_toSS.send("c,v") # + robot.getPos())
-            while(not receive_fromSS.getConfigList()):
+            if(receive_fromSS.getConfigList()):
+                resp = receive_fromSS.popConfigList()
+                if (resp == "OK"):
+                    print("Recebido OK")
+                    robot.getTreasure().removeCaca(robot.getGoal())
+                    robot.start()
+            else:
                 time.sleep(0.5)
                 send_toSS.send("c,v")
                 print("nao recebeu ok")
-            else:
-                resp = receive_fromSS.popConfigList()
-                if(resp == "OK"):
-                   print("Recebido OK")
-                   robot.getTreasure().removeCaca(robot.getGoal())
-                   robot.start()
+
                    #pass #tirar da lista de caças
 
         #print("nao existe caca nessa posicao")
