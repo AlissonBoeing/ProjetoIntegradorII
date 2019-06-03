@@ -36,11 +36,12 @@ class Treasure:
                 clx = int(closer[0])
                 cly = int(closer[2])
 
-        self.l1.remove(closer)
+        if closer in self.l1:
+            self.l1.remove(closer)
         return closer
 
     # Ordena as cacas da melhor maneira para se busca-las
-    # Atualiza self.l1 e também já arruma a string self.lcacas
+    # Atualiza self.l1 e tambem ja arruma a string self.lcacas
     def ordenaListaCaca(self, posRobo):
         ordenada = []
         loop = range(len(self.l1))
@@ -53,5 +54,12 @@ class Treasure:
         self.l1 = ordenada
         self.lcacas = ';'.join(self.l1) # traduz lista em string. Elementos separados por ponto-e-virgula
 
+##########  testes  ###############
+# treasure = Treasure('1:1;1:3;2:1;2:3')
 
+# treasure.ordenaListaCaca('0:0')
 
+# lista = treasure.getList()
+
+# for i in lista:
+#     print('Elemento: ' + i)

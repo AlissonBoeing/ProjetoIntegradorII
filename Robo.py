@@ -113,7 +113,7 @@ class Robo(threading.Thread):
         #self.treasure.ordenaListaCaca(self.getPos())
 
         lcaca = self.treasure.getList()
-        #print(lcaca.)
+        #print(lcaca)
         # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
         print(self.treasure.getString())
         while lcaca:
