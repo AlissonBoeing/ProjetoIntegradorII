@@ -26,6 +26,7 @@ class Robo(threading.Thread):
         self.estounacaca = False
         self.goal = 0
         self.setPausar()
+        self.matar = False
 
     def getGoal(self):
         return str(self.goal)
@@ -38,12 +39,14 @@ class Robo(threading.Thread):
 
     def run(self):
         j = 0;
-        #while(1):
-        #if(j == 0):
-        self.moverAutomatico()
-        #        j = j + 1;
-         #   else:
-          #      pass
+        while(1):
+            if(j == 0):
+                self.matar = False
+                self.moverAutomatico()
+                j = j + 1;
+            else:
+                if(self.matar):
+                    break
                 #self.treasure.ordenaListaCaca(self.getPos())
                 #time.sleep(4)
 
@@ -143,7 +146,8 @@ class Robo(threading.Thread):
                 self.estounacaca = True
                 self.parado = True
                 #time.sleep(2)
-                self.join()
+                self.matar = True
+                #self.join()
 
             #se o sentido é norte ou sul, de preferencia para arrumar a posicao no eixo Y primeiro
             elif self.sentido in ['N', 'S']:
@@ -168,7 +172,8 @@ class Robo(threading.Thread):
                 self.estounacaca = True
                 self.parado = True
                 #time.sleep(2)
-                self.join()
+                self.matar = True
+                #self.join()
 
 
 
