@@ -135,7 +135,7 @@ class Robo(threading.Thread):
                     self.goSul(tesY)
                     print("indo sul")
                 print("Cheguei na caca")
-                lcaca.pop()
+                #lcaca.pop()
                 self.estounacaca = True
                 self.parado = True
                 time.sleep(4)
@@ -161,7 +161,7 @@ class Robo(threading.Thread):
                     print("indo oeste")
 
                 print("Cheguei na caca")
-                lcaca.pop()
+                #lcaca.pop()
                 self.estounacaca = True
                 self.parado = True
                 time.sleep(4)
