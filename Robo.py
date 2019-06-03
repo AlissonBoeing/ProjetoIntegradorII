@@ -137,6 +137,7 @@ class Robo(threading.Thread):
                 lcaca.pop()
                 self.estounacaca = True
                 self.parado = True
+                time.sleep(1)
 
             #se o sentido é norte ou sul, de preferencia para arrumar a posicao no eixo Y primeiro
             elif self.sentido in ['N', 'S']:
@@ -160,6 +161,7 @@ class Robo(threading.Thread):
                 lcaca.pop()
                 self.estounacaca = True
                 self.parado = True
+                time.sleep(1)
 
 
         print("acabou cacas")

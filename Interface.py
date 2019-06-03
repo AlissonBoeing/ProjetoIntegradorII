@@ -131,7 +131,7 @@ while (1):
 
         #send_toSR.send("ack,OK")
         #send_toSR.send(local)
-        time.sleep(5)
+        #time.sleep(5)
 
         #break
         #pass

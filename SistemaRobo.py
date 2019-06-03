@@ -112,14 +112,16 @@ while(1):
                 robot.moverAutomatico()
 
         if(robot.isNacaca()):
-            send_toSS.send("v," + robot.getPos())
+            send_toSS.send("c,v") # + robot.getPos())
             while(not receive_fromSS.getConfigList()):
                 time.sleep(0.5)
+                robot.join()
             else:
                 resp = receive_fromSS.popConfigList()
                 if(resp == "OK"):
                    print("Recebido OK")
                    robot.getTreasure().removeCaca(robot.getGoal())
+                   robot.start()
                    #pass #tirar da lista de caças
 
         else:
