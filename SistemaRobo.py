@@ -98,11 +98,11 @@ while(1):
         else:
             if(receive_fromSS.getAttlist()):
                 lista = receive_fromSS.popAttlist()
-                robot.setLista(lista)
+                robot.setLista("cacas," + lista)
             #se for diferente robot.setLcacas(getlistadecacas)
 
         if(robot.isParado()):
-            send_toSS.send(robot.getPos())
+            send_toSS.send("att," + robot.getPos())
             time.sleep(1)
 
         if(not str(robot.getGoal()) in robot.getTreasure().getString() and robot.isParado()):
