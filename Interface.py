@@ -127,7 +127,10 @@ while (1):
             if (msg in "vV"):
                 resp = input("Existe caca na posicao ")
                 send_toSR.send("ack,OK")
+                send_toSR.send("ack,OK")
 
+                send_toSR.send("ack,OK")
+                send_toSR.send("ack,OK")
         #send_toSR.send("ack,OK")
         #send_toSR.send(local)
         #time.sleep(5)

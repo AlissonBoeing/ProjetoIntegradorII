@@ -103,7 +103,7 @@ while(1):
         print ("to aqui")
         if(robot.isNacaca()):
             print("ESTOU NA CACA")
-            robot.join()
+            #robot.join()
             send_toSS.send("c,v") # + robot.getPos())
             while(not receive_fromSS.getConfigList()):
                 time.sleep(0.5)
