@@ -93,7 +93,7 @@ while(1):
     else: # automatico
         if (j == 0):
             robot.start()
-            robot.moverAutomatico()
+            #robot.moverAutomatico()
             j = j + 1
         else:
             if(receive_fromSS.getAttlist()):
@@ -109,7 +109,7 @@ while(1):
                 robot.setPausar() #pausa o robo
                 robot.join()#pausa a thread
                 robot.start()     #reinicia a thread com a lista atualizada
-                robot.moverAutomatico()
+                #robot.moverAutomatico()
 
         if(robot.isNacaca()):
             robot.join()

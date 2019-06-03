@@ -36,9 +36,13 @@ class Robo(threading.Thread):
         return self.estounacaca
 
     def run(self):
-        while(1):
-            if(self.isParado()):
-                pass
+        j = 0;
+        #while(1):
+        #if(j == 0):
+        self.moverAutomatico()
+        #        j = j + 1;
+         #   else:
+          #      pass
                 #self.treasure.ordenaListaCaca(self.getPos())
                 #time.sleep(4)
 
