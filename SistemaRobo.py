@@ -112,7 +112,7 @@ while(1):
                 #robot.moverAutomatico()
 
         if(robot.isNacaca()):
-            robot.join()
+            #robot.join()
             send_toSS.send("c,v") # + robot.getPos())
             while(not receive_fromSS.getConfigList()):
                 time.sleep(0.5)
