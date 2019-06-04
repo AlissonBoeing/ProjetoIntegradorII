@@ -108,7 +108,7 @@ while(1):
            #     robot.start()     #reinicia a thread com a lista atualizada
                 #robot.moverAutomatico()
         print ("to aqui")
-        if(robot.isNacaca()):
+        while(robot.isNacaca()):
             robot.setMatar(True)
             #robot.setPausar()
             print("ESTOU NA CACA")

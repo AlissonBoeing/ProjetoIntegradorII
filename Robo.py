@@ -145,8 +145,8 @@ class Robo(threading.Thread):
                         print("Cheguei na caca")
                     #lcaca.pop()
                         self.estounacaca = True
-                        self.parado = True
-                        self.matar = True
+                        #self.parado = True
+                        #self.matar = True
                         time.sleep(5)
                         #self.join()
 
@@ -171,8 +171,8 @@ class Robo(threading.Thread):
                         print("Cheguei na caca")
                     #lcaca.pop()
                         self.estounacaca = True
-                        self.parado = True
-                        self.matar = True
+                        #self.parado = True
+                        #self.matar = True
                         time.sleep(5)                        #self.join()
 
             else:
