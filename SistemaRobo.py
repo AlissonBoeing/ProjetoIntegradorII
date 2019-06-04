@@ -123,7 +123,7 @@ while(1):
                     robot.getTreasure().removeCaca(robot.getGoal())
                     #robot.start()
             else:
-                time.sleep(0.5)
+                time.sleep(3)
                 send_toSS.send("c,v")
                 print("nao recebeu ok")
 
