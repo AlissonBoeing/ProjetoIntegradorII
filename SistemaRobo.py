@@ -120,7 +120,10 @@ while(1):
                     print("Recebido OK")
                     robot.setMatar(False)
                     robot.setNacaca(False)
-                    robot.getTreasure().removeCaca(robot.getGoal())
+                    teste = robot.getTreasure()
+                    teste.removeCaca(robot.getGoal())
+                    robot.setLista(teste.getString())
+                    #robot.getTreasure().removeCaca(robot.getGoal())
                     #robot.start()
             else:
                 time.sleep(3)
