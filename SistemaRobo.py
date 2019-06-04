@@ -109,7 +109,7 @@ while(1):
                 #robot.moverAutomatico()
         print ("to aqui")
         if(robot.isNacaca()):
-            robot.setMatar();
+            robot.setMatar(True)
             #robot.setPausar()
             print("ESTOU NA CACA")
             #robot.join()
@@ -118,6 +118,7 @@ while(1):
                 resp = receive_fromSS.popConfigList()
                 if (resp == "OK"):
                     print("Recebido OK")
+                    robot.setMatar(False)
                     robot.getTreasure().removeCaca(robot.getGoal())
                     #robot.start()
             else:
