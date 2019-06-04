@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9a6d46be-e84c-436f-bfe4-d811d2bf799e" name="Default" comment="teste no robo">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Robo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Robo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemaRobo.py" beforeDir="false" afterPath="$PROJECT_DIR$/SistemaRobo.py" afterDir="false" />
-    </list>
+    <list default="true" id="9a6d46be-e84c-436f-bfe4-d811d2bf799e" name="Default" comment="teste no robo" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +52,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Robo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
+            <state relative-caret-position="136">
               <caret line="121" column="21" selection-start-line="121" selection-start-column="21" selection-end-line="121" selection-end-column="21" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
@@ -486,12 +482,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559675691633</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="teste no robo">
+      <created>1559675962392</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1559675962392</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-5" y="26" width="1376" height="723" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" visible="true" weight="0.24944155" />
@@ -564,7 +566,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Robo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
+        <state relative-caret-position="136">
           <caret line="121" column="21" selection-start-line="121" selection-start-column="21" selection-end-line="121" selection-end-column="21" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
