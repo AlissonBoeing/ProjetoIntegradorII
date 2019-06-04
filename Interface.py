@@ -62,9 +62,9 @@ posin = "posin,0:0"
 c = list()
 #------------------------##
 
-send_toSR = Communication("192.168.43.248", "50009",'toSR')
+send_toSR = Communication("192.168.43.247", "50009",'toSR')
 
-receive_fromSR = Communication("192.168.43.248", "50008", "fromSR")
+receive_fromSR = Communication("192.168.43.247", "50008", "fromSR")
 
 #receivefromSS = Communication('127.0.0.1', "50009", "fromSS")
 interface_t = threading.Thread(target=interface, args=(modo, send_toSR))
@@ -132,8 +132,8 @@ while (1):
         if(receive_fromSR.getCommandList()):
             msg = receive_fromSR.popCommandList()
             if (msg in "vV"):
-                #resp = input("Existe caca na posicao ")
-                send_toSR.send("ack, OK")
+                resp = input("Existe caca na posicao ")
+                send_toSR.send("ack," + resp)
 
         #send_toSR.send("ack,OK")
         #send_toSR.send(local)
