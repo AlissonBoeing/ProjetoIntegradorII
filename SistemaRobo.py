@@ -123,6 +123,7 @@ while(1):
                     teste = robot.getTreasure()
                     teste.removeCaca(robot.getGoal())
                     robot.setLista(teste.getString())
+                    print(robot.getTreasure().getString())
                     #robot.getTreasure().removeCaca(robot.getGoal())
                     #robot.start()
             else:

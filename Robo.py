@@ -119,7 +119,7 @@ class Robo(threading.Thread):
                 print(self.treasure.getString())
                 while lcaca:
                     self.goal = lcaca.pop()
-                    lcaca.append(self.goal)
+                    #lcaca.append(self.goal)
                     print(str(self.goal))
                     tesX = int(self.goal[0])
                     tesY = int(self.goal[2])
