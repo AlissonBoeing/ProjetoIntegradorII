@@ -103,6 +103,9 @@ class Robo(threading.Thread):
         else:
             print('Somente permitidos N ou S ou L ou O para sentido')
 
+    def setNacaca(self, val):
+        self.estounacaca = val
+
     def moverAutomatico(self):
 
         while(True):

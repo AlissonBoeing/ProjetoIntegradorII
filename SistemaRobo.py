@@ -119,6 +119,7 @@ while(1):
                 if (resp == "OK"):
                     print("Recebido OK")
                     robot.setMatar(False)
+                    robot.setNacaca(False)
                     robot.getTreasure().removeCaca(robot.getGoal())
                     #robot.start()
             else:
