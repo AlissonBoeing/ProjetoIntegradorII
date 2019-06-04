@@ -121,12 +121,19 @@ while (1):
                 send_toSR.send(posin)
                 if(modo == "modo,manual"):
                     interface_t.start()
-    else:
+    else: #apos configurar e startar o robo, verificar listas de recebimento
+
+        if (receive_fromSR.attlist()):  # recebeu alguma atualizacao
+            pass
+
+        if (receive_fromSR.getConfigList()):  # recebeu alguma config
+            pass
+
         if(receive_fromSR.getCommandList()):
             msg = receive_fromSR.popCommandList()
             if (msg in "vV"):
-                resp = input("Existe caca na posicao ")
-                send_toSR.send("ack," + resp)
+                #resp = input("Existe caca na posicao ")
+                send_toSR.send("ack, OK")
 
         #send_toSR.send("ack,OK")
         #send_toSR.send(local)

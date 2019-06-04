@@ -85,8 +85,15 @@ while(1):
         if (j == 0):
             robot.start()
             j = j + 1
-        else:
-            if(receive_fromSS.getAttlist()):
+        else: #verificar sempre as listas de recebimento: attlist,configlist,commandlist
+
+            if(receive_fromSS.getCommandList()): #recebeu algum comando
+                pass
+
+            if(receive_fromSS.getConfigList()): #recebeu alguma config
+                pass
+
+            if(receive_fromSS.getAttlist()): #recebeu atualizacao
                 lista = receive_fromSS.popAttlist()
                 robot.setLista("cacas," + lista)
             #se for diferente robot.setLcacas(getlistadecacas)
@@ -101,7 +108,8 @@ while(1):
            #     robot.start()     #reinicia a thread com a lista atualizada
                 #robot.moverAutomatico()
         print ("to aqui")
-        while(robot.isNacaca()):
+        if(robot.isNacaca()):
+            robot.setMatar();
             #robot.setPausar()
             print("ESTOU NA CACA")
             #robot.join()

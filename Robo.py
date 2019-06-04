@@ -5,7 +5,7 @@ import threading
 
 class Robo(threading.Thread):
 
-    def __init__(self, vel, cor, modo,  sentido, posin, l):
+    def __init__(self, vel, cor, modo,  sentido, posin, li):
         threading.Thread.__init__(self)
         self.setDaemon(False)
         self.velocidade = vel
@@ -21,12 +21,16 @@ class Robo(threading.Thread):
         self.modo = modo
         self.posX       = int(posX)
         self.posY       = int(posY)
-        self.treasure = Treasure(l)
+        self.treasure = Treasure(li)
         self.parado = True
         self.estounacaca = False
         self.goal = 0
         self.setPausar()
         self.matar = False
+
+
+    def setMatar(self,val):
+        self.matar = val
 
     def getGoal(self):
         return str(self.goal)
@@ -40,10 +44,8 @@ class Robo(threading.Thread):
     def run(self):
         j = 0
         self.moverAutomatico()
-
                 #self.treasure.ordenaListaCaca(self.getPos())
                 #time.sleep(4)
-
 
     def getPos(self):
         return (str(self.posX) + ":" + str(self.posY))
@@ -102,75 +104,79 @@ class Robo(threading.Thread):
             print('Somente permitidos N ou S ou L ou O para sentido')
 
     def moverAutomatico(self):
-        #Define a melhor sequencia de cacas
-        self.treasure.ordenaListaCaca(self.getPos())
 
-        lcaca = self.treasure.getList()
-        #print(lcaca)
-        # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
-        print(self.treasure.getString())
-        while lcaca:
-            self.goal = lcaca.pop()
-            lcaca.append(self.goal)
-            print(str(self.goal))
-            tesX = int(self.goal[0])
-            tesY = int(self.goal[2])
-            self.estounacaca = False
-            self.parado = False
-            #se o sentido é leste ou oeste, de preferencia para arrumar a posicao no eixo X primeiro
-            if self.sentido in ['L', 'O']:
-                #primeiro vai pra leste ou oeste
-                if tesX > self.posX:
-                    self.goLeste(tesX)
-                    print("indo leste")
-                elif tesX < self.posX:
-                    self.goOeste(tesX)
-                    print("indo oeste")
+        while(True):
+            if(not self.matar):
+                #Define a melhor sequencia de cacas
+                self.treasure.ordenaListaCaca(self.getPos())
 
-                #depois vai pra norte ou sul
-                if tesY > self.posY:
-                    self.goNorte(tesY)
-                    print("indo norte")
-                elif tesY < self.posY:
-                    self.goSul(tesY)
-                    print("indo sul")
-                print("Cheguei na caca")
-                #lcaca.pop()
-                self.estounacaca = True
-                self.parado = True
-                time.sleep(4)
-                self.matar = True
-                self.join()
+                lcaca = self.treasure.getList()
+                #print(lcaca)
+                # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
+                print(self.treasure.getString())
+                while lcaca:
+                    self.goal = lcaca.pop()
+                    lcaca.append(self.goal)
+                    print(str(self.goal))
+                    tesX = int(self.goal[0])
+                    tesY = int(self.goal[2])
+                    self.estounacaca = False
+                    self.parado = False
+                #se o sentido é leste ou oeste, de preferencia para arrumar a posicao no eixo X primeiro
+                    if self.sentido in ['L', 'O']:
+                    #primeiro vai pra leste ou oeste
+                        if tesX > self.posX:
+                            self.goLeste(tesX)
+                            print("indo leste")
+                        elif tesX < self.posX:
+                            self.goOeste(tesX)
+                            print("indo oeste")
 
-            #se o sentido é norte ou sul, de preferencia para arrumar a posicao no eixo Y primeiro
-            elif self.sentido in ['N', 'S']:
-                #primeiro vai pra norte ou sul
-                if tesY > self.posY:
-                    self.goNorte(tesY)
-                    print("indo norte")
-                elif tesY < self.posY:
-                    self.goSul(tesY)
-                    print("indo sul")
+                    #depois vai pra norte ou sul
+                        if tesY > self.posY:
+                            self.goNorte(tesY)
+                            print("indo norte")
+                        elif tesY < self.posY:
+                            self.goSul(tesY)
+                            print("indo sul")
+                        print("Cheguei na caca")
+                    #lcaca.pop()
+                        self.estounacaca = True
+                        self.parado = True
+                        time.sleep(4)
+                        self.matar = True
+                        self.join()
 
-                #depois vai pra leste ou oeste
-                if tesX > self.posX:
-                    self.goLeste(tesX)
-                    print("indo leste")
-                elif tesX < self.posX:
-                    self.goOeste(tesX)
-                    print("indo oeste")
+                #se o sentido é norte ou sul, de preferencia para arrumar a posicao no eixo Y primeiro
+                    elif self.sentido in ['N', 'S']:
+                        #primeiro vai pra norte ou sul
+                        if tesY > self.posY:
+                            self.goNorte(tesY)
+                            print("indo norte")
+                        elif tesY < self.posY:
+                            self.goSul(tesY)
+                            print("indo sul")
 
-                print("Cheguei na caca")
-                #lcaca.pop()
-                self.estounacaca = True
-                self.parado = True
-                time.sleep(4)
-                self.matar = True
-                self.join()
+                    #depois vai pra leste ou oeste
+                        if tesX > self.posX:
+                            self.goLeste(tesX)
+                            print("indo leste")
+                        elif tesX < self.posX:
+                            self.goOeste(tesX)
+                            print("indo oeste")
 
+                        print("Cheguei na caca")
+                    #lcaca.pop()
+                        self.estounacaca = True
+                        self.parado = True
+                        time.sleep(4)
+                        self.matar = True
+                        self.join()
 
+            else:
+                self.setPausar()
 
-        print("acabou cacas")
+            print("acabou cacas")
 
 
     def goLeste(self, x):
