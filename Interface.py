@@ -123,7 +123,7 @@ while (1):
                     interface_t.start()
     else: #apos configurar e startar o robo, verificar listas de recebimento
 
-        if (receive_fromSR.attlist()):  # recebeu alguma atualizacao
+        if (receive_fromSR.getAttlist()):  # recebeu alguma atualizacao
             pass
 
         if (receive_fromSR.getConfigList()):  # recebeu alguma config

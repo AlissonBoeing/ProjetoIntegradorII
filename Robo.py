@@ -143,9 +143,9 @@ class Robo(threading.Thread):
                     #lcaca.pop()
                         self.estounacaca = True
                         self.parado = True
-                        time.sleep(4)
                         self.matar = True
-                        self.join()
+                        time.sleep(5)
+                        #self.join()
 
                 #se o sentido é norte ou sul, de preferencia para arrumar a posicao no eixo Y primeiro
                     elif self.sentido in ['N', 'S']:
@@ -169,9 +169,8 @@ class Robo(threading.Thread):
                     #lcaca.pop()
                         self.estounacaca = True
                         self.parado = True
-                        time.sleep(4)
                         self.matar = True
-                        self.join()
+                        time.sleep(5)                        #self.join()
 
             else:
                 self.setPausar()
