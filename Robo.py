@@ -317,6 +317,7 @@ class Robo(threading.Thread):
                 if (lcaca):
                     self.goal = lcaca.pop()
                     print('Indo para caca: ' + str(self.goal))
+                    print("CAMINHO " + self.fazCaminho())
                     for i in self.fazCaminho():
                         self.goToPos(i)
                         self.parado = True
