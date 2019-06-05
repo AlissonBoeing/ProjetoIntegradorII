@@ -8,6 +8,11 @@
     "python.testing.pyTestEnabled": true,
     "python.pythonPath": "venv/bin/python3.5",
     "cSpell.words": [
-        "lcaca"
+        "caminho",
+        "coordenada",
+        "faz",
+        "lcaca",
+        "lhorizontal",
+        "lvertical"
     ]
 }
