@@ -55,7 +55,7 @@ class Robo(threading.Thread):
         #comparar com a que ja está no robo, e se a caça que ele esta ido atras ainda existe
         listaatt = Treasure(lista)
         #listaatt = listaatt.ordenaListaCaca(self.getPos)
-        if(not self.getGoal in listaatt.getString())
+        if(not self.getGoal in listaatt.getString()):
             self.treasure = listaatt
             self.setMatar(True)
         else:
