@@ -66,15 +66,24 @@ send_toSR = Communication("192.168.43.248", "50009",'toSR')
 
 receive_fromSR = Communication("192.168.43.248", "50008", "fromSR")
 
+send_toSA = Communication("127.0.0.1", "50007",'toSA')
+
+receive_fromSA = Communication("127.0.0.1", "50007", "fromSA")
+
 #receivefromSS = Communication('127.0.0.1', "50009", "fromSS")
 interface_t = threading.Thread(target=interface, args=(modo, send_toSR))
 #receive_t = threading.Thread(target=recSS.receiveMessage())
 #send_t = threading.Thread(target=sendSR.sendMessage)
 #atualizarmapa_t = threading.Thread(target=atualizarmapa())
 
+send_toSA.start()
+
+receive_fromSA.start()
+
 send_toSR.start()
 
 receive_fromSR.start()
+
 #ip teles (SR) = 191.36.10.250, porta 7000
 
 
@@ -135,6 +144,9 @@ while (1):
                 #resp = input("Existe caca na posicao ")
                 send_toSR.send("ack, OK")
 
+        if(receive_fromSA.getAttlist()):
+            listatt = receive_fromSA.popAttlist()
+            send_toSR.send("cacas," + listatt)
         #send_toSR.send("ack,OK")
         #send_toSR.send(local)
         #time.sleep(5)

@@ -48,6 +48,21 @@ class Communication(threading.Thread):
             #assert isinstance(socket, object)
             self.socket.setsockopt(zmq.SUBSCRIBE, self.Stopic)
 
+         if(tag == "toSA"):
+            self.Stopic = b"3"
+            self.context = zmq.Context()
+            self.s = self.context.socket(zmq.PUB)
+            self.s.bind("tcp://*:" + port)  # substituir por ip do SR
+            print("conectado")
+
+        if (tag == "fromSA"):
+            self.Stopic = b"4"
+            self.context = zmq.Context()
+            self.socket = self.context.socket(zmq.SUB)
+            self.socket.connect("tcp://"+ ip + ":%s" % port)
+            #assert isinstance(socket, object)
+            self.socket.setsockopt(zmq.SUBSCRIBE, self.Stopic)
+
     def sendMessage(self):
         if(self.tag == "toSR"):
             if(self.sendlist):
