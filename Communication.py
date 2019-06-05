@@ -48,7 +48,7 @@ class Communication(threading.Thread):
             #assert isinstance(socket, object)
             self.socket.setsockopt(zmq.SUBSCRIBE, self.Stopic)
 
-         if(tag == "toSA"):
+        if(tag == "toSA"):
             self.Stopic = b"3"
             self.context = zmq.Context()
             self.s = self.context.socket(zmq.PUB)
@@ -71,14 +71,21 @@ class Communication(threading.Thread):
                 print (self.Stopic, messagedata)
                 self.s.send(str("1" + messagedata).encode('utf-8'))
                 time.sleep(1)
-        else:
+        elif(self.tag == "toSS"):
             if (self.sendlist):
                 messagedata = self.sendlist.pop()
                # print(self.Stopic, messagedata)
                 self.s.send(str("2" + messagedata).encode('utf-8'))
                 time.sleep(1)
             #print("Nenhum comando para enviar")
-
+        elif(self.tag == "toSA"):
+            if (self.sendlist):
+                messagedata = self.sendlist.pop()
+               # print(self.Stopic, messagedata)
+                self.s.send(str("3" + messagedata).encode('utf-8'))
+                time.sleep(1)
+                
+                
     def receiveMessage(self): #verificar modo que recebemos dados
         self.string = self.socket.recv()
         messagedata = str(self.string)
@@ -97,7 +104,7 @@ class Communication(threading.Thread):
     def run(self):
         print("iniciou ")
         while True:
-            if(self.tag == "toSS" or self.tag == "toSR"):
+            if(self.tag == "toSS" or self.tag == "toSR" or self.tag == "toSA"):
                 self.sendMessage()
                 time.sleep(1.5)
             else:

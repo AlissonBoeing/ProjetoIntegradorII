@@ -66,7 +66,7 @@ send_toSR = Communication("192.168.43.248", "50009",'toSR')
 
 receive_fromSR = Communication("192.168.43.248", "50008", "fromSR")
 
-send_toSA = Communication("127.0.0.1", "50007",'toSA')
+send_toSA = Communication("127.0.0.1", "50006",'toSA')
 
 receive_fromSA = Communication("127.0.0.1", "50007", "fromSA")
 
