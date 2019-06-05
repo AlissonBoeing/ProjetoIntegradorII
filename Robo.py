@@ -187,8 +187,8 @@ class Robo(threading.Thread):
 
     def goToPos(self, pos):
 
-        tesX = int(self.pos[0])
-        tesY = int(self.pos[2])
+        tesX = int(pos[0])
+        tesY = int(pos[2])
 
         if self.sentido in ['L', 'O']:
             if tesX > self.posX:
