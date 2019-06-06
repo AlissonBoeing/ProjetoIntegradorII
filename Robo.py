@@ -319,15 +319,16 @@ class Robo(threading.Thread):
                     print("CAMINHO")
                     print(self.fazCaminho())
                     for i in self.fazCaminho():
-                        self.parado = False
-                        print(i)
-                        self.goToPos(i)
-                        self.parado = True
-                        time.sleep(3)
-                        print("posicao do robo " + (str(self.posX) + ":" + str(self.posY)))
-                        print("posicao do goal " + str(self.goal))
-                        if(self.matar):
-                            break
+                        if(not self.matar):
+                            self.parado = False
+                            print(i)
+                            self.goToPos(i)
+                            self.parado = True
+                            print("posicao do robo " + (str(self.posX) + ":" + str(self.posY)))
+                            print("posicao do goal " + str(self.goal))
+                            time.sleep(3)
+                            #if(self.matar):
+                           # break
                     if(str(self.goal) == (str(self.posX) + ":" + str(self.posY))):
                         self.estounacaca = True
                         self.parado = True
