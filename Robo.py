@@ -326,6 +326,10 @@ class Robo(threading.Thread):
                         time.sleep(3)
                         if(self.matar):
                             break
+                    if(str(self.goal) == str(self.getPos)):
+                        self.estounacaca = True
+                        self.parado = True
+                        time.sleep(3)
                     #self.estounacaca = False
                     #self.parado = False
 
