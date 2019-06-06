@@ -324,11 +324,11 @@ class Robo(threading.Thread):
                         self.goToPos(i)
                         self.parado = True
                         time.sleep(3)
-                        print("posicao do robo " + str(self.getPos))
+                        print("posicao do robo " + (str(self.posX) + ":" + str(self.posY)))
                         print("posicao do goal " + str(self.goal))
                         if(self.matar):
                             break
-                    if(str(self.goal) == str(self.getPos)):
+                    if(str(self.goal) == (str(self.posX) + ":" + str(self.posY))):
                         self.estounacaca = True
                         self.parado = True
                         time.sleep(3)

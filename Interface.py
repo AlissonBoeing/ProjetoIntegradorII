@@ -146,7 +146,7 @@ while (1):
 
         if(receive_fromSA.getAttlist()):
             listatt = receive_fromSA.popAttlist()
-            send_toSR.send("cacas," + listatt)
+            send_toSR.send("cacass," + listatt)
         #send_toSR.send("ack,OK")
         #send_toSR.send(local)
         #time.sleep(5)
