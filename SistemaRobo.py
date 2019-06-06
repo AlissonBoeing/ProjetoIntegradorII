@@ -19,9 +19,9 @@ posin = 0
 
 mac = "mac,02:16:53:45:b3:9a"
 
-receive_fromSS = Communication("192.168.43.27", "50009", "fromSS")
+receive_fromSS = Communication("192.168.43.223", "50009", "fromSS")
 
-send_toSS = Communication("192.168.43.27", "50008", "toSS")
+send_toSS = Communication("192.168.43.223", "50008", "toSS")
 
 #send_toSS = Communication("127.0.0.1", "50010", "toSS")
 
@@ -69,7 +69,7 @@ while(confRobo != 2):
 print("ROBO CONFIGURADO")
 
 #instancia Robo
-robot = Robo(100, cor, modo, "N", posin, strcacas)
+robot = Robo(150, cor, modo, "N", posin, strcacas)
 
 j = 0
 while(1):
@@ -95,7 +95,7 @@ while(1):
 
             if(receive_fromSS.getAttlist()): #recebeu atualizacao
                 lista = receive_fromSS.popAttlist()
-                robot.setLista("cacas," + lista)
+                robot.setLista(lista)
             #se for diferente robot.setLcacas(getlistadecacas)
 
         #if(robot.isParado()):
@@ -107,7 +107,7 @@ while(1):
           #      robot.join()#pausa a thread
            #     robot.start()     #reinicia a thread com a lista atualizada
                 #robot.moverAutomatico()
-        print ("to aqui")
+        #print ("to aqui")
         while(robot.isNacaca()):
             robot.setMatar(True)
             #robot.setPausar()
@@ -130,8 +130,6 @@ while(1):
                 time.sleep(3)
                 send_toSS.send("c,v")
                 print("nao recebeu ok")
-
-                   #pass #tirar da lista de caças
 
         #print("nao existe caca nessa posicao")
                  #   pass #Nao existe caça na posicao que esta

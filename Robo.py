@@ -8,25 +8,23 @@ class Robo(threading.Thread):
     def __init__(self, vel, cor, modo,  sentido, posin, li):
         threading.Thread.__init__(self)
         self.setDaemon(False)
-        self.velocidade = vel
-        self.l          = LargeMotor('outA')# esquerda
-        self.r          = LargeMotor('outD')# direita
-        self.cl         = ColorSensor()
-        self.colors     = ('unknown', 'black', 'blue', 'green', 'yellow', 'red', 'white', 'brown')
-        self.id         = 'a0:f3:c1:0b:3c:48'
-        self.cor        = cor
-        self.sentido    = sentido
-        posX = posin[0]
-        posY = posin[2]
-        self.modo = modo
-        self.posX       = int(posX)
-        self.posY       = int(posY)
-        self.treasure = Treasure(li)
-        self.parado = True
+        self.velocidade  = vel
+        self.l           = LargeMotor('outA')# esquerda
+        self.r           = LargeMotor('outD')# direita
+        self.cl          = ColorSensor()
+        self.colors      = ('unknown', 'black', 'blue', 'green', 'yellow', 'red', 'white', 'brown')
+        self.id          = 'a0:f3:c1:0b:3c:48'
+        self.cor         = cor
+        self.sentido     = sentido
+        self.modo        = modo
+        self.posX        = int(posin[0])
+        self.posY        = int(posin[2])
+        self.treasure    = Treasure(li)
+        self.parado      = True
         self.estounacaca = False
-        self.goal = 0
+        self.goal        = 0
+        self.matar       = False
         self.setPausar()
-        self.matar = False
 
 
     def setMatar(self,val):
@@ -53,9 +51,15 @@ class Robo(threading.Thread):
     def isParado(self):
         return self.parado
 
-    def setLista(self,lista):
+    def setLista(self,lista): #verificar se o goal está na lista, se não seta matar
         #comparar com a que ja está no robo, e se a caça que ele esta ido atras ainda existe
-        self.treasure = Treasure(lista)
+        listaatt = Treasure(lista)
+        #listaatt = listaatt.ordenaListaCaca(self.getPos)
+        if(not self.getGoal in listaatt.getString()):
+            self.treasure = listaatt
+            self.setMatar(True)
+        else:
+            self.treasure = listaatt
 
     def command(self, comando):
         if comando in 'Ww':
@@ -106,80 +110,235 @@ class Robo(threading.Thread):
     def setNacaca(self, val):
         self.estounacaca = val
 
+    #ANTIGO
+    # def moverAutomatico(self):
+
+    #     while(True):
+    #         if(not self.matar):
+    #             #Define a melhor sequencia de cacas
+    #             self.treasure.ordenaListaCaca(self.getPos())
+
+    #             lcaca = self.treasure.getList()
+    #             #print(lcaca)
+    #             # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
+    #             print(self.treasure.getString())
+    #             while lcaca:
+    #                 self.goal = lcaca.pop()
+    #                 #lcaca.append(self.goal)
+    #                 print(str(self.goal))
+    #                 tesX = int(self.goal[0])
+    #                 tesY = int(self.goal[2])
+    #                 self.estounacaca = False
+    #                 self.parado = False
+    #             #se o sentido é leste ou oeste, de preferencia para arrumar a posicao no eixo X primeiro
+    #                 if self.sentido in ['L', 'O']:
+    #                 #primeiro vai pra leste ou oeste
+    #                     if tesX > self.posX:
+    #                         self.goLeste(tesX)
+    #                         print("indo leste")
+    #                     elif tesX < self.posX:
+    #                         self.goOeste(tesX)
+    #                         print("indo oeste")
+
+    #                 #depois vai pra norte ou sul
+    #                     if tesY > self.posY:
+    #                         self.goNorte(tesY)
+    #                         print("indo norte")
+    #                     elif tesY < self.posY:
+    #                         self.goSul(tesY)
+    #                         print("indo sul")
+    #                     print("Cheguei na caca")
+    #                 #lcaca.pop()
+    #                     self.estounacaca = True
+    #                     #self.parado = True
+    #                     #self.matar = True
+    #                     time.sleep(5)
+    #                     #self.join()
+
+    #             #se o sentido é norte ou sul, de preferencia para arrumar a posicao no eixo Y primeiro
+    #                 elif self.sentido in ['N', 'S']:
+    #                     #primeiro vai pra norte ou sul
+    #                     if tesY > self.posY:
+    #                         self.goNorte(tesY)
+    #                         print("indo norte")
+    #                     elif tesY < self.posY:
+    #                         self.goSul(tesY)
+    #                         print("indo sul")
+
+    #                 #depois vai pra leste ou oeste
+    #                     if tesX > self.posX:
+    #                         self.goLeste(tesX)
+    #                         print("indo leste")
+    #                     elif tesX < self.posX:
+    #                         self.goOeste(tesX)
+    #                         print("indo oeste")
+
+    #                     print("Cheguei na caca")
+    #                 #lcaca.pop()
+    #                     self.estounacaca = True
+    #                     #self.parado = True
+    #                     #self.matar = True
+    #                     time.sleep(5)                        #self.join()
+
+    #         else:
+    #             self.setPausar()
+
+    #         print("acabou cacas")
+
+    def goToPos(self, pos):
+
+        tesX = int(pos[0])
+        tesY = int(pos[2])
+
+        if self.sentido in ['L', 'O']:
+            if tesX > self.posX:
+                self.goLeste(tesX)
+            elif tesX < self.posX:
+                self.goOeste(tesX)
+
+            if tesY > self.posY:
+                self.goNorte(tesY)
+            elif tesY < self.posY:
+                self.goSul(tesY)
+            print("Cheguei na posicao: " + pos)
+
+        elif self.sentido in ['N', 'S']:
+            if tesY > self.posY:
+                self.goNorte(tesY)
+            elif tesY < self.posY:
+                self.goSul(tesY)
+
+            if tesX > self.posX:
+                self.goLeste(tesX)
+            elif tesX < self.posX:
+                self.goOeste(tesX)
+            print("Cheguei na posicao:" + pos)
+
+
+
+    #retorna uma lista com as posicoes a serem percorridas
+    #entre a posicao atual do robo (self.posX e self.posY) e a caca (self.goal)
+    #exemplo: entre Robo em (0:0) virado para Norte ou sul
+    #e Tesouro em (3:2) ele retorna uma lista assim:  ['0:1', '0:2', '1:2', '2:2', '3:2']
+    #se fosse com o sentido em lLeste ou Oeste seria: ['1:0', '2:0', '3:0', '3:1', '3:2']
+    def fazCaminho(self):
+
+        #posicao tesouro em int
+        tesX = int(self.goal[0])
+        tesY = int(self.goal[2])
+
+        #posicao robo em int
+        robX = self.posX
+        robY = self.posY
+
+        #posicao robo e tesouro em String
+        posRob = str(robX) + ':' + str(robY)
+        posTes = str(tesX) + ':' + str(tesY)
+
+        #lista de posicoes para ir na horizontal
+        #lista de posicoes para ir na vertical
+        lhorizontal = []
+        lvertical   = []
+
+        #sao o passo da funcao range, exemplos:
+        #range(0, 5, 2) = [0, 2, 4]
+        #range(0, 5, 1) = [0, 1, 2, 3, 4]
+        aux = 666
+        auy = 666
+
+        #define se devemos ir somando ou subtraindo no passo do range
+        #se o robo estiver a esquerda do tesouro:
+        #   ele deve ir para a direita
+        #se o robo estiver a direita do tesouro:
+        #   ele deve ir para a esquerda
+        if robX < tesX:
+            aux = 1
+        else:
+            aux = -1
+        #define se devemos ir somando ou subtraindo no passo do range
+        #se o robo estiver para baixo do tesouro:
+        #   ele deve ir para cima do tesouro
+        #se o robo estiver para cima do tesouro:
+        #   ele deve ir para baixo
+        if robY < tesY:
+            auy = 1
+        else:
+            auy = -1
+
+        #se o robo nao esta em cima do tesouro:
+        #   se o sentido atual for Norte ou Sul:
+        #       deve primeiro se mexer/listar na vertical
+        #   senao:
+        #       deve primeiro se mexer/listar na horizontal
+        if posRob != posTes:
+            if self.sentido in ['N', 'S']:
+
+                for i in range(robY+auy, tesY+auy, auy):
+                    coordenada = str(robX) + ':' + str(i)
+                    lvertical.append(coordenada)
+
+                #soh existe variavel coordenada se ele faz o for aqui de cima
+                #e ele soh entra nesse for se robo e tesouro nao estiverem na msm linha
+                if robY != tesY:
+                    robY = int(coordenada[2])
+
+                for i in range(robX+aux, tesX+aux, aux):
+                    coordenada = str(i) + ':' + str(robY)
+                    lhorizontal.append(coordenada)
+
+            else:
+                for i in range(robX+aux, tesX+aux, aux):
+                    coordenada = str(i) + ':' + str(robY)
+                    lhorizontal.append(coordenada)
+
+                #soh existe variavel coordenada se ele faz o for aqui de cima
+                #e ele soh entra nesse for se robo e tesouro nao estiverem na msm coluna
+                if robX != tesX:
+                    robX = int(coordenada[0])
+
+                for i in range(robY+auy, tesY+auy, auy):
+                    coordenada = str(robX) + ':' + str(i)
+                    lvertical.append(coordenada)
+
+        if self.sentido in ['N', 'S']:
+            return lvertical + lhorizontal
+        else:
+            return lhorizontal + lvertical
+
+    #NOVO'
     def moverAutomatico(self):
 
         while(True):
             if(not self.matar):
-                #Define a melhor sequencia de cacas
                 self.treasure.ordenaListaCaca(self.getPos())
-
-                lcaca = self.treasure.getList()
-                #print(lcaca)
-                # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
-                print(self.treasure.getString())
-                while lcaca:
-                    self.goal = lcaca.pop()
-                    #lcaca.append(self.goal)
-                    print(str(self.goal))
-                    tesX = int(self.goal[0])
-                    tesY = int(self.goal[2])
-                    self.estounacaca = False
-                    self.parado = False
-                #se o sentido é leste ou oeste, de preferencia para arrumar a posicao no eixo X primeiro
-                    if self.sentido in ['L', 'O']:
-                    #primeiro vai pra leste ou oeste
-                        if tesX > self.posX:
-                            self.goLeste(tesX)
-                            print("indo leste")
-                        elif tesX < self.posX:
-                            self.goOeste(tesX)
-                            print("indo oeste")
-
-                    #depois vai pra norte ou sul
-                        if tesY > self.posY:
-                            self.goNorte(tesY)
-                            print("indo norte")
-                        elif tesY < self.posY:
-                            self.goSul(tesY)
-                            print("indo sul")
-                        print("Cheguei na caca")
-                    #lcaca.pop()
+                #lcaca = self.treasure.getList()
+                print('Cacas a pegar: '  + self.treasure.getString())
+                if (self.treasure.getList()):
+                    self.goal = self.treasure.popTreasure()
+                    print('Indo para caca: ' + str(self.goal))
+                    print("CAMINHO")
+                    print(self.fazCaminho())
+                    for i in self.fazCaminho():
+                        self.parado = False
+                        print(i)
+                        self.goToPos(i)
+                        self.parado = True
+                        time.sleep(3)
+                        print("posicao do robo " + (str(self.posX) + ":" + str(self.posY)))
+                        print("posicao do goal " + str(self.goal))
+                        if(self.matar):
+                            break
+                    if(str(self.goal) == (str(self.posX) + ":" + str(self.posY))):
                         self.estounacaca = True
-                        #self.parado = True
-                        #self.matar = True
-                        time.sleep(5)
-                        #self.join()
-
-                #se o sentido é norte ou sul, de preferencia para arrumar a posicao no eixo Y primeiro
-                    elif self.sentido in ['N', 'S']:
-                        #primeiro vai pra norte ou sul
-                        if tesY > self.posY:
-                            self.goNorte(tesY)
-                            print("indo norte")
-                        elif tesY < self.posY:
-                            self.goSul(tesY)
-                            print("indo sul")
-
-                    #depois vai pra leste ou oeste
-                        if tesX > self.posX:
-                            self.goLeste(tesX)
-                            print("indo leste")
-                        elif tesX < self.posX:
-                            self.goOeste(tesX)
-                            print("indo oeste")
-
-                        print("Cheguei na caca")
-                    #lcaca.pop()
-                        self.estounacaca = True
-                        #self.parado = True
-                        #self.matar = True
-                        time.sleep(5)                        #self.join()
+                        self.parado = True
+                        time.sleep(3)
+                    #self.estounacaca = False
+                    #self.parado = False
 
             else:
                 self.setPausar()
 
             print("acabou cacas")
-
 
     def goLeste(self, x):
         if self.sentido == 'N':
@@ -256,7 +415,6 @@ class Robo(threading.Thread):
         print("movendo frente")
         #time.sleep(10)
         #self.parado = True
-        print("Indo para frente")
         self.cl.mode = 'COL-COLOR'
         if self.colors[self.cl.value()] == "green" or self.colors[self.cl.value()] == "yellow" or self.colors[
             self.cl.value()] == "blue":
