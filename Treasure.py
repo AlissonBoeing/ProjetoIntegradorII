@@ -52,4 +52,8 @@ class Treasure:
 
         self.l1 = ordenada
         self.lcacas = ';'.join(self.l1) # traduz lista em string. Elementos separados por ponto-e-virgula
-
+        
+    def popTreasure(self):
+        a =  self.l1.pop()
+        self.lcacas = ';'.join(self.l1)
+        return a

@@ -305,25 +305,27 @@ class Robo(threading.Thread):
         else:
             return lhorizontal + lvertical
 
-    #NOVO
+    #NOVO'
     def moverAutomatico(self):
 
         while(True):
             if(not self.matar):
                 self.treasure.ordenaListaCaca(self.getPos())
-                lcaca = self.treasure.getList().copy()
-                lcaca.reverse()
+                #lcaca = self.treasure.getList()
                 print('Cacas a pegar: '  + self.treasure.getString())
-                if (lcaca):
-                    self.goal = lcaca.pop()
+                if (self.treasure.getList()):
+                    self.goal = self.treasure.reverse().popTreasure()
                     print('Indo para caca: ' + str(self.goal))
                     print("CAMINHO")
                     print(self.fazCaminho())
                     for i in self.fazCaminho():
+                        self.parado = False
                         print(i)
                         self.goToPos(i)
                         self.parado = True
                         time.sleep(3)
+                        print("posicao do robo " + str(self.getPos))
+                        print("posicao do goal " + str(self.goal))
                         if(self.matar):
                             break
                     if(str(self.goal) == str(self.getPos)):
@@ -413,7 +415,6 @@ class Robo(threading.Thread):
         print("movendo frente")
         #time.sleep(10)
         #self.parado = True
-        print("Indo para frente")
         self.cl.mode = 'COL-COLOR'
         if self.colors[self.cl.value()] == "green" or self.colors[self.cl.value()] == "yellow" or self.colors[
             self.cl.value()] == "blue":
