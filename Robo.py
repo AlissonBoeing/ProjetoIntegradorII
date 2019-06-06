@@ -314,7 +314,7 @@ class Robo(threading.Thread):
                 #lcaca = self.treasure.getList()
                 print('Cacas a pegar: '  + self.treasure.getString())
                 if (self.treasure.getList()):
-                    self.goal = self.treasure.reverse().popTreasure()
+                    self.goal = self.treasure.popTreasure()
                     print('Indo para caca: ' + str(self.goal))
                     print("CAMINHO")
                     print(self.fazCaminho())

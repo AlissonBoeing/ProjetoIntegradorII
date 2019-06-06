@@ -1,7 +1,7 @@
 class Treasure:
 
     def __init__(self, l):           # "1:1;2:3;5:2;6:6;4:3;2:1"
-        self.l1 = list(l.split(';')) # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
+        self.l1 = list(l.split(';')).reverse() # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
         self.lcacas = l              # "1:1;2:3;5:2;6:6;4:3;2:1"
 
     def getList(self):
