@@ -62,13 +62,13 @@ posin = "posin,0:0"
 c = list()
 #------------------------##
 
-send_toSR = Communication("192.168.43.247", "50009",'toSR')
+send_toSR = Communication("192.168.43.248", "50009",'toSR')
 
-receive_fromSR = Communication("192.168.43.247", "50008", "fromSR")
+receive_fromSR = Communication("192.168.43.248", "50008", "fromSR")
 
-send_toSA = Communication("127.0.0.1", "50006",'toSA')
+#send_toSA = Communication("127.0.0.1", "50006",'toSA')
 
-receive_fromSA = Communication("127.0.0.1", "50007", "fromSA")
+#receive_fromSA = Communication("127.0.0.1", "50007", "fromSA")
 
 #receivefromSS = Communication('127.0.0.1', "50009", "fromSS")
 interface_t = threading.Thread(target=interface, args=(modo, send_toSR))
@@ -76,9 +76,9 @@ interface_t = threading.Thread(target=interface, args=(modo, send_toSR))
 #send_t = threading.Thread(target=sendSR.sendMessage)
 #atualizarmapa_t = threading.Thread(target=atualizarmapa())
 
-send_toSA.start()
+#send_toSA.start()
 
-receive_fromSA.start()
+#receive_fromSA.start()
 
 send_toSR.start()
 
@@ -123,6 +123,9 @@ while (1):
                 print("Endereço MAC recebido")
                 isRobo = 1
                 send_toSR.send("ack,OK")
+                send_toSR.send("ack,OK")
+                send_toSR.send("ack,OK")
+                send_toSR.send("ack,OK")
                 time.sleep(2)
                 send_toSR.send(modo)
                 send_toSR.send(cor)
@@ -144,9 +147,9 @@ while (1):
                 resp = input("Existe caca na posicao ")
                 send_toSR.send("ack," + resp)
 
-        if(receive_fromSA.getAttlist()):
-            listatt = receive_fromSA.popAttlist()
-            send_toSR.send("cacass," + listatt)
+       # if(receive_fromSA.getAttlist()):
+        #    listatt = receive_fromSA.popAttlist()
+         #   send_toSR.send("cacass," + listatt)
         #send_toSR.send("ack,OK")
         #send_toSR.send(local)
         #time.sleep(5)
