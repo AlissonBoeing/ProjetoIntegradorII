@@ -328,13 +328,14 @@ class Robo(threading.Thread):
                             print("posicao do goal " + str(self.goal))
                             time.sleep(3)
                             #if(self.matar):
-                           # break
+                            #    break
                     if(str(self.goal) == (str(self.posX) + ":" + str(self.posY))):
                         self.estounacaca = True
                         self.parado = True
                         time.sleep(3)
-                    self.estounacaca = False
-                    self.parado = False
+
+                    #self.estounacaca = False
+                    #self.parado = False
 
             else:
                 self.setPausar()
