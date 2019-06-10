@@ -53,7 +53,7 @@ def interface(mode, sendSR):
 #teste.connect();
 #------------------------- Dados do SA ------------------------ #
 
-modo = "modo,automatico"
+modo = "modo,manual"
 cor = "cor,azul"
 local = "cacas,1:1;2:2;1:1;3:3"
 posin = "posin,0:0"
@@ -122,9 +122,6 @@ while (1):
             if (len(receive_fromSR.popConfigList()) == 17):
                 print("Endereço MAC recebido")
                 isRobo = 1
-                send_toSR.send("ack,OK")
-                send_toSR.send("ack,OK")
-                send_toSR.send("ack,OK")
                 send_toSR.send("ack,OK")
                 time.sleep(2)
                 send_toSR.send(modo)
