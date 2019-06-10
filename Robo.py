@@ -333,8 +333,8 @@ class Robo(threading.Thread):
                         self.estounacaca = True
                         self.parado = True
                         time.sleep(3)
-                    #self.estounacaca = False
-                    #self.parado = False
+                    self.estounacaca = False
+                    self.parado = False
 
             else:
                 self.setPausar()
