@@ -69,7 +69,7 @@ while(confRobo != 2):
 print("ROBO CONFIGURADO")
 
 #instancia Robo
-robot = Robo(200, cor, modo, "N", posin, strcacas)
+robot = Robo(200, cor, modo, "S", posin, strcacas)
 
 j = 0
 while(1):

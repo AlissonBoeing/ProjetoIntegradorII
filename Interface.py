@@ -53,10 +53,10 @@ def interface(mode, sendSR):
 #teste.connect();
 #------------------------- Dados do SA ------------------------ #
 
-modo = "modo,manual"
+modo = "modo,automatico"
 cor = "cor,azul"
 local = "cacas,5:2;4:5;0:2"
-posin = "posin,6:0"
+posin = "posin,0:6"
 
 ### teste lista de caças ###
 c = list()
