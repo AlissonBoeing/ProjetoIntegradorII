@@ -55,7 +55,7 @@ def interface(mode, sendSR):
 
 modo = "modo,automatico"
 cor = "cor,azul"
-local = "cacas,5:2;4:5;0:2"
+local = "cacas,1:3;2:3;0:5"
 posin = "posin,0:6"
 
 ### teste lista de caças ###

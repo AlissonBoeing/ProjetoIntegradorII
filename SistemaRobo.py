@@ -134,8 +134,9 @@ while(1):
         #print("nao existe caca nessa posicao")
                  #   pass #Nao existe caça na posicao que esta
 
-        if(robot.isParado()):
-            send_toSS.send("att," + str(robot.getPos()))
+       # if(robot.isParado()):
+         #   send_toSS.send("att," + str(robot.getPos()))
+          #  time.sleep(1)
        # pass#robot.start()
 
 
