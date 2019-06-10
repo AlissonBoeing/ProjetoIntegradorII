@@ -2,6 +2,7 @@ from Communication import *
 from Treasure import *
 import threading
 import time
+from Treasure import *
 from os import system, name
 
 #------- atributos do SS --------- #
@@ -31,7 +32,7 @@ def atualizarmapa(lista):
 def interface(mode, sendSR):
     system('clear')
     while(1):
-        #atualizarmapa(c)
+        print(local)
         if (mode == "modo,manual"):
             print("Robô Manual - Escolha uma das opções abaixo:")
             entrada = input("W - Mover para frente;\n"
@@ -40,8 +41,14 @@ def interface(mode, sendSR):
                                 "D - Mover para esquerda;\n"
                                 "V - Validar caça;\n")
             if(entrada):
-                sendSR.send("c," +entrada)
-                time.sleep(2)
+                if(entrada in "vV"):
+                    send_toSA.send("c," + entrada)
+                    if(atual in a):
+                        print("CACA PEGA OK")
+                        a.removeCaca(atual)
+                        time.sleep(2)
+                else:
+                    send_toSR.send("c," + entrada)
         else:
             pass
             #atualizarmapa(c)
@@ -53,13 +60,15 @@ def interface(mode, sendSR):
 #teste.connect();
 #------------------------- Dados do SA ------------------------ #
 
-modo = "modo,automatico"
+modo = "modo,manual"
 cor = "cor,azul"
 local = "cacas,2:0;4:3;4:5"
 posin = "posin,0:6"
-
+atual = "0:6"
+local2 = "2:0;4:3;4:5"
 ### teste lista de caças ###
-c = list()
+
+a = Treasure(local2)
 #------------------------##
 
 send_toSR = Communication("192.168.43.248", "50009",'toSR')
@@ -133,7 +142,7 @@ while (1):
     else: #apos configurar e startar o robo, verificar listas de recebimento
 
         if (receive_fromSR.getAttlist()):  # recebeu alguma atualizacao
-            pass
+            atual = receive_fromSR.popAttlist()
 
         if (receive_fromSR.getConfigList()):  # recebeu alguma config
             pass
