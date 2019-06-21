@@ -5,8 +5,6 @@ import time
 from Robo import *
 #-----------------------#
 # Se conectar no SS -> envia mac, espera OK #
-#
-
 #------- Atributos do SR ---------#
 
 isRobo = 0

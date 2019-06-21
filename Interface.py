@@ -4,6 +4,7 @@ import threading
 import time
 from Treasure import *
 from os import system, name
+from Comunica_SA import *
 
 #------- atributos do SS --------- #
 isRobo = 0
@@ -43,7 +44,7 @@ def interface(mode, sendSR):
             if(entrada):
                 if(entrada in "vV"):
                     send_toSA.send("c," + entrada)
-                    if(atual in a):
+                    if(atual in a.getString()):
                         print("CACA PEGA OK")
                         a.removeCaca(atual)
                         time.sleep(2)
@@ -53,11 +54,6 @@ def interface(mode, sendSR):
             pass
             #atualizarmapa(c)
 
-
-
-#teste = Communication('127.0.0.1', 7000, "teste");
-
-#teste.connect();
 #------------------------- Dados do SA ------------------------ #
 
 modo = "modo,manual"
@@ -79,11 +75,8 @@ send_toSA = Communication("127.0.0.1", "50006",'toSA')
 
 receive_fromSA = Communication("127.0.0.1", "50007", "fromSA")
 
-#receivefromSS = Communication('127.0.0.1', "50009", "fromSS")
 interface_t = threading.Thread(target=interface, args=(modo, send_toSR))
-#receive_t = threading.Thread(target=recSS.receiveMessage())
-#send_t = threading.Thread(target=sendSR.sendMessage)
-#atualizarmapa_t = threading.Thread(target=atualizarmapa())
+
 
 send_toSA.start()
 
@@ -93,34 +86,13 @@ send_toSR.start()
 
 receive_fromSR.start()
 
-#ip teles (SR) = 191.36.10.250, porta 7000
-
-
-
-
-
-#send_toSR.send(modo)
-#send_toSR.send(cor)
-#send_toSR.send(local)
-
-#------------------------
-#interface_t.start()
-#print("asd)
-#while(1):
-   # print("Iniciou")
-#inicia o jogo enviando configs pro robo
- #   receiveSR = Communication('127.0.0.1', 7000, 'fromSS')
-#receiveSR.receiveMessage()
-#sendSR.send(10)
-#receiveSR.start()
-#print(i)
-    #inicia robo e menu no manual
-    #inicia robo e menu no automatico
-#mantém menu e lista de caças na tela
-#inicia thread de atualização das caças (recebe do SA e envia pro SR)
-
-
 print("Esperando endereço MAC do robô")
+
+testeSA = Comunica_SA(8888, '127.0.0.1')
+
+testeSA.login("teste", ("0","1"))
+
+testeSA.run()
 
 
 while (1):
