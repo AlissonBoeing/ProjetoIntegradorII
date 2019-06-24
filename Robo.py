@@ -382,8 +382,8 @@ class Robo(threading.Thread):
                     print("CAMINHO: ")
                     print(lcaminho)
                     i = 0
-                    while i < lcaminho.size():
-                        if lcaminho.size() > i+1:
+                    while i < len(lcaminho):
+                        if len(lcaminho) > i+1:
                             proxCam = lcaminho[i+1]
                         else:
                             proxCam = 0 # 0 representa sem proximo caminho
