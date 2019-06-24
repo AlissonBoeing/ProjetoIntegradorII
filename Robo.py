@@ -1,4 +1,4 @@
-from ev3dev.ev3 import *
+#from ev3dev.ev3 import *
 import time
 from Treasure import *
 import threading
@@ -9,9 +9,9 @@ class Robo(threading.Thread):
         threading.Thread.__init__(self)
         self.setDaemon(False)
         self.velocidade  = vel
-        self.l           = LargeMotor('outA')# esquerda
-        self.r           = LargeMotor('outD')# direita
-        self.cl          = ColorSensor()
+ #       self.l           = LargeMotor('outA')# esquerda
+  #      self.r           = LargeMotor('outD')# direita
+   #     self.cl          = ColorSensor()
         self.colors      = ('unknown', 'black', 'blue', 'green', 'yellow', 'red', 'white', 'brown')
         self.id          = 'a0:f3:c1:0b:3c:48'
         self.cor         = cor
