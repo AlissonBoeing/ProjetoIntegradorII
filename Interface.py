@@ -58,7 +58,7 @@ def interface(mode, sendSR):
 
 modo = "modo,manual"
 cor = "cor,azul"
-local = "cacas,2:2;5:5;1:6"
+local = "cacas,0:4;6:6"
 posin = "posin,0:6"
 atual = "4:2"
 local2 = "2:0;4:3;4:5"

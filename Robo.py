@@ -28,7 +28,8 @@ class Robo(threading.Thread):
         self.ladversario = []
 
     def getladversario(self):
-        return self.ladversario
+        #return self.ladversario
+        return ['0:3', '4:4']
 
     def setladversario(self, ladversario):
         self.ladversario = ladversario
@@ -245,53 +246,53 @@ class Robo(threading.Thread):
         # Se existir uma posicao alem da proxima
         if proxCam != 0:
             # Se o sentido for norte, estiver na regiao e na mesma coluna
-            if self.sentido = 'N' and self.posX != 0 and self.posY < 5 and self.posX = proxCam[0]:
+            if self.sentido == 'N' and self.posX != 0 and self.posY < 5 and self.posX == proxCam[0]:
                 pos1 = str(self.posX-1) + ':' + str(self.posY)
                 pos2 = str(self.posX-1) + ':' + str(self.posY+1)
                 pos3 = str(self.posX-1) + ':' + str(self.posY+2)
                 return [pos1, pos2, pos3]
 
             # Se o sentido for sul, estiver na regiao e na mesma coluna
-            elif self.sentido = 'S' and self.posX != 0 and self.posY > 1 and self.posX = proxCam[0]:
+            elif self.sentido == 'S' and self.posX != 0 and self.posY > 1 and self.posX == proxCam[0]:
                 pos1 = str(self.posX-1) + ':' + str(self.posY)
                 pos2 = str(self.posX-1) + ':' + str(self.posY-1)
                 pos3 = str(self.posX-1) + ':' + str(self.posY-1)
                 return [pos1, pos2, pos3]
 
             # Se o sentido for leste, estiver na regiao e na mesma linha
-            elif self.sentido = 'L' and self.posY != 6 and self.posX < 5 and self.posY = proxCam[2]:
+            elif self.sentido == 'L' and self.posY != 6 and self.posX < 5 and self.posY == proxCam[2]:
                 pos1 = str(self.posX) + ':' + str(self.posY+1)
                 pos2 = str(self.posX+1) + ':' + str(self.posY+1)
                 pos3 = str(self.posX+2) + ':' + str(self.posY+1)
                 return [pos1, pos2, pos3]
 
             # Se o sentido for oeste, estiver na regiao e na mesma linha
-            elif self.sentido = 'O' and self.posY != 6 and self.posX > 1 and self.posY = proxCam[2]:
+            elif self.sentido == 'O' and self.posY != 6 and self.posX > 1 and self.posY == proxCam[2]:
                 pos1 = str(self.posX) + ':' + str(self.posY+1)
                 pos2 = str(self.posX-1) + ':' + str(self.posY+1)
                 pos3 = str(self.posX-2) + ':' + str(self.posY+1)
                 return [pos1, pos2, pos3]
 
             #tratando extremos daqui pra baixo
-            elif self.sentido = 'N' and self.posX = 0 and self.posY < 5 and proxCam[0] = 0:
+            elif self.sentido == 'N' and self.posX == 0 and self.posY < 5 and proxCam[0] == 0:
                 pos1 = str(self.posX+1) + ':' + str(self.posY)
                 pos2 = str(self.posX+1) + ':' + str(self.posY+1)
                 pos3 = str(self.posX+1) + ':' + str(self.posY+2)
                 return [pos1, pos2, pos3]
 
-            elif self.sentido = 'S' and self.posX = 0 and self.posY > 1 and proxCam[0] = 0:
+            elif self.sentido == 'S' and self.posX == 0 and self.posY > 1 and proxCam[0] == 0:
                 pos1 = str(self.posX+1) + ':' + str(self.posY)
                 pos2 = str(self.posX+1) + ':' + str(self.posY-1)
                 pos3 = str(self.posX+1) + ':' + str(self.posY-2)
                 return [pos1, pos2, pos3]
 
-            elif self.sentido = 'L' and self.posY = 6 and self.posX < 5 and proxCam[2] = 6
+            elif self.sentido == 'L' and self.posY == 6 and self.posX < 5 and proxCam[2] == 6
                 pos1 = str(self.posX) + ':' + str(self.posY-1)
                 pos2 = str(self.posX+1) + ':' + str(self.posY-1)
                 pos3 = str(self.posX+2) + ':' + str(self.posY-1)
                 return [pos1, pos2, pos3]
 
-            elif self.sentido = 'O' and self.posY = 6 and self.posX > 1 and proxCam[2] = 6
+            elif self.sentido == 'O' and self.posY == 6 and self.posX > 1 and proxCam[2] == 6
                 pos1 = str(self.posX) + ':' + str(self.posY-1)
                 pos2 = str(self.posX-1) + ':' + str(self.posY-1)
                 pos3 = str(self.posX-2) + ':' + str(self.posY-1)
