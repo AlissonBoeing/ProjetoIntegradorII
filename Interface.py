@@ -88,7 +88,7 @@ receive_fromSR.start()
 
 print("Esperando endereço MAC do robô")
 
-testeSA = Comunica_SA(8888, '127.0.0.1')
+testeSA = Comunica_SA(8888, '192.168.0.7')
 
 testeSA.login("teste", ("0","1"))
 
