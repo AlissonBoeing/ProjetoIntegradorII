@@ -56,12 +56,12 @@ def interface(mode, sendSR):
 
 #------------------------- Dados do SA ------------------------ #
 
-modo = "modo,manual"
+modo = "modo,automatico"
 cor = "cor,azul"
 local = "cacas,0:4;6:6"
-posin = "posin,0:6"
-atual = "4:2"
-local2 = "2:0;4:3;4:5"
+posin = "posin,0:0"
+atual = "0:0"
+local2 = "0:4;6:6"
 ### teste lista de caças ###
 
 a = Treasure(local2)
