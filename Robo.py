@@ -403,7 +403,7 @@ class Robo(threading.Thread):
                                     desvio = self.desviaEmC(proxCam)
                                     for j in desvio:
                                         self.goToPos(j)
-                                    ladversario.remove(i)
+                                    ladversario.remove(lcaminho[i])
                                 #se o tesouro e robo estao em linha ou coluna diferentes
                                 else:
                                     print('Desviando em L')
