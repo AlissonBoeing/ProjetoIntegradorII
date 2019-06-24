@@ -391,10 +391,10 @@ class Robo(threading.Thread):
                             self.parado = False
                             print('quero ir para para pos: ' + str(i))
                             if i not in ladversario:
-                                print('Pos: ' + i + ' livre. To indo para ela')
+                                print('Pos: ' + str(i) + ' livre. To indo para ela')
                                 self.goToPos(i)
                             else:
-                                print('Pos: ' + i + ' ocupada')
+                                print('Pos: ' + str(i) + ' ocupada')
                                 #se tesouro e robo estao na msm linha ou coluna, desvie em C
                                 if self.posX == int(self.goal[0]) or self.posY == int(self.goal[2]):
                                     print('Desviando em C')
