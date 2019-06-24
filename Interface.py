@@ -58,7 +58,7 @@ def interface(mode, sendSR):
 
 modo = "modo,manual"
 cor = "cor,azul"
-local = "cacas,2:0;4:3;4:5"
+local = "cacas,2:2;5:5;1:6"
 posin = "posin,0:6"
 atual = "4:2"
 local2 = "2:0;4:3;4:5"
@@ -67,9 +67,9 @@ local2 = "2:0;4:3;4:5"
 a = Treasure(local2)
 #------------------------##
 
-send_toSR = Communication("192.168.1.125", "50009",'toSR')
+send_toSR = Communication("192.168.1.127", "50009",'toSR')
 
-receive_fromSR = Communication("192.168.125", "50008", "fromSR")
+receive_fromSR = Communication("192.168.127", "50008", "fromSR")
 
 #send_toSA = Communication("127.0.0.1", "50006",'toSA')
 
@@ -88,11 +88,11 @@ receive_fromSR.start()
 
 print("Esperando endereço MAC do robô")
 
-testeSA = Comunica_SA(8888, '192.168.0.7')
+# testeSA = Comunica_SA(8888, '192.168.0.7')
 
-testeSA.login("teste1", ("0","2"))
+# testeSA.login("teste1", ("0","2"))
 
-testeSA.run()
+# testeSA.run()
 
 
 while (1):
