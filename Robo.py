@@ -375,10 +375,12 @@ class Robo(threading.Thread):
                 print('Lista de adversarios: ')
                 print(ladversario)
                 if (self.treasure.getList()):
+                    print('Entrou no ifzao')
                     self.goal = self.treasure.popTreasure()
                     print('Indo para caca: ' + str(self.goal))
                     lcaminho = self.fazCaminho()
-                    print("CAMINHO: " + lcaminho)
+                    print("CAMINHO: ")
+                    print(lcaminho)
                     i = 0
                     while i < lcaminho.size():
                         if lcaminho.size() > i+1:
