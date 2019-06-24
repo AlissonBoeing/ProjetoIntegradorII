@@ -389,12 +389,12 @@ class Robo(threading.Thread):
                             proxCam = 0 # 0 representa sem proximo caminho
                         if(not self.matar):
                             self.parado = False
-                            print('quero ir para para pos: ' + str(i))
+                            print('quero ir para para pos: ' + str(lcaminho[i]))
                             if i not in ladversario:
-                                print('Pos: ' + str(i) + ' livre. To indo para ela')
+                                print('Pos: ' + str(lcaminho[i]) + ' livre. To indo para ela')
                                 self.goToPos(lcaminho[i])
                             else:
-                                print('Pos: ' + str(i) + ' ocupada')
+                                print('Pos: ' + str(lcaminho[i]) + ' ocupada')
                                 #se tesouro e robo estao na msm linha ou coluna, desvie em C
                                 if self.posX == int(self.goal[0]) or self.posY == int(self.goal[2]):
                                     print('Desviando em C')
