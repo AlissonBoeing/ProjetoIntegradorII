@@ -390,6 +390,8 @@ class Robo(threading.Thread):
                         if(not self.matar):
                             self.parado = False
                             print('quero ir para para pos: ' + str(lcaminho[i]))
+                            print('Adversarios: ')
+                            print(ladversario)
                             if str(lcaminho[i]) not in ladversario:
                                 print('Pos: ' + str(lcaminho[i]) + ' livre. To indo para ela')
                                 self.goToPos(lcaminho[i])
