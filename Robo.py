@@ -372,7 +372,8 @@ class Robo(threading.Thread):
                 self.treasure.ordenaListaCaca(self.getPos())
                 #lcaca = self.treasure.getList()
                 print('Cacas a pegar: '  + self.treasure.getString())
-                print('Lista de adversarios: ' + ladversario)
+                print('Lista de adversarios: ')
+                print(ladversario)
                 if (self.treasure.getList()):
                     self.goal = self.treasure.popTreasure()
                     print('Indo para caca: ' + str(self.goal))
