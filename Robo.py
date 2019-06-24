@@ -408,7 +408,7 @@ class Robo(threading.Thread):
                             print("posicao do robo " + (str(self.posX) + ":" + str(self.posY)))
                             print("posicao do goal " + str(self.goal))
                             time.sleep(3)
-                            i++;
+                            i = i + 1
                     if(str(self.goal) == (str(self.posX) + ":" + str(self.posY))):
                         self.estounacaca = True
                         self.parado = True
