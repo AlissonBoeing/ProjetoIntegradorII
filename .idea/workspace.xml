@@ -5,11 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a6d46be-e84c-436f-bfe4-d811d2bf799e" name="Default" comment="teste no robo">
-      <change afterPath="$PROJECT_DIR$/Comunica_SA.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Public.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ProjetoIntegradorII.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ProjetoIntegradorII.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Robo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Robo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SistemaRobo.py" beforeDir="false" afterPath="$PROJECT_DIR$/SistemaRobo.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/Comunica_SA.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/Comunica_SA.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/Public.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/Public.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/Robo.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/Robo.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/SistemaAuditor.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/SistemaAuditor.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/SistemaRobo.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/SistemaRobo.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/SistemaSupervisor.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/SistemaSupervisor.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/automatico.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/automatico.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/interface.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/interface.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/manual.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/manual.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/mensagens_robo.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/mensagens_robo.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/mover.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/mover.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/mover_test.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/mover_test.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/receptor.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/receptor.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/shared.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/shared.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/teste3.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/teste3.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/PJI-2/src/transmissor.py" beforeDir="false" afterPath="$USER_HOME$/PJI-2/src/transmissor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,32 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SistemaRobo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-60">
-              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#27#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Communication.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="96" column="27" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Interface.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
+            <state relative-caret-position="285">
+              <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -59,51 +53,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Comunica_SA.py">
+        <entry file="file://$PROJECT_DIR$/Interface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1102">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Public.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Robo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3300">
-              <caret line="337" column="21" selection-start-line="337" selection-start-column="21" selection-end-line="337" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SistemaAuditor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="225">
+              <caret line="92" column="21" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="21" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Treasure.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-133">
-              <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -127,6 +83,7 @@
         <option value="$PROJECT_DIR$/Communication.py" />
         <option value="$PROJECT_DIR$/SistemaAuditor.py" />
         <option value="$PROJECT_DIR$/Robo.py" />
+        <option value="$USER_HOME$/PJI-2/src/SistemaAuditor.py" />
         <option value="$PROJECT_DIR$/SistemaRobo.py" />
         <option value="$PROJECT_DIR$/Interface.py" />
       </list>
@@ -170,7 +127,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/PJI-2" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -190,7 +147,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Interface">
+  <component name="RunManager" selected="Python.SistemaAuditor">
     <configuration name="Interface" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ProjetoIntegradorII" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -205,6 +162,27 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Interface.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SistemaAuditor" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="PJI-2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/PJI-2/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/PJI-2/src/SistemaAuditor.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -236,8 +214,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Interface" />
+        <item itemvalue="Python.SistemaAuditor" />
         <item itemvalue="Python.SistemaRobo" />
+        <item itemvalue="Python.Interface" />
       </list>
     </recent_temporary>
   </component>
@@ -251,13 +230,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559160980135</updated>
-    </task>
-    <task id="LOCAL-00010" summary="teste no robo">
-      <created>1559579546108</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1559579546109</updated>
     </task>
     <task id="LOCAL-00011" summary="teste no robo">
       <created>1559580112253</created>
@@ -595,18 +567,26 @@
       <option name="project" value="LOCAL" />
       <updated>1560189095026</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="teste no robo">
+      <created>1561144861927</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1561144861928</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-5" y="26" width="1376" height="723" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19285183" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19285183" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24944155" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.57706624" visible="true" weight="0.37751678" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.57632166" visible="true" weight="0.31879196" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -615,7 +595,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4981385" weight="0.32885906" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.42293373" side_tool="true" visible="true" weight="0.37751678" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.42367834" side_tool="true" visible="true" weight="0.31879196" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -685,24 +665,27 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/SistemaAuditor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="60">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Treasure.py">
+    <entry file="file://$PROJECT_DIR$/Comunica_SA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-133">
-          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+        <state relative-caret-position="158">
+          <caret line="126" column="50" selection-start-line="126" selection-start-column="50" selection-end-line="126" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Communication.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
+        <state relative-caret-position="278">
           <caret line="96" column="27" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="27" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
@@ -712,43 +695,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Robo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3300">
-          <caret line="337" column="21" selection-start-line="337" selection-start-column="21" selection-end-line="337" selection-end-column="21" />
+        <state relative-caret-position="488">
+          <caret line="84" column="27" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#26#37#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Treasure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/PJI-2/src/SistemaAuditor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1883">
+          <caret line="398" column="62" lean-forward="true" selection-start-line="398" selection-start-column="62" selection-end-line="398" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/PJI-2/src/Public.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/PJI-2/src/mensagens_robo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-472" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Public.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interface.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SistemaRobo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+        <state relative-caret-position="285">
+          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Comunica_SA.py">
+    <entry file="file://$PROJECT_DIR$/Interface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1102">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="225">
+          <caret line="92" column="21" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="21" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -43,7 +43,7 @@ def interface(mode, sendSR):
                                 "V - Validar caça;\n")
             if(entrada):
                 if(entrada in "vV"):
-                    send_toSA.send("c," + entrada)
+                    testeSA.get_flag((int(atual[0]),int(atual[2])))
                     if(atual in a.getString()):
                         print("CACA PEGA OK")
                         a.removeCaca(atual)
@@ -60,27 +60,27 @@ modo = "modo,manual"
 cor = "cor,azul"
 local = "cacas,2:0;4:3;4:5"
 posin = "posin,0:6"
-atual = "0:6"
+atual = "4:2"
 local2 = "2:0;4:3;4:5"
 ### teste lista de caças ###
 
 a = Treasure(local2)
 #------------------------##
 
-send_toSR = Communication("192.168.43.248", "50009",'toSR')
+send_toSR = Communication("192.168.1.125", "50009",'toSR')
 
-receive_fromSR = Communication("192.168.43.248", "50008", "fromSR")
+receive_fromSR = Communication("192.168.125", "50008", "fromSR")
 
-send_toSA = Communication("127.0.0.1", "50006",'toSA')
+#send_toSA = Communication("127.0.0.1", "50006",'toSA')
 
-receive_fromSA = Communication("127.0.0.1", "50007", "fromSA")
+#receive_fromSA = Communication("127.0.0.1", "50007", "fromSA")
 
 interface_t = threading.Thread(target=interface, args=(modo, send_toSR))
 
 
-send_toSA.start()
+#send_toSA.start()
 
-receive_fromSA.start()
+#receive_fromSA.start()
 
 send_toSR.start()
 
@@ -90,7 +90,7 @@ print("Esperando endereço MAC do robô")
 
 testeSA = Comunica_SA(8888, '127.0.0.1')
 
-testeSA.login("teste", ("0","1"))
+testeSA.login("teste1", ("0","2"))
 
 testeSA.run()
 
