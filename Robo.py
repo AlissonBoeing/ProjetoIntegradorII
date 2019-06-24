@@ -389,7 +389,7 @@ class Robo(threading.Thread):
                             proxCam = 0 # 0 representa sem proximo caminho
                         if(not self.matar):
                             self.parado = False
-                            print('quero ir para para pos: ' + i)
+                            print('quero ir para para pos: ' + str(i))
                             if i not in ladversario:
                                 print('Pos: ' + i + ' livre. To indo para ela')
                                 self.goToPos(i)
