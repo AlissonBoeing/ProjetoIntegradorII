@@ -69,7 +69,7 @@ a = Treasure(local2)
 
 send_toSR = Communication("192.168.1.127", "50009",'toSR')
 
-receive_fromSR = Communication("192.168.127", "50008", "fromSR")
+receive_fromSR = Communication("192.168.1.127", "50008", "fromSR")
 
 #send_toSA = Communication("127.0.0.1", "50006",'toSA')
 
