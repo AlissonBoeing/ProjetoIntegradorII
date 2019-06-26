@@ -1,4 +1,4 @@
-#from ev3dev.ev3 import *
+from ev3dev.ev3 import *
 import time
 from Treasure import *
 import threading
@@ -9,9 +9,9 @@ class Robo(threading.Thread):
         threading.Thread.__init__(self)
         self.setDaemon(False)
         self.velocidade  = vel
- #       self.l           = LargeMotor('outA')# esquerda
-  #      self.r           = LargeMotor('outD')# direita
-   #     self.cl          = ColorSensor()
+        self.l           = LargeMotor('outA')# esquerda
+        self.r           = LargeMotor('outD')# direita
+        self.cl          = ColorSensor()
         self.colors      = ('unknown', 'black', 'blue', 'green', 'yellow', 'red', 'white', 'brown')
         self.id          = 'a0:f3:c1:0b:3c:48'
         self.cor         = cor
@@ -25,7 +25,14 @@ class Robo(threading.Thread):
         self.goal        = 0
         self.matar       = False
         self.setPausar()
+        self.ladversario = []
 
+    def getladversario(self):
+        #return self.ladversario
+        return ['0:3', '4:4']
+
+    def setladversario(self, ladversario):
+        self.ladversario = ladversario
 
     def setMatar(self,val):
         self.matar = val
@@ -51,8 +58,8 @@ class Robo(threading.Thread):
     def isParado(self):
         return self.parado
 
-    def setLista(self,lista): #verificar se o goal está na lista, se não seta matar
-        #comparar com a que ja está no robo, e se a caça que ele esta ido atras ainda existe
+    def setLista(self,lista): #verificar se o goal esta na lista, se nao seta matar
+        #comparar com a que ja esta no robo, e se a caca que ele esta ido atras ainda existe
         listaatt = Treasure(lista)
         #listaatt = listaatt.ordenaListaCaca(self.getPos)
         if(not self.getGoal in listaatt.getString()):
@@ -109,81 +116,6 @@ class Robo(threading.Thread):
 
     def setNacaca(self, val):
         self.estounacaca = val
-
-    #ANTIGO
-    # def moverAutomatico(self):
-
-    #     while(True):
-    #         if(not self.matar):
-    #             #Define a melhor sequencia de cacas
-    #             self.treasure.ordenaListaCaca(self.getPos())
-
-    #             lcaca = self.treasure.getList()
-    #             #print(lcaca)
-    #             # ['1:1', '2:3', '5:2', '6:6', '4:3', '2:1']
-    #             print(self.treasure.getString())
-    #             while lcaca:
-    #                 self.goal = lcaca.pop()
-    #                 #lcaca.append(self.goal)
-    #                 print(str(self.goal))
-    #                 tesX = int(self.goal[0])
-    #                 tesY = int(self.goal[2])
-    #                 self.estounacaca = False
-    #                 self.parado = False
-    #             #se o sentido é leste ou oeste, de preferencia para arrumar a posicao no eixo X primeiro
-    #                 if self.sentido in ['L', 'O']:
-    #                 #primeiro vai pra leste ou oeste
-    #                     if tesX > self.posX:
-    #                         self.goLeste(tesX)
-    #                         print("indo leste")
-    #                     elif tesX < self.posX:
-    #                         self.goOeste(tesX)
-    #                         print("indo oeste")
-
-    #                 #depois vai pra norte ou sul
-    #                     if tesY > self.posY:
-    #                         self.goNorte(tesY)
-    #                         print("indo norte")
-    #                     elif tesY < self.posY:
-    #                         self.goSul(tesY)
-    #                         print("indo sul")
-    #                     print("Cheguei na caca")
-    #                 #lcaca.pop()
-    #                     self.estounacaca = True
-    #                     #self.parado = True
-    #                     #self.matar = True
-    #                     time.sleep(5)
-    #                     #self.join()
-
-    #             #se o sentido é norte ou sul, de preferencia para arrumar a posicao no eixo Y primeiro
-    #                 elif self.sentido in ['N', 'S']:
-    #                     #primeiro vai pra norte ou sul
-    #                     if tesY > self.posY:
-    #                         self.goNorte(tesY)
-    #                         print("indo norte")
-    #                     elif tesY < self.posY:
-    #                         self.goSul(tesY)
-    #                         print("indo sul")
-
-    #                 #depois vai pra leste ou oeste
-    #                     if tesX > self.posX:
-    #                         self.goLeste(tesX)
-    #                         print("indo leste")
-    #                     elif tesX < self.posX:
-    #                         self.goOeste(tesX)
-    #                         print("indo oeste")
-
-    #                     print("Cheguei na caca")
-    #                 #lcaca.pop()
-    #                     self.estounacaca = True
-    #                     #self.parado = True
-    #                     #self.matar = True
-    #                     time.sleep(5)                        #self.join()
-
-    #         else:
-    #             self.setPausar()
-
-    #         print("acabou cacas")
 
     def goToPos(self, pos):
 
@@ -305,6 +237,164 @@ class Robo(threading.Thread):
         else:
             return lhorizontal + lvertical
 
+    # Exemplo: Robo esta em (0:0) e precisa ir pra (0:1), mas em (0:1) ha um adversario.
+    # entao ele verifica qual a proxima posicao que deve ir depois de (0:1), vamos supor que seja (0:2).
+    # entao ele faz um desvio pela lateral
+    # Esse metodo nao movimenta o robo, apenas retorna uma lista das posicoes que devem ser tomadas para
+    # contornar o adversario em forma de C
+    def desviaEmC(self, proxProx):
+        # Se existir uma posicao alem da proxima
+        if proxProx != 0:
+            # Se o sentido for norte, estiver na regiao e na mesma coluna
+            if self.sentido == 'N' and self.posX != 0 and self.posY < 5 and self.posX == int(proxProx[0]):
+                pos1 = str(self.posX-1) + ':' + str(self.posY)
+                pos2 = str(self.posX-1) + ':' + str(self.posY+1)
+                pos3 = str(self.posX-1) + ':' + str(self.posY+2)
+                return [pos1, pos2, pos3]
+
+            # Se o sentido for sul, estiver na regiao e na mesma coluna
+            elif self.sentido == 'S' and self.posX != 0 and self.posY > 1 and self.posX == int(proxProx[0]):
+                pos1 = str(self.posX-1) + ':' + str(self.posY)
+                pos2 = str(self.posX-1) + ':' + str(self.posY-1)
+                pos3 = str(self.posX-1) + ':' + str(self.posY-1)
+                return [pos1, pos2, pos3]
+
+            # Se o sentido for leste, estiver na regiao e na mesma linha
+            elif self.sentido == 'L' and self.posY != 6 and self.posX < 5 and self.posY == int(proxProx[2]):
+                pos1 = str(self.posX) + ':' + str(self.posY+1)
+                pos2 = str(self.posX+1) + ':' + str(self.posY+1)
+                pos3 = str(self.posX+2) + ':' + str(self.posY+1)
+                return [pos1, pos2, pos3]
+
+            # Se o sentido for oeste, estiver na regiao e na mesma linha
+            elif self.sentido == 'O' and self.posY != 6 and self.posX > 1 and self.posY == int(proxProx[2]):
+                pos1 = str(self.posX) + ':' + str(self.posY+1)
+                pos2 = str(self.posX-1) + ':' + str(self.posY+1)
+                pos3 = str(self.posX-2) + ':' + str(self.posY+1)
+                return [pos1, pos2, pos3]
+
+            #tratando extremos daqui pra baixo
+            elif self.sentido == 'N' and self.posX == 0 and self.posY < 5 and int(proxProx[0]) == 0:
+                pos1 = str(self.posX+1) + ':' + str(self.posY)
+                pos2 = str(self.posX+1) + ':' + str(self.posY+1)
+                pos3 = str(self.posX+1) + ':' + str(self.posY+2)
+                return [pos1, pos2, pos3]
+
+            elif self.sentido == 'S' and self.posX == 0 and self.posY > 1 and int(proxProx[0]) == 0:
+                pos1 = str(self.posX+1) + ':' + str(self.posY)
+                pos2 = str(self.posX+1) + ':' + str(self.posY-1)
+                pos3 = str(self.posX+1) + ':' + str(self.posY-2)
+                return [pos1, pos2, pos3]
+
+            elif self.sentido == 'L' and self.posY == 6 and self.posX < 5 and int(proxProx[2]) == 6:
+                pos1 = str(self.posX) + ':' + str(self.posY-1)
+                pos2 = str(self.posX+1) + ':' + str(self.posY-1)
+                pos3 = str(self.posX+2) + ':' + str(self.posY-1)
+                return [pos1, pos2, pos3]
+
+            elif self.sentido == 'O' and self.posY == 6 and self.posX > 1 and int(proxProx[2]) == 6:
+                pos1 = str(self.posX) + ':' + str(self.posY-1)
+                pos2 = str(self.posX-1) + ':' + str(self.posY-1)
+                pos3 = str(self.posX-2) + ':' + str(self.posY-1)
+                return [pos1, pos2, pos3]
+
+    #Deve se chamar essa funcao quando o robo esta na frente de uma posicao impedida por outro robo
+    #Por exemplo: Se o robo esta em 1:3 e sentido norte e a funcao eh chamada, logo, presume-se que
+    #a posicao que devemos desviar eh a posicao 1:4 pois seria a proxima que o robo iria.
+    #Se o sentido fosse sul, a posicao bloqueada seria suposta como a 1:2
+    #Se o sentido fosse oeste, a posicao bloqueada seria suposta como a 2:3
+    #Se o sentido fosse leste, a posicao bloqueada seria suposta como a 0:3
+    #A funcao retorna uma lista com as posicoes a serem percorridas ate a caca desviando da
+    #posicao bloqueada
+    def desviaEmL(self):
+
+        tesX = int(self.goal[0])
+        tesY = int(self.goal[2])
+
+        robX = self.posX
+        robY = self.posY
+
+        posRob = str(robX) + ':' + str(robY)
+        posTes = str(tesX) + ':' + str(tesY)
+
+        lhorizontal = []
+        lvertical   = []
+
+        aux = 666
+        auy = 666
+
+        if robX < tesX:
+            aux = 1
+        else:
+            aux = -1
+
+        if robY < tesY:
+            auy = 1
+        else:
+            auy = -1
+
+        if posRob != posTes:
+            if self.sentido in ['L', 'O']:
+
+                for i in range(robY+auy, tesY+auy, auy):
+                    coordenada = str(robX) + ':' + str(i)
+                    lvertical.append(coordenada)
+
+                if robY != tesY:
+                    robY = int(coordenada[2])
+
+                for i in range(robX+aux, tesX+aux, aux):
+                    coordenada = str(i) + ':' + str(robY)
+                    lhorizontal.append(coordenada)
+
+            else:
+                for i in range(robX+aux, tesX+aux, aux):
+                    coordenada = str(i) + ':' + str(robY)
+                    lhorizontal.append(coordenada)
+
+                if robX != tesX:
+                    robX = int(coordenada[0])
+
+                for i in range(robY+auy, tesY+auy, auy):
+                    coordenada = str(robX) + ':' + str(i)
+                    lvertical.append(coordenada)
+
+        if self.sentido in ['L', 'O']:
+            return lvertical + lhorizontal
+        else:
+            return lhorizontal + lvertical
+
+    def desvia(self, lcaminho, posOcupada):
+        posOcupadaX = int(posOcupada[0])
+        posOcupadaY = int(posOcupada[2])
+
+        index = lcaminho.index(posOcupada)
+
+        #tente pegar a proximo->proximo pos
+        try:
+            proxProx = lcaminho[index + 1] #isso da erro se n houver na lista
+            proxProxX = int(proxProx[0])
+            proxProxY = int(proxProx[2])
+        except:
+            proxProx = 0
+
+        #se robo e 'proxima->proxima pos' estao na msm linha ou coluna, desvia em C
+        if (self.posX == proxProxX or self.posY == proxProxY) and (proxProx != 0):
+            ldesvio = self.desviaEmC(proxProx)
+        else:
+            ldesvio = self.desviaEmL()
+
+        #versao mais facil
+        for i in ldesvio:
+            self.goToPos(i)
+
+        # #versao recursiva
+        # for i in ldesvio:
+        #     if i not in self.getladversario():
+        #         self.goToPos
+        #     else:
+        #         self.desvia(ldesvio, i)
+
     #NOVO'
     def moverAutomatico(self):
 
@@ -318,11 +408,16 @@ class Robo(threading.Thread):
                     print('Indo para caca: ' + str(self.goal))
                     print("CAMINHO")
                     print(self.fazCaminho())
-                    for i in self.fazCaminho():
+                    lcaminho = self.fazCaminho()
+                    for i in lcaminho:
                         if(not self.matar):
                             self.parado = False
                             print(i)
-                            self.goToPos(i)
+                            ladversario = self.getladversario()
+                            if i not in ladversario: #se a posicao que to indo n tem adversario
+                                self.goToPos(i)
+                            else:
+                                self.desvia(lcaminho, i)
                             self.parado = True
                             print("posicao do robo " + (str(self.posX) + ":" + str(self.posY)))
                             print("posicao do goal " + str(self.goal))
@@ -341,6 +436,7 @@ class Robo(threading.Thread):
                 self.setPausar()
 
             print("acabou cacas")
+
 
     def goLeste(self, x):
         if self.sentido == 'N':
