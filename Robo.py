@@ -242,57 +242,57 @@ class Robo(threading.Thread):
     # entao ele faz um desvio pela lateral
     # Esse metodo nao movimenta o robo, apenas retorna uma lista das posicoes que devem ser tomadas para
     # contornar o adversario em forma de C
-    def desviaEmC(self, proxCam):
+    def desviaEmC(self, proxProx):
         # Se existir uma posicao alem da proxima
-        if proxCam != 0:
+        if proxProx != 0:
             # Se o sentido for norte, estiver na regiao e na mesma coluna
-            if self.sentido == 'N' and self.posX != 0 and self.posY < 5 and self.posX == int(proxCam[0]):
+            if self.sentido == 'N' and self.posX != 0 and self.posY < 5 and self.posX == int(proxProx[0]):
                 pos1 = str(self.posX-1) + ':' + str(self.posY)
                 pos2 = str(self.posX-1) + ':' + str(self.posY+1)
                 pos3 = str(self.posX-1) + ':' + str(self.posY+2)
                 return [pos1, pos2, pos3]
 
             # Se o sentido for sul, estiver na regiao e na mesma coluna
-            elif self.sentido == 'S' and self.posX != 0 and self.posY > 1 and self.posX == int(proxCam[0]):
+            elif self.sentido == 'S' and self.posX != 0 and self.posY > 1 and self.posX == int(proxProx[0]):
                 pos1 = str(self.posX-1) + ':' + str(self.posY)
                 pos2 = str(self.posX-1) + ':' + str(self.posY-1)
                 pos3 = str(self.posX-1) + ':' + str(self.posY-1)
                 return [pos1, pos2, pos3]
 
             # Se o sentido for leste, estiver na regiao e na mesma linha
-            elif self.sentido == 'L' and self.posY != 6 and self.posX < 5 and self.posY == int(proxCam[2]):
+            elif self.sentido == 'L' and self.posY != 6 and self.posX < 5 and self.posY == int(proxProx[2]):
                 pos1 = str(self.posX) + ':' + str(self.posY+1)
                 pos2 = str(self.posX+1) + ':' + str(self.posY+1)
                 pos3 = str(self.posX+2) + ':' + str(self.posY+1)
                 return [pos1, pos2, pos3]
 
             # Se o sentido for oeste, estiver na regiao e na mesma linha
-            elif self.sentido == 'O' and self.posY != 6 and self.posX > 1 and self.posY == int(proxCam[2]):
+            elif self.sentido == 'O' and self.posY != 6 and self.posX > 1 and self.posY == int(proxProx[2]):
                 pos1 = str(self.posX) + ':' + str(self.posY+1)
                 pos2 = str(self.posX-1) + ':' + str(self.posY+1)
                 pos3 = str(self.posX-2) + ':' + str(self.posY+1)
                 return [pos1, pos2, pos3]
 
             #tratando extremos daqui pra baixo
-            elif self.sentido == 'N' and self.posX == 0 and self.posY < 5 and int(proxCam[0]) == 0:
+            elif self.sentido == 'N' and self.posX == 0 and self.posY < 5 and int(proxProx[0]) == 0:
                 pos1 = str(self.posX+1) + ':' + str(self.posY)
                 pos2 = str(self.posX+1) + ':' + str(self.posY+1)
                 pos3 = str(self.posX+1) + ':' + str(self.posY+2)
                 return [pos1, pos2, pos3]
 
-            elif self.sentido == 'S' and self.posX == 0 and self.posY > 1 and int(proxCam[0]) == 0:
+            elif self.sentido == 'S' and self.posX == 0 and self.posY > 1 and int(proxProx[0]) == 0:
                 pos1 = str(self.posX+1) + ':' + str(self.posY)
                 pos2 = str(self.posX+1) + ':' + str(self.posY-1)
                 pos3 = str(self.posX+1) + ':' + str(self.posY-2)
                 return [pos1, pos2, pos3]
 
-            elif self.sentido == 'L' and self.posY == 6 and self.posX < 5 and int(proxCam[2]) == 6:
+            elif self.sentido == 'L' and self.posY == 6 and self.posX < 5 and int(proxProx[2]) == 6:
                 pos1 = str(self.posX) + ':' + str(self.posY-1)
                 pos2 = str(self.posX+1) + ':' + str(self.posY-1)
                 pos3 = str(self.posX+2) + ':' + str(self.posY-1)
                 return [pos1, pos2, pos3]
 
-            elif self.sentido == 'O' and self.posY == 6 and self.posX > 1 and int(proxCam[2]) == 6:
+            elif self.sentido == 'O' and self.posY == 6 and self.posX > 1 and int(proxProx[2]) == 6:
                 pos1 = str(self.posX) + ':' + str(self.posY-1)
                 pos2 = str(self.posX-1) + ':' + str(self.posY-1)
                 pos3 = str(self.posX-2) + ':' + str(self.posY-1)
@@ -364,64 +364,78 @@ class Robo(threading.Thread):
         else:
             return lhorizontal + lvertical
 
+    def desvia(self, lcaminho, posOcupada):
+        posOcupadaX = int(posOcupada[0])
+        posOcupadaY = int(posOcupada[2])
+
+        index = lcaminho.index(posOcupada)
+
+        #tente pegar a proximo->proximo pos
+        try:
+            proxProx = lcaminho[index + 1] #isso da erro se n houver na lista
+            proxProxX = int(proxProx[0])
+            proxProxY = int(proxProx[2])
+        except:
+            proxProx = 0
+
+        #se robo e 'proxima->proxima pos' estao na msm linha ou coluna, desvia em C
+        if (self.posX == proxProxX or self.posY == proxProxY) and (proxProx != 0):
+            ldesvio = self.desviaEmC(proxProx)
+        else:
+            ldesvio = self.desviaEmL()
+
+        #versao mais facil
+        for i in ldesvio:
+            self.goToPos(i)
+
+        # #versao recursiva
+        # for i in ldesvio:
+        #     if i not in self.getladversario():
+        #         self.goToPos
+        #     else:
+        #         self.desvia(ldesvio, i)
+
+    #NOVO'
     def moverAutomatico(self):
 
         while(True):
             if(not self.matar):
-                ladversario = self.getladversario()
                 self.treasure.ordenaListaCaca(self.getPos())
                 #lcaca = self.treasure.getList()
                 print('Cacas a pegar: '  + self.treasure.getString())
-                print('Lista de adversarios: ')
-                print(ladversario)
                 if (self.treasure.getList()):
-                    print('Entrou no ifzao')
                     self.goal = self.treasure.popTreasure()
                     print('Indo para caca: ' + str(self.goal))
+                    print("CAMINHO")
+                    print(self.fazCaminho())
                     lcaminho = self.fazCaminho()
-                    print("CAMINHO: ")
-                    print(lcaminho)
-                    i = 0
-                    while i < len(lcaminho):
-                        if len(lcaminho) > i+1:
-                            proxCam = lcaminho[i+1]
-                        else:
-                            proxCam = 0 # 0 representa sem proximo caminho
+                    for i in lcaminho:
                         if(not self.matar):
                             self.parado = False
-                            print('quero ir para para pos: ' + str(lcaminho[i]))
-                            print('Adversarios: ')
-                            print(ladversario)
-                            if str(lcaminho[i]) not in ladversario:
-                                print('Pos: ' + str(lcaminho[i]) + ' livre. To indo para ela')
-                                self.goToPos(lcaminho[i])
+                            print(i)
+                            ladversario = self.getladversario()
+                            if i not in ladversario: #se a posicao que to indo n tem adversario
+                                self.goToPos(i)
                             else:
-                                print('Pos: ' + str(lcaminho[i]) + ' ocupada')
-                                #se tesouro e robo estao na msm linha ou coluna, desvie em C
-                                if self.posX == int(self.goal[0]) or self.posY == int(self.goal[2]):
-                                    print('Desviando em C')
-                                    desvio = self.desviaEmC(proxCam)
-                                    for j in desvio:
-                                        self.goToPos(j)
-                                    ladversario.remove(lcaminho[i])
-                                #se o tesouro e robo estao em linha ou coluna diferentes
-                                else:
-                                    print('Desviando em L')
-                                    lcaminho = self.desviaEmL()
-                                    i = 0
-
+                                self.desvia(lcaminho, i)
                             self.parado = True
                             print("posicao do robo " + (str(self.posX) + ":" + str(self.posY)))
                             print("posicao do goal " + str(self.goal))
                             time.sleep(3)
-                            i = i + 1
+                            #if(self.matar):
+                            #    break
                     if(str(self.goal) == (str(self.posX) + ":" + str(self.posY))):
                         self.estounacaca = True
                         self.parado = True
                         time.sleep(3)
 
+                    #self.estounacaca = False
+                    #self.parado = False
+
             else:
                 self.setPausar()
+
+            print("acabou cacas")
 
 
     def goLeste(self, x):
