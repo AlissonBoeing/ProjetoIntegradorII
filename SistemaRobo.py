@@ -29,6 +29,9 @@ receive_fromSS.start()
 
 send_toSS.start()
 
+
+
+
 print("Ligando Robo")
 
 while(confRobo != 2):

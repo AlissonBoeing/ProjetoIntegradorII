@@ -91,20 +91,22 @@ print("Esperando endereço MAC do robô")
 testeSA = Comunica_SA(8888, '127.0.0.1')
 
 testeSA.login("teste1", ("0","2"))
-
+Comunica_SA.
 testeSA.run()
-
+#-------- Recebe conexao do SR -> loga no SA -> recebe as configurações e Inicia quando receber start ----- #
 
 while (1):
     if(isRobo == 0):
         if(receive_fromSR.getConfigList()):
-            #if (len(receive_fromSR.getConfigList().pop()) == 17):
-            #receive_fromSR.popConfigList()
             if (len(receive_fromSR.popConfigList()) == 17):
                 print("Endereço MAC recebido")
                 isRobo = 1
                 send_toSR.send("ack,OK")
                 time.sleep(2)
+                #--- Robo cadastrado
+
+
+
                 send_toSR.send(modo)
                 send_toSR.send(cor)
                 send_toSR.send(local)
@@ -125,12 +127,7 @@ while (1):
                 resp = input("Existe caca na posicao ")
                 send_toSR.send("ack," + resp)
 
-        if(receive_fromSA.getAttlist()):
-            listatt = receive_fromSA.popAttlist()
-            send_toSR.send("cacass," + listatt)
-            send_toSR.send("ack,OK")
-            send_toSR.send(local)
-            time.sleep(5)
+
 
         #break
         #pass

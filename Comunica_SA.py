@@ -2,7 +2,6 @@ import socket
 from threading import Thread
 from Public import *
 import zmq
-
 # from src.Public import Commands
 
 class Comunica_SA:
