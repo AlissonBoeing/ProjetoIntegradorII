@@ -73,12 +73,24 @@ while(mode == -1 or lista_de_cacas == -1 or posin == -1 or sentido == -1):
 
 print("ROBO CONFIGURADO")
 
+
+
+
 #instancia Robo
 robot = Robo(200, mode, sentido, posin, strcacas)
 
+
+
 j = 0
 while(1):
-    if(mode == "manual"):
+    if (receive_fromSS.getConfigList()):  # recebeu alguma config
+        msg = receive_fromSS.popConfigList()
+        if(msg == "start"):
+            Partida = True
+        elif(msg == "stop"):
+            Partida = False
+
+    if(mode == "manual" and Partida):
         while(1):
             while(receive_fromSS.getCommandList()):
                 comando = receive_fromSS.popCommandList()
@@ -86,7 +98,7 @@ while(1):
                 if(comando in "vV"):
                     send_toSS.send("V")
 
-    else: # automatico
+    elif(mode == "automatico" and Partida): # automatico
         if (j == 0):
             robot.start()
             j = j + 1
@@ -95,29 +107,15 @@ while(1):
             if(receive_fromSS.getCommandList()): #recebeu algum comando
                 pass
 
-            if(receive_fromSS.getConfigList()): #recebeu alguma config
-                pass
+
 
             if(receive_fromSS.getAttlist()): #recebeu atualizacao
                 lista = receive_fromSS.popAttlist()
                 robot.setLista(lista)
-            #se for diferente robot.setLcacas(getlistadecacas)
 
-        #if(robot.isParado()):
-            #send_toSS.send("att," + robot.getPos())
-            #time.sleep(1)
-
-        #if(not str(robot.getGoal()) in robot.getTreasure().getString() and robot.isParado()):
-         #       robot.setPausar() #pausa o robo
-          #      robot.join()#pausa a thread
-           #     robot.start()     #reinicia a thread com a lista atualizada
-                #robot.moverAutomatico()
-        #print ("to aqui")
         while(robot.isNacaca()):
             robot.setMatar(True)
-            #robot.setPausar()
             print("ESTOU NA CACA")
-            #robot.join()
             send_toSS.send("c,v") # + robot.getPos())
             if(receive_fromSS.getConfigList()):
                 resp = receive_fromSS.popConfigList()
@@ -125,12 +123,9 @@ while(1):
                     print("Recebido OK")
                     robot.setMatar(False)
                     robot.setNacaca(False)
-                    #teste = robot.getTreasure()
-                    #teste.removeCaca(robot.getGoal())
-                    #robot.setLista(teste.getString())
-                    #print(robot.getTreasure().getString())
-                    #robot.getTreasure().removeCaca(robot.getGoal())
-                    #robot.start()
+                elif(resp == "NOK"):
+                    robot.setMatar(False)
+                    robot.setNacaca(False)
             else:
                 time.sleep(3)
                 send_toSS.send("c,v")

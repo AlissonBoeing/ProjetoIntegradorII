@@ -107,10 +107,9 @@ while (1):
                             # com_SA.try_move((int(posAtual[0]),int(posAtual[2])))
                             send_toSR.send("c," + entrada)
 
-
-
             if (receive_fromSR.getAttlist()):  # recebeu alguma atualizacao
-                atual = receive_fromSR.popAttlist()
+                posAtual = receive_fromSR.popAttlist()
+                com_SA.try_move((int(posAtual[0]), int(posAtual[2])))
 
             if (receive_fromSR.getConfigList()):  # recebeu alguma config
                 pass
