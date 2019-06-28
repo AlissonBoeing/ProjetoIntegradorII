@@ -464,7 +464,7 @@ class Robo(threading.Thread):
             else:
                 self.setPausar()
 
-            print("acabou cacas")
+            #print("acabou cacas")
 
 
     def goLeste(self, x):

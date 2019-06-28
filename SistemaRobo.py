@@ -21,17 +21,10 @@ Partida = False
 
 
 mac = "mac,02:16:53:45:b3:9a"
-
 receive_fromSS = Communication("192.168.1.113", "50009", "fromSS")
-
 send_toSS = Communication("192.168.1.113", "50008", "toSS")
-
 receive_fromSS.start()
-
 send_toSS.start()
-
-
-
 
 print("Ligando Robo")
 
@@ -91,7 +84,7 @@ while(1):
             Partida = False
 
     if(mode == "manual" and Partida):
-        print("entrou no manual")
+        #print("entrou no manual")
         while(1):
             while(receive_fromSS.getCommandList()):
                 comando = receive_fromSS.popCommandList()
@@ -100,7 +93,7 @@ while(1):
                     send_toSS.send("V")
 
     elif(mode == "automatico" and Partida): # automatico
-        print("entrou no automatico")
+        #print("entrou no automatico")
         if (j == 0):
             robot.start()
             j = j + 1
@@ -121,7 +114,7 @@ while(1):
         while(robot.isNacaca()):
             robot.setMatar(True)
             print("ESTOU NA CACA")
-            if (i == 0):
+            if (i == 2):
                 send_toSS.send("c,v") # + robot.getPos())
                 i = i + 1
             if(receive_fromSS.getConfigList()):

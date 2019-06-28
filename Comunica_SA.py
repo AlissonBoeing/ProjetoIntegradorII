@@ -116,6 +116,7 @@ class Comunica_SA:
             print("mapa atualizado", mapa_atualizado)
 
         elif msg.cmd == Commands.STATUS_GET_FLAG:
+                #print("status da caca" + str(msg.data))
                 self.commands_list.append(msg.data)
                 print("status da caca" + str(msg.data))
 

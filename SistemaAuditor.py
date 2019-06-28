@@ -259,7 +259,9 @@ class Auditor:
 
         self._router_socket.send_multipart(
             [msg.address, Message(cmd=Commands.STATUS_GET_FLAG, data=status).serialize()])
+        a = Message(cmd=Commands.STATUS_GET_FLAG, data=status)
         print("status de valida caca enviado")
+        self._publish_socket.send(a.serialize())
         self._blocked = False
 
     def is_blocked(self):
