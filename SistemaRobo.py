@@ -117,10 +117,13 @@ while(1):
                 lista = receive_fromSS.popAttlist()
                 robot.setLista(lista)
 
+        i = 0
         while(robot.isNacaca()):
             robot.setMatar(True)
             print("ESTOU NA CACA")
-            send_toSS.send("c,v") # + robot.getPos())
+            if (i == 0):
+                send_toSS.send("c,v") # + robot.getPos())
+                i = i + 1
             if(receive_fromSS.getConfigList()):
                 resp = receive_fromSS.popConfigList()
                 if (resp == "OK"):

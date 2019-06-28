@@ -118,6 +118,10 @@ while (1):
                 msg = receive_fromSR.popCommandList()
                 if (msg in "vV"):
                     com_SA.get_flag((int(posAtual[0]), int(posAtual[2])))
+                if (msg == "200"):
+                    send_toSR.send("ack,OK")
+                elif(msg == "400"):
+                    send_toSR.send("ack,NOK")
 
             if (com_SA.get_commands_list()):
                 msg = com_SA.pop_commands_list()
