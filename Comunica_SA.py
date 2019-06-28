@@ -9,6 +9,11 @@ class Comunica_SA:
         super().__init__()
         self.daemon = True
 
+        #self.receiveList = list()
+        self.map_list = list() #mapa de jogadores
+        self.flags_list = list() #mapa de cacas
+        self.commands_list = list() # comandos start stop e mode
+
         self.port = port
         self.servers_ip = ip
         self.my_ip = self._get_my_ip()
@@ -90,40 +95,52 @@ class Comunica_SA:
         print("Comando recebido : ", msg.cmd, "\nDados: ", msg.data)
         # Processa Mensagens vindas do socket subscribe
         # nem todas as mensagens terao resposta
-
+        #self.receiveList.append(msg)
 
         if msg.cmd == Commands.START:
             # recebe a lista de cacas
             # so recebe essa mensagem uma vez, que eh no inicio da partida
+           # self.receiveList.append(msg)
+
+            self.commands_list.append(msg.cmd)
+            self.flags_list.append(msg.data)
+
             lista_de_cacas = msg.data
             print("lista de cacas ", lista_de_cacas)
 
         elif msg.cmd == Commands.UPDATE_MAP:
             # recebe uma lista com a posicao de cada jogador
             # toda vez q um jogador se mexer, essa lista sera atualizada
+            self.map_list.append(msg.data)
             mapa_atualizado = msg.data
             print("mapa atualizado", mapa_atualizado)
 
         elif msg.cmd == Commands.UPDATE_FLAGS:
             # recebe a lista de bandeiras atualizadas
             # toda vez que alguem obter uma bandeira, essa lista sera atualizada
-            lista_de_cacas = msg.data
-            print("lista de cacas ", lista_de_cacas)
+            self.flags_list.append(msg.data)
+            self.lista_de_cacas = msg.data
+            print("lista de cacas ", self.lista_de_cacas)
 
         elif msg.cmd == Commands.MODE:
             # recebe o modo de jogo
             # modo_de_jogo eh true se for manual
             # modo_de_jogo eh false se for automatico
             # quem define o modo de jogo eh o arbitro
-
+            #self.commands_list.append(msg.data)
             modo_de_jogo = msg.data
-            if modo_de_jogo: print("manual\n")
-            else: print("automatico\n")
+            if modo_de_jogo:
+                print("manual\n")
+                self.commands_list.append("manual")
+            else:
+                print("automatico\n")
+                self.commands_list.append("automatico")
 
         elif msg.cmd == Commands.STOP:
             # metodo para parar a partida
             # nao tem dados
-            print("PARA ESSA PORRA DE JOGO, BICHO")
+            self.commands_list.append(msg.cmd)
+            print("PARAR O JOGO")
             pass
         else:
             pass
@@ -134,20 +151,35 @@ class Comunica_SA:
         self.daemon.daemon = False
         self.daemon.start()
 
+    def get_map_list(self):
+        return self.map_list# mapa de jogadores
+    def get_flags_list(self): # mapa de cacas
+        return self.flags_list
+    def get_commands_list(self):
+        return self.commands_list
 
-if __name__ == "__main__":
+    def pop_map_list(self):
+        return self.map_list.pop()
+    def pop_flags_list(self):
+        return self.flags_list.pop()
+    def pop_commands_list(self):
+        return self.commands_list.pop()
 
-    # cria objeto e inicia thread
-    com = Comunica_SA(Commands.PORT_SA, "localhost")
-    com.run()
 
-    # testa login
-    com.login("ID de teste", (-1,-1)) # id do robo e posicao inicial
-    # tem que da o start no auditor para que ele envie a lista de cacas
-    # dai eh so digitar uma caca da lista pra testar
-    # vai ficar meio bugado pq vai ter duas threads escrevendo no mesmo terminal
-    coord = int(input("\nX: ")), int(input("Y: "))
-    com.get_flag(coord)
-
-    # testa mover
-    com.try_move((0,2))
+# if __name__ == "__main__":
+#
+#     # cria objeto e inicia thread
+#     com = Comunica_SA(Commands.PORT_SA, "localhost")
+#     com.run()
+#
+#
+#     # testa login
+#     com.login("ID de teste", (-1,-1)) # id do robo e posicao inicial
+#     # tem que da o start no auditor para que ele envie a lista de cacas
+#     # dai eh so digitar uma caca da lista pra testar
+#     # vai ficar meio bugado pq vai ter duas threads escrevendo no mesmo terminal
+#     coord = int(input("\nX: ")), int(input("Y: "))
+#     com.get_flag(coord)
+#
+#     # testa mover
+#     com.try_move((0,2))

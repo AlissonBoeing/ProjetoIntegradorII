@@ -388,6 +388,7 @@ class InterfaceAuditora:
                 if(not gameStatus):
                     if(modoAtual != -1):
                         self.auditor.inicia_partida()
+                        self.auditor._update_map()
                         print("Iniciou a partida: " + str(game))
                         gameStatus = True
                     else:

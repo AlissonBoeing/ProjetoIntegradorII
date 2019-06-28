@@ -5,7 +5,7 @@ import threading
 
 class Robo(threading.Thread):
 
-    def __init__(self, vel, cor, modo,  sentido, posin, li):
+    def __init__(self, vel, modo,  sentido, posin, li):
         threading.Thread.__init__(self)
         self.setDaemon(False)
         self.velocidade  = vel
