@@ -14,7 +14,7 @@ class Robo(threading.Thread):
         self.cl          = ColorSensor()
         self.colors      = ('unknown', 'black', 'blue', 'green', 'yellow', 'red', 'white', 'brown')
         self.id          = 'a0:f3:c1:0b:3c:48'
-        self.cor         = cor
+        #self.cor         = cor
         self.sentido     = sentido
         self.modo        = modo
         self.posX        = int(posin[0])
