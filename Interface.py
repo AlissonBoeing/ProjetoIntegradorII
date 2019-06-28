@@ -44,8 +44,8 @@ listacacasSS = -1
 
 
 # comunicacoes #
-send_toSR = Communication("192.168.1.127", "50009",'toSR')
-receive_fromSR = Communication("192.168.1.127", "50008", "fromSR")
+send_toSR = Communication("192.168.43.248", "50009",'toSR')
+receive_fromSR = Communication("192.168.43.248", "50008", "fromSR")
 send_toSR.start()
 receive_fromSR.start()
 com_SA = Comunica_SA(8888, '127.0.0.1')

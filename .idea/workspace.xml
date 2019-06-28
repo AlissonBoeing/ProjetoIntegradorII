@@ -4,11 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/Interface.py" line="36" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a6d46be-e84c-436f-bfe4-d811d2bf799e" name="Default" comment="teste no robo">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemaRobo.py" beforeDir="false" afterPath="$PROJECT_DIR$/SistemaRobo.py" afterDir="false" />
-    </list>
+    <list default="true" id="9a6d46be-e84c-436f-bfe4-d811d2bf799e" name="Default" comment="teste no robo" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SistemaRobo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="86" column="12" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
+            <state relative-caret-position="213">
+              <caret line="91" selection-start-line="91" selection-end-line="91" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -35,7 +31,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Robo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="240">
               <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
@@ -44,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Interface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="113" column="73" lean-forward="true" selection-start-line="113" selection-start-column="73" selection-end-line="113" selection-end-column="73" />
+            <state relative-caret-position="213">
+              <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -281,13 +277,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559160980135</updated>
-    </task>
-    <task id="LOCAL-00016" summary="teste no robo">
-      <created>1559582079110</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1559582079110</updated>
     </task>
     <task id="LOCAL-00017" summary="teste no robo">
       <created>1559582896152</created>
@@ -625,7 +614,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561681225543</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="teste no robo">
+      <created>1561742663918</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1561742663919</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TodoView">
@@ -736,16 +732,6 @@
         <state relative-caret-position="-1080" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Robo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Treasure.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -773,16 +759,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interface.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="113" column="73" lean-forward="true" selection-start-line="113" selection-start-column="73" selection-end-line="113" selection-end-column="73" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Communication.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
@@ -795,8 +771,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SistemaRobo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="86" column="12" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
+        <state relative-caret-position="213">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Robo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Interface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
