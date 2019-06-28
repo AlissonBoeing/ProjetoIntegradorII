@@ -117,8 +117,7 @@ while (1):
             if(receive_fromSR.getCommandList()):
                 msg = receive_fromSR.popCommandList()
                 if (msg in "vV"):
-                    resp = input("Existe caca na posicao ")
-                    send_toSR.send("ack," + resp)
+                    com_SA.get_flag((int(posAtual[0]), int(posAtual[2])))
 
             if (com_SA.get_commands_list()):
                 msg = com_SA.pop_commands_list()
@@ -165,6 +164,8 @@ while (1):
 
             if(com_SA.get_map_list()):
                 msg = com_SA.pop_map_list()
+                msg = traduzirListacacas(msg)
+                send_toSR.send("adv," + msg)
                 print(msg)
                 pass
 

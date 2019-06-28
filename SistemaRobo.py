@@ -91,6 +91,7 @@ while(1):
             Partida = False
 
     if(mode == "manual" and Partida):
+        print("entrou no manual")
         while(1):
             while(receive_fromSS.getCommandList()):
                 comando = receive_fromSS.popCommandList()
@@ -99,6 +100,7 @@ while(1):
                     send_toSS.send("V")
 
     elif(mode == "automatico" and Partida): # automatico
+        print("entrou no automatico")
         if (j == 0):
             robot.start()
             j = j + 1
@@ -107,7 +109,9 @@ while(1):
             if(receive_fromSS.getCommandList()): #recebeu algum comando
                 pass
 
-
+            if(receive_fromSS.getConfigList()):
+                msg = receive_fromSS.popConfigList()
+                robot.setladversario(msg)
 
             if(receive_fromSS.getAttlist()): #recebeu atualizacao
                 lista = receive_fromSS.popAttlist()
@@ -128,7 +132,6 @@ while(1):
                     robot.setNacaca(False)
             else:
                 time.sleep(3)
-                send_toSS.send("c,v")
                 print("nao recebeu ok")
 
         #print("nao existe caca nessa posicao")
