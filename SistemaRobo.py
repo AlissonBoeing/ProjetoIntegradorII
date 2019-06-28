@@ -22,9 +22,9 @@ Partida = False
 
 mac = "mac,02:16:53:45:b3:9a"
 
-receive_fromSS = Communication("192.168.43.130", "50009", "fromSS")
+receive_fromSS = Communication("192.168.1.113", "50009", "fromSS")
 
-send_toSS = Communication("192.168.43.130", "50008", "toSS")
+send_toSS = Communication("192.168.1.113", "50008", "toSS")
 
 receive_fromSS.start()
 
