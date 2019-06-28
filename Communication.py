@@ -95,7 +95,7 @@ class Communication(threading.Thread):
             self.commandlist.append(messagedata[1])
         elif messagedata[0] == "cacas":
             self.configlist.append("@"+ messagedata[1])
-        elif(messagedata[0].startswith(("mac", "cor", "modo", "ack", "posin"))):
+        elif(messagedata[0].startswith(("mac", "comm", "modo", "ack", "posin"))):
             self.configlist.append(messagedata[1])
         else:
             self.attlist.append(messagedata[1])

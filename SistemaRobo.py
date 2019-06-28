@@ -8,36 +8,39 @@ from Robo import *
 #------- Atributos do SR ---------#
 
 isRobo = 0
-cor = 0
-modo = 0
 confRobo = 0
 strcacas = 0
-posin = 0
+
+#confs vindas do ss
+mode = -1
+lista_de_cacas = -1
+posin = -1
+sentido = -1
+Partida = False
+
 
 
 mac = "mac,02:16:53:45:b3:9a"
 
-receive_fromSS = Communication("192.168.1.147", "50009", "fromSS")
+receive_fromSS = Communication("192.168.1.113", "50009", "fromSS")
 
-send_toSS = Communication("192.168.1.147", "50008", "toSS")
-
-#send_toSS = Communication("127.0.0.1", "50010", "toSS")
-
-#send_toSS.start()
+send_toSS = Communication("192.168.1.113", "50008", "toSS")
 
 receive_fromSS.start()
 
 send_toSS.start()
 
+
+
+
 print("Ligando Robo")
 
-while(confRobo != 2):
+while(mode == -1 or lista_de_cacas == -1 or posin == -1 or sentido == -1):
     if (isRobo == 0):
-        #print("Enviando MAC")
         send_toSS.send(mac)
         time.sleep(1)
         if (receive_fromSS.getConfigList()):
-            print("AQQUI")
+            #print("AQQUI")
             if (receive_fromSS.popConfigList() == "OK"):
                 print("Robo Cadastrado no SS")
                 isRobo = 1
@@ -49,17 +52,21 @@ while(confRobo != 2):
 
         while(receive_fromSS.getConfigList()):
             msg = receive_fromSS.popConfigList()
-            if(msg == "azul" or msg == "verde"):
-                cor = msg
-                print("cor "+ cor)
-                confRobo = confRobo + 1
-            elif(msg == "manual" or msg == "automatico"):
-                modo = msg
-                print ("modo " + modo)
-                confRobo = confRobo + 1
+            if(msg == "manual"):
+                mode = "manual"
+                print ("modo " + str(mode))
+            elif(msg == "automatico"):
+                mode = "automatico"
+                print("modo " + str(mode))
             elif(msg[0] == "@"):
                 strcacas = msg[1:len(msg)] # msg[1:] tbm funciona
                 print("Cacas " + strcacas)
+                lista_de_cacas = strcacas
+            elif(msg in "NnSsLlOo"):
+                sentido = msg
+                print ("sentido " + msg)
+            elif(msg == "start"):
+                Partida = True
             else:
                 posin = msg
                 print("Posicao inicial " + posin)
@@ -67,11 +74,11 @@ while(confRobo != 2):
 print("ROBO CONFIGURADO")
 
 #instancia Robo
-robot = Robo(200, cor, modo, "N", posin, strcacas)
+robot = Robo(200, mode, sentido, posin, strcacas)
 
 j = 0
 while(1):
-    if(modo == "manual"):
+    if(mode == "manual"):
         while(1):
             while(receive_fromSS.getCommandList()):
                 comando = receive_fromSS.popCommandList()
