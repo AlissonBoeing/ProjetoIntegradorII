@@ -114,7 +114,7 @@ while(1):
         while(robot.isNacaca()):
             robot.setMatar(True)
             print("ESTOU NA CACA")
-            if (i == 2):
+            if (i < 2):
                 send_toSS.send("c,v") # + robot.getPos())
                 i = i + 1
             if(receive_fromSS.getConfigList()):

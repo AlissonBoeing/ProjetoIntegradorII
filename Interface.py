@@ -136,6 +136,7 @@ while (1):
                 elif (msg == "stop"):
                     send_toSR.send("comm,stop")
                     #apenas com a partida iniciada#
+
                     Partida = False
                 if (msg == 200):
                     send_toSR.send("ack,OK")
