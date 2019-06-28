@@ -101,7 +101,9 @@ while (1):
                                     "V - Validar caça;\n")
                     if (entrada):
                         if (entrada in "vV"):
-                            com_SA.get_flag((int(posAtual[0]), int(posAtual[2])))
+                            caca = input("digite sua posicao x:y")
+
+                            com_SA.get_flag((int(caca[0]), int(caca[2])))
                             time.sleep(2)
                         else:
                             # com_SA.try_move((int(posAtual[0]),int(posAtual[2])))
@@ -140,6 +142,21 @@ while (1):
                 elif (msg == "automatico"):
                     mode = "automatico"
                     send_toSR.send("comm,automatico")
+
+            if (com_SA.get_flags_list()):
+                msg = com_SA.pop_flags_list()
+                msg = traduzirListacacas(msg)
+                listacacasSS = msg
+                send_toSR.send("cacas," + msg)
+                # print("FLAGS NO SS" + str(msg))
+
+
+            if (com_SA.get_map_list()):
+                msg = com_SA.pop_map_list()
+                msg = traduzirListacacas(msg)
+                send_toSR.send("adv," + msg)
+                print(msg)
+
         else:
 
             if(com_SA.get_commands_list()):

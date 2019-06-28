@@ -114,9 +114,12 @@ class Comunica_SA:
             self.map_list.append(msg.data)
             mapa_atualizado = msg.data
             print("mapa atualizado", mapa_atualizado)
+
         elif msg.cmd == Commands.STATUS_GET_FLAG:
                 self.commands_list.append(msg.data)
                 print("status da caca" + str(msg.data))
+
+
         elif msg.cmd == Commands.UPDATE_FLAGS:
             # recebe a lista de bandeiras atualizadas
             # toda vez que alguem obter uma bandeira, essa lista sera atualizada

@@ -29,7 +29,7 @@ class Robo(threading.Thread):
 
     def getladversario(self):
         #return self.ladversario
-        return ['0:3', '4:4']
+        return self.ladversario
 
     def setladversario(self, ladversario):
         self.ladversario = ladversario
