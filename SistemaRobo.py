@@ -100,7 +100,7 @@ while(1):
         else: #verificar sempre as listas de recebimento: attlist,configlist,commandlist
 
 
-            if(Robo.enviar):
+            if(robot.enviar):
                 send_toSS.send("att," + str(robot.getPos()))
                 time.sleep(1)
 

@@ -28,6 +28,13 @@ class Robo(threading.Thread):
         self.ladversario = []
         self.enviar = False
 
+
+    def getEnviar(self):
+        return self.enviar
+
+    def setEnviar(self, valor):
+        self.enviar = valor
+
     def getladversario(self):
         #return self.ladversario
         return self.ladversario
