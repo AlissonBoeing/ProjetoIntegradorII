@@ -29,6 +29,7 @@ def atualizarmapa(lista):
 def traduzirListacacas(lista):
     # chega do SA[(0, 1), (1, 2), (2, 3), (3, 4), (1, 1)]
     # deve sair 1:1;2:3;5:2;6:6;4:3;2:1"
+
     strlista = ""
     for i in lista:
         strlista = strlista + (str(i[0]) + ":" + str(i[1]) + ";")
@@ -44,8 +45,8 @@ listacacasSS = -1
 
 
 # comunicacoes #
-send_toSR = Communication("127.0.0.1", "50009",'toSR')
-receive_fromSR = Communication("127.0.0.1", "50008", "fromSR")
+send_toSR = Communication("192.168.43.248", "50009",'toSR')
+receive_fromSR = Communication("192.168.43.248", "50008", "fromSR")
 send_toSR.start()
 receive_fromSR.start()
 com_SA = Comunica_SA(8888, '127.0.0.1')
@@ -196,10 +197,11 @@ while (1):
 
             if(com_SA.get_map_list()):
                 msg = com_SA.pop_map_list()
-                #msg = traduzirListacacas(msg)
-                send_toSR.send("adv," + msg)
+                if(not msg == ()):
+                    msg = traduzirListacacas(msg)
+                    send_toSR.send("adv," + msg)
                 print(msg)
-                pass
+                #pass
 
 
 

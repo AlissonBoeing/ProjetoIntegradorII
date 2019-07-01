@@ -26,6 +26,7 @@ class Robo(threading.Thread):
         self.matar       = False
         self.setPausar()
         self.ladversario = []
+        self.enviar = False
 
     def getladversario(self):
         #return self.ladversario
