@@ -21,8 +21,8 @@ Partida = False
 
 
 mac = "mac,02:16:53:45:b3:9a"
-receive_fromSS = Communication("192.168.1.113", "50009", "fromSS")
-send_toSS = Communication("192.168.1.113", "50008", "toSS")
+receive_fromSS = Communication("192.168.43.130", "50009", "fromSS")
+send_toSS = Communication("192.168.43.130", "50008", "toSS")
 receive_fromSS.start()
 send_toSS.start()
 
@@ -99,8 +99,16 @@ while(1):
             j = j + 1
         else: #verificar sempre as listas de recebimento: attlist,configlist,commandlist
 
-            if(receive_fromSS.getCommandList()): #recebeu algum comando
-                pass
+
+            if(Robo.enviar):
+                send_toSS.send("att," + str(robot.getPos()))
+                time.sleep(1)
+
+
+            if(receive_fromSS.getCommandList()):#recebeu algum comando
+                msg = receive_fromSS.popCommandList()
+                if(msg == "stop"):
+                    Partida = False
 
             if(receive_fromSS.getConfigList()):
                 msg = receive_fromSS.popConfigList()
@@ -129,34 +137,3 @@ while(1):
             else:
                 time.sleep(3)
                 print("nao recebeu ok")
-
-        #print("nao existe caca nessa posicao")
-                 #   pass #Nao existe caça na posicao que esta
-
-        if(robot.isParado()):
-            send_toSS.send("att," + str(robot.getPos()))
-            time.sleep(1)
-       # pass#robot.start()
-
-
-
-
-#def __init__(self, vel, cor, sentido, posX, posY, lcaca):
-
-
-        #print(send_toSS.getSendList())
-        #time.sleep(5)
-        #print("pronto para comandos")# print("Robo iniciado no modo" + modo + "com a cor" + cor)
-       # if(receive_fromSS.getCommandList()):
-
-
-
-
-#send_toSS.send(mac)
-
-
-#while(1):
-    #print("teste")
-    #send_toSS.send(mac)
-#    time.sleep(1)
-

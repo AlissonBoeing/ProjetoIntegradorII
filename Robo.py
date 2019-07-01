@@ -538,6 +538,7 @@ class Robo(threading.Thread):
 
 
     def moverFrente(self):
+        self.enviar = True
         self.parado = False
         print("movendo frente")
         #time.sleep(10)
@@ -551,6 +552,8 @@ class Robo(threading.Thread):
                 self.l.run_forever(speed_sp=self.velocidade)
             else:
                 self.setPausar()
+
+        self.enviar = False
 
         if self.colors[self.cl.value()] == "unknown":
             while self.colors[self.cl.value()] != "black":
@@ -581,7 +584,7 @@ class Robo(threading.Thread):
             self.l.run_forever(speed_sp=self.velocidade)
             self.r.run_forever(speed_sp=self.velocidade)
             time.sleep(0.1)
-
+        #self.enviar = False
         self.setPausar()
 
         if self.colors[self.cl.value()] == "green":

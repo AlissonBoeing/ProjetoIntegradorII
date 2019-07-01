@@ -44,8 +44,8 @@ listacacasSS = -1
 
 
 # comunicacoes #
-send_toSR = Communication("192.168.1.127", "50009",'toSR')
-receive_fromSR = Communication("192.168.1.127", "50008", "fromSR")
+send_toSR = Communication("127.0.0.1", "50009",'toSR')
+receive_fromSR = Communication("127.0.0.1", "50008", "fromSR")
 send_toSR.start()
 receive_fromSR.start()
 com_SA = Comunica_SA(8888, '127.0.0.1')
@@ -75,8 +75,8 @@ while (1):
     else:
 
         if(Partida):
+            #print("PARTIDA INICIADA")
 
-            posAtual = "0:0"
 
             if(mode == "manual"):
                 while (1):
@@ -107,7 +107,6 @@ while (1):
                     if (entrada):
                         if (entrada in "vV"):
                             caca = input("digite sua posicao x:y")
-
                             com_SA.get_flag((int(caca[0]), int(caca[2])))
                             time.sleep(2)
                         else:
@@ -116,14 +115,18 @@ while (1):
 
             if (receive_fromSR.getAttlist()):  # recebeu alguma atualizacao
                 posAtual = receive_fromSR.popAttlist()
-                com_SA.try_move((int(posAtual[0]), int(posAtual[2])))
+
+                #com_SA.try_move((int(posAtual[0]), int(posAtual[2])))
 
             if (receive_fromSR.getConfigList()):  # recebeu alguma config
                 pass
 
             if(receive_fromSR.getCommandList()):
                 msg = receive_fromSR.popCommandList()
+                print("DENTRO DO RECEIVE")
+                print(msg)
                 if (msg in "vV"):
+                    print("CHEGOU O V DO SR")
                     com_SA.get_flag((int(posAtual[0]), int(posAtual[2])))
 
 
@@ -159,10 +162,11 @@ while (1):
 
 
             if (com_SA.get_map_list()):
-                msg = com_SA.pop_map_list()
-                msg = traduzirListacacas(msg)
-                send_toSR.send("adv," + msg)
-                print(msg)
+                #msg = com_SA.pop_map_list()
+                pass
+                #msg = traduzirListacacas(msg)
+                #send_toSR.send("adv," + msg)
+               # print(msg)
 
         else:
 
@@ -192,7 +196,7 @@ while (1):
 
             if(com_SA.get_map_list()):
                 msg = com_SA.pop_map_list()
-                msg = traduzirListacacas(msg)
+                #msg = traduzirListacacas(msg)
                 send_toSR.send("adv," + msg)
                 print(msg)
                 pass
