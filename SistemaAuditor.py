@@ -259,9 +259,9 @@ class Auditor:
 
         self._router_socket.send_multipart(
             [msg.address, Message(cmd=Commands.STATUS_GET_FLAG, data=status).serialize()])
-        a = Message(cmd=Commands.STATUS_GET_FLAG, data=status)
+        #a = Message(cmd=Commands.STATUS_GET_FLAG, data=status)
         print("status de valida caca enviado")
-        self._publish_socket.send(a.serialize())
+        #self._publish_socket.send(a.serialize())
         self._blocked = False
 
     def is_blocked(self):
@@ -308,7 +308,7 @@ class Auditor:
         print(self.cacas)
         ##msg = Message(cmd=Commands.MODE, data=mode)
         #self._publish_socket.send(msg.serialize())
-        self.cacas = [(0,1),(1,2),(2,3),(3,4),(1,1)]
+        #self.cacas = [(0,1),(1,2),(2,3),(3,4),(1,1)]
         msg = Message(cmd=Commands.START, data=self.cacas)
         print("Bandeiras: ", self.cacas)
         self._publish_socket.send(msg.serialize())

@@ -45,8 +45,8 @@ listacacasSS = -1
 
 
 # comunicacoes #
-send_toSR = Communication("192.168.43.248", "50009",'toSR')
-receive_fromSR = Communication("192.168.43.248", "50008", "fromSR")
+send_toSR = Communication("192.168.1.127", "50009",'toSR')
+receive_fromSR = Communication("192.168.1.127", "50008", "fromSR")
 send_toSR.start()
 receive_fromSR.start()
 com_SA = Comunica_SA(8888, '127.0.0.1')
@@ -142,6 +142,7 @@ while (1):
                     #apenas com a partida iniciada#
 
                     Partida = False
+
                 if (msg == 200):
                     send_toSR.send("ack,OK")
                 elif(msg == 400):
@@ -197,7 +198,7 @@ while (1):
 
             if(com_SA.get_map_list()):
                 msg = com_SA.pop_map_list()
-                if(not msg == ()):
+                if(not None in msg):
                     msg = traduzirListacacas(msg)
                     send_toSR.send("adv," + msg)
                 print(msg)
