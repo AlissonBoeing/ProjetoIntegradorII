@@ -81,9 +81,9 @@ while(1):
         if(msg == "start"):
             Partida = True
         elif(msg == "stop"):
-            j = 0;
+            j = 0
             Partida = False
-        if (msg == "manual"):
+        elif (msg == "manual"):
             mode = "manual"
             print("modo " + str(mode))
         elif (msg == "automatico"):
@@ -129,9 +129,9 @@ while(1):
                 if(msg == "stop"):
                     Partida = False
 
-            if(receive_fromSS.getConfigList()):
-                msg = receive_fromSS.popConfigList()
-                robot.setladversario(msg)
+            #if(receive_fromSS.getConfigList()):
+               # msg = receive_fromSS.popConfigList()
+                #robot.setladversario(msg)
 
             if(receive_fromSS.getAttlist()): #recebeu atualizacao
                 lista = receive_fromSS.popAttlist()
