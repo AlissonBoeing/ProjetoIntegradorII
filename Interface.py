@@ -153,7 +153,7 @@ while (1):
                 print(msg)
                 if (msg in "vV"):
                     print("CHEGOU O V DO SR")
-                    com_SA.get_flag((int(posAtual[0]), int(posAtual[2])))
+                    com_SA.get_flag((int(posAtual[0]+1), int(posAtual[2])))
 
 
             if (com_SA.get_commands_list()):

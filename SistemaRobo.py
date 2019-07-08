@@ -83,6 +83,26 @@ while(1):
         elif(msg == "stop"):
             j = 0;
             Partida = False
+    if(receive_fromSS.getConfigList()):
+        msg = receive_fromSS.popConfigList()
+        if (msg == "manual"):
+            mode = "manual"
+            print("modo " + str(mode))
+        elif (msg == "automatico"):
+            mode = "automatico"
+            print("modo " + str(mode))
+        elif (msg[0] == "@"):
+            strcacas = msg[1:len(msg)]  # msg[1:] tbm funciona
+            print("Cacas " + strcacas)
+            lista_de_cacas = strcacas
+        elif (msg in "NnSsLlOo"):
+            sentido = msg
+            print("sentido " + msg)
+        elif (msg == "start"):
+            Partida = True
+        else:
+            posin = msg
+            print("Posicao inicial " + posin)
 
     if(mode == "manual" and Partida):
         #print("entrou no manual")
