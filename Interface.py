@@ -81,7 +81,12 @@ while (1):
 
             if(mode == "manual"):
                 while (1):
+                    if (com_SA.get_flags_list()):
+                        msg = com_SA.pop_flags_list()
+                        msg = traduzirListacacas(msg)
+                        listacacasSS = msg
 
+                        send_toSR.send("cacas," + msg)
                     if (com_SA.get_commands_list()):
                         msg = com_SA.pop_commands_list()
                         if(msg == 200):
@@ -100,6 +105,7 @@ while (1):
                             break
 
                     print("Robô Manual - Escolha uma das opções abaixo:")
+                    print("Lista de cacas disponiveis " + listacacasSS)
                     entrada = input("W - Mover para frente;\n"
                                     "A - Mover para esquerda;\n"
                                     "S - Mover para trás;\n"

@@ -81,6 +81,7 @@ while(1):
         if(msg == "start"):
             Partida = True
         elif(msg == "stop"):
+            j = 0;
             Partida = False
 
     if(mode == "manual" and Partida):

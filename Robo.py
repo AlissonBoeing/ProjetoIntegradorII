@@ -91,6 +91,8 @@ class Robo(threading.Thread):
 
         elif comando in 'Vv':
             self.obterCaca()
+        else:
+            self.setPausar()
 
     #Isso aqui eh aqui mesmo?
     def obterCaca(self):
@@ -433,7 +435,7 @@ class Robo(threading.Thread):
     def moverAutomatico(self):
 
         formaDoDesvio = -1
-
+        self.ladversario = "1:1,2:2"
         while(True):
             if(not self.matar):
                 self.treasure.ordenaListaCaca(self.getPos())
@@ -468,7 +470,8 @@ class Robo(threading.Thread):
 
                     #self.estounacaca = False
                     #self.parado = False
-
+                else:
+                    self.matar = True
             else:
                 self.setPausar()
 
@@ -546,7 +549,7 @@ class Robo(threading.Thread):
 
 
     def moverFrente(self):
-        self.enviar = True
+        #self.enviar = True
         self.parado = False
         print("movendo frente")
         #time.sleep(10)
@@ -561,7 +564,7 @@ class Robo(threading.Thread):
             else:
                 self.setPausar()
 
-        self.enviar = False
+        #self.enviar = False
 
         if self.colors[self.cl.value()] == "unknown":
             while self.colors[self.cl.value()] != "black":
@@ -606,7 +609,9 @@ class Robo(threading.Thread):
             elif self.sentido == 'N':
                 self.posY += 1
         self.parado = True
+        self.enviar = True
         print("Posicao atual " + self.getPos())
+        self.enviar = False
 
 
     def moverEsquerda(self):
