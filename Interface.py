@@ -142,8 +142,7 @@ while (1):
 
             if (receive_fromSR.getAttlist()):  # recebeu alguma atualizacao
                 posAtual = receive_fromSR.popAttlist()
-
-                #com_SA.try_move((int(posAtual[0]), int(posAtual[2])))
+                com_SA.try_move((int(posAtual[0]), int(posAtual[2])))
 
             if (receive_fromSR.getConfigList()):  # recebeu alguma config
                 pass
