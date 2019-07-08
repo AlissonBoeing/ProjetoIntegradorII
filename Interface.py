@@ -5,7 +5,9 @@ import time
 from Treasure import *
 from os import system, name
 from Comunica_SA import *
+
 #------- atributos do SS --------- #
+
 isRobo = 0
 
 def atualizarmapa(lista):
@@ -41,26 +43,20 @@ Partida = False
 mode = -1
 posAtual = -1
 listacacasSS = -1
-posin = "0:0"
+posin = "2:0" #definir aqui a posicao inicial
 
 
 
 # comunicacoes #
-send_toSR = Communication("192.168.1.127", "50009",'toSR')
-receive_fromSR = Communication("192.168.1.127", "50008", "fromSR")
+send_toSR = Communication("192.168.1.127", "50009",'toSR') #IP DO SS
+receive_fromSR = Communication("192.168.1.127", "50008", "fromSR") #IP DO SS
 send_toSR.start()
 receive_fromSR.start()
-com_SA = Comunica_SA(8888, '127.0.0.1')
+com_SA = Comunica_SA(8888, '192.168.1.123') #IP DO SA
 com_SA.run()
-com_SA.login("AlissonTeles", (posin[0],posin[2]))
+com_SA.login("AlissonTeles", (posin[0],posin[2])) #loga com a posicao inicial
 
 #-------- Recebe conexao do SR -> loga no SA -> recebe as configurações e Inicia quando receber start ----- #
-
-
-#atributos da partida
-
-
-
 
 while (1):
 
@@ -73,20 +69,15 @@ while (1):
                 time.sleep(2)
                 send_toSR.send("posin," + posin)
                 send_toSR.send("comm,N")
-                #--- Robo cadastrado
     else:
 
         if(Partida):
-            #print("PARTIDA INICIADA")
-
-
             if(mode == "manual"):
                 while (1):
                     if (com_SA.get_flags_list()):
                         msg = com_SA.pop_flags_list()
                         msg = traduzirListacacas(msg)
                         listacacasSS = msg
-
                         send_toSR.send("cacas," + msg)
                     if (com_SA.get_commands_list()):
                         msg = com_SA.pop_commands_list()
@@ -140,12 +131,10 @@ while (1):
                             # com_SA.try_move((int(posAtual[0]),int(posAtual[2])))
                             send_toSR.send("c," + entrada)
 
-            if (receive_fromSR.getAttlist()):  # recebeu alguma atualizacao
-                posAtual = receive_fromSR.popAttlist()
-                com_SA.try_move((int(posAtual[0]), int(posAtual[2])))
-
             if (receive_fromSR.getConfigList()):  # recebeu alguma config
                 pass
+
+
 
             if(receive_fromSR.getCommandList()):
                 msg = receive_fromSR.popCommandList()
@@ -153,19 +142,17 @@ while (1):
                 print(msg)
                 if (msg in "vV"):
                     print("CHEGOU O V DO SR")
-                    com_SA.get_flag((int(posAtual[0])+1, int(posAtual[2])))
+                    com_SA.get_flag((int(posAtual[0]), int(posAtual[2])))
 
 
             if (com_SA.get_commands_list()):
                 msg = com_SA.pop_commands_list()
-                if (msg == "start"):
-                    # mensagem do SA para comecar a partida, enviar para o SR
+                if (msg == "start"): # mensagem do SA para comecar a partida, enviar para o SR
                     Partida = True
                     send_toSR.send("comm,start")
                 elif (msg == "stop"):
                     send_toSR.send("comm,stop")
                     #apenas com a partida iniciada#
-
                     Partida = False
 
                 if (msg == 200):
@@ -187,6 +174,9 @@ while (1):
                 send_toSR.send("cacas," + msg)
                 # print("FLAGS NO SS" + str(msg))
 
+            if (receive_fromSR.getAttlist()):  # recebeu alguma atualizacao
+                posAtual = receive_fromSR.popAttlist()
+                com_SA.try_move((int(posAtual[0]), int(posAtual[2])))
 
             if (com_SA.get_map_list()):
                 msg = com_SA.pop_map_list()
@@ -229,7 +219,9 @@ while (1):
                 print(msg)
                 #pass
 
-
+            if (receive_fromSR.getAttlist()):  # recebeu alguma atualizacao
+                posAtual = receive_fromSR.popAttlist()
+                com_SA.try_move((int(posAtual[0]), int(posAtual[2])))
 
 
 

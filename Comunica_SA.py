@@ -82,12 +82,12 @@ class Comunica_SA:
         req = Message(cmd=Commands.GET_FLAG, data=coord)
         self.dealer_socket.send(req.serialize())
 
-        while True:
-            resp = self.dealer_socket.recv()
-            resp = Message(0, resp)
-            if (resp.cmd == Commands.STATUS_GET_FLAG):
-                self.commands_list.append(resp.data)
-                break
+       # while True:
+        #    resp = self.dealer_socket.recv()
+         #   resp = Message(0, resp)
+          #  if (resp.cmd == Commands.STATUS_GET_FLAG):
+           #     self.commands_list.append(resp.data)
+            #    break
 
 
     def _recv(self):

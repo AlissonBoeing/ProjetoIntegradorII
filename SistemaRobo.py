@@ -66,13 +66,8 @@ while(mode == -1 or lista_de_cacas == -1 or posin == -1 or sentido == -1):
 
 print("ROBO CONFIGURADO")
 
-
-
-
 #instancia Robo
 robot = Robo(200, mode, sentido, posin, strcacas)
-
-
 
 j = 0
 while(1):
