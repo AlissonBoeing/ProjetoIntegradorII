@@ -110,6 +110,10 @@ while(1):
                 robot.command(comando)
                 if(comando in "vV"):
                     send_toSS.send("V")
+            if (receive_fromSS.getConfigList()):  # recebeu algum comando
+                msg = receive_fromSS.popConfigList()
+                if (msg == "stop"):
+                        Partida = False
 
     elif(mode == "automatico" and Partida): # automatico
         #print("entrou no automatico")
@@ -124,8 +128,8 @@ while(1):
                 time.sleep(1)
 
 
-            if(receive_fromSS.getCommandList()):#recebeu algum comando
-                msg = receive_fromSS.popCommandList()
+            if(receive_fromSS.getConfigList()):#recebeu algum comando
+                msg = receive_fromSS.popConfigList()
                 if(msg == "stop"):
                     Partida = False
 
