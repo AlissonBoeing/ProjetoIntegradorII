@@ -83,8 +83,6 @@ while(1):
         elif(msg == "stop"):
             j = 0;
             Partida = False
-    if(receive_fromSS.getConfigList()):
-        msg = receive_fromSS.popConfigList()
         if (msg == "manual"):
             mode = "manual"
             print("modo " + str(mode))
