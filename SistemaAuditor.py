@@ -1,3 +1,4 @@
+#!/user/bin/venv
 import random
 import socket
 import sys

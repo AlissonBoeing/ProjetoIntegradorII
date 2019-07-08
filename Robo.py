@@ -1,4 +1,4 @@
-from ev3dev.ev3 import *
+#from ev3dev.ev3 import *
 import time
 from Treasure import *
 import threading

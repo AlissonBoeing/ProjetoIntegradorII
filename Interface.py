@@ -41,17 +41,18 @@ Partida = False
 mode = -1
 posAtual = -1
 listacacasSS = -1
+posin = "0:0"
 
 
 
 # comunicacoes #
-send_toSR = Communication("192.168.1.127", "50009",'toSR')
-receive_fromSR = Communication("192.168.1.127", "50008", "fromSR")
+send_toSR = Communication("127.0.0.1", "50009",'toSR')
+receive_fromSR = Communication("127.0.0.1", "50008", "fromSR")
 send_toSR.start()
 receive_fromSR.start()
 com_SA = Comunica_SA(8888, '127.0.0.1')
 com_SA.run()
-com_SA.login("AlissonTeles", ("0","0"))
+com_SA.login("AlissonTeles", (posin[0],posin[2]))
 
 #-------- Recebe conexao do SR -> loga no SA -> recebe as configurações e Inicia quando receber start ----- #
 
@@ -70,7 +71,7 @@ while (1):
                 isRobo = 1
                 send_toSR.send("ack,OK")
                 time.sleep(2)
-                send_toSR.send("posin,0:0")
+                send_toSR.send("posin," + posin)
                 send_toSR.send("comm,N")
                 #--- Robo cadastrado
     else:
@@ -111,7 +112,26 @@ while (1):
                                     "S - Mover para trás;\n"
                                     "D - Mover para esquerda;\n"
                                     "V - Validar caça;\n")
-                    if (entrada):
+
+                    if (com_SA.get_commands_list()):
+                        msg = com_SA.pop_commands_list()
+                        if(msg == 200):
+                            send_toSR.send("ack,OK")
+                        if(msg == 400):
+                            send_toSR.send("ack,NOK")
+
+                        if (msg == "start"):
+                            # mensagem do SA para comecar a partida, enviar para o SR
+                            Partida = True
+                            send_toSR.send("comm,start")
+                        elif (msg == "stop"):
+                            send_toSR.send("comm,stop")
+                            # apenas com a partida iniciada#
+                            Partida = False
+                            break
+
+
+                    if (entrada and Partida == True):
                         if (entrada in "vV"):
                             caca = input("digite sua posicao x:y")
                             com_SA.get_flag((int(caca[0]), int(caca[2])))
@@ -170,11 +190,11 @@ while (1):
 
 
             if (com_SA.get_map_list()):
-                #msg = com_SA.pop_map_list()
-                pass
-                #msg = traduzirListacacas(msg)
-                #send_toSR.send("adv," + msg)
-               # print(msg)
+                msg = com_SA.pop_map_list()
+                if (not None in msg):
+                    msg = traduzirListacacas(msg)
+                    send_toSR.send("adv," + msg)
+                print(msg)
 
         else:
 
